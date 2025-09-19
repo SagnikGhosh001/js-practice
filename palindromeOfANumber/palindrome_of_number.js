@@ -1,7 +1,7 @@
 const limit = 100;
 const staringRange = 1;
 
-console.log("From",staringRange,"to",limit,"all prime numbers are:-")
+console.log("From",staringRange,"to",limit,"all palindrome numbers are:-")
 
 for (let number = staringRange; number < limit; number++){
   let inputCopy = number
