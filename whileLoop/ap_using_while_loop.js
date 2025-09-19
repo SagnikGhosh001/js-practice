@@ -9,3 +9,4 @@ while (currentTerm <= finalTerm){
 }
 
 console.log("sum", sum);
+
