@@ -1,40 +1,41 @@
-const decimalNumber = 21;
-const substring = "101"
+const decimalValue = 65;
+const subString = "00";
 
-let copyOfDecimalNumber = decimalNumber;
-let binaryNumber = 0;
-let copyOfBinaryNumber = 0;
-let remainder = 0
+let binaryValue = 0;
+let decimalValueForOperation = decimalValue;
+let remainder = 0;
 let binaryMultiplier = 1
 
-while (copyOfDecimalNumber !== 0) {
-  remainder = copyOfDecimalNumber % 2;
-  binaryNumber = binaryNumber + remainder * binaryMultiplier
-  binaryMultiplier = binaryMultiplier * 10
-  copyOfDecimalNumber = copyOfDecimalNumber / 2
+while (decimalValueForOperation !== 0) {
+  remainder = decimalValueForOperation % 2;
+  binaryValue = binaryValue + remainder * binaryMultiplier;
+  binaryMultiplier = binaryMultiplier * 10;
+  decimalValueForOperation = decimalValueForOperation / 2;
   if(remainder){
-    copyOfDecimalNumber = copyOfDecimalNumber - (remainder / 2)
+    decimalValueForOperation = decimalValueForOperation - (remainder / 2);
   }
 }
-copyOfBinaryNumber = binaryNumber;
+let binaryValueForOperation = binaryValue;
 
-const countOfSubString = substring.length
-let matchedAnswer = 0
-let tempReminder = 0
 
-while (copyOfBinaryNumber !== 0) {
-  remainder = copyOfBinaryNumber % (10 ** countOfSubString) 
-  if((remainder - substring) === 0){
+const lengthOfSubString = subString.length;
+const divisor = (10 ** lengthOfSubString);
+let matchedAnswer = 0;
+let tempReminder = 0;
+
+while (binaryValueForOperation !== 0) {
+  remainder = binaryValueForOperation % divisor;
+  if((remainder - subString) === 0){
     matchedAnswer++;
   }
-  tempReminder = copyOfBinaryNumber % 10
-  copyOfBinaryNumber = copyOfBinaryNumber / 10;
+  tempReminder = binaryValueForOperation % 10;
+  binaryValueForOperation = binaryValueForOperation / 10;
   if(tempReminder) {
-    copyOfBinaryNumber = copyOfBinaryNumber - (tempReminder / 10)
+    binaryValueForOperation = binaryValueForOperation - (tempReminder / 10);
   }
 }
 
- console.log('Number',decimalNumber);
- console.log('Substring',substring);
- console.log('Binary',binaryNumber);
+ console.log('Number',decimalValue);
+ console.log('Substring',subString);
+ console.log('Binary',binaryValue);
  console.log('answear',matchedAnswer);
