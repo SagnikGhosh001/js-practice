@@ -1,45 +1,29 @@
-const decimalNumber = 79;
-const substring = 11
+const decimalNumber = 21;
+const substring = "101"
 
 let copyOfDecimalNumber = decimalNumber;
 let binaryNumber = 0;
 let copyOfBinaryNumber = 0;
-let copyOfSubString = substring
 let remainder = 0
 let binaryMultiplier = 1
 
-while (copyOfDecimalNumber != 0) {
+while (copyOfDecimalNumber !== 0) {
   remainder = copyOfDecimalNumber % 2;
-  copyOfBinaryNumber = copyOfBinaryNumber + remainder * binaryMultiplier
+  binaryNumber = binaryNumber + remainder * binaryMultiplier
   binaryMultiplier = binaryMultiplier * 10
   copyOfDecimalNumber = copyOfDecimalNumber / 2
   if(remainder){
     copyOfDecimalNumber = copyOfDecimalNumber - (remainder / 2)
   }
 }
+copyOfBinaryNumber = binaryNumber;
 
-binaryNumber = copyOfBinaryNumber;
-let countOfSubString = 0
-
-while (copyOfSubString > 0) {
-  remainder = copyOfSubString % 10
-  copyOfSubString = copyOfSubString / 10;
-  if (remainder) {
-    copyOfSubString = copyOfSubString - (remainder / 10)
-  }
-  countOfSubString++
-}
-
-let divider = 1
-while (countOfSubString != 0) {
-  divider = divider * 10;
-  countOfSubString--;
-}
-
+const countOfSubString = substring.length
 let matchedAnswer = 0
 let tempReminder = 0
-while (copyOfBinaryNumber != 0) {
-  remainder = copyOfBinaryNumber % divider 
+
+while (copyOfBinaryNumber !== 0) {
+  remainder = copyOfBinaryNumber % (10 ** countOfSubString) 
   if((remainder - substring) === 0){
     matchedAnswer++;
   }
