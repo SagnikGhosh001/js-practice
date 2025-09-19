@@ -1,25 +1,16 @@
-const rangeLimit = 6;
+const rangeLimit = 7;
+let previousNumber = 0;
+let currentNumber = 1;
 
-let firstNumber = 0;
-let secondNumber = 1;
-let thirdNumber = firstNumber + secondNumber;
-console.log(firstNumber)
-console.log(secondNumber)
-console.log(thirdNumber)
+console.log(previousNumber + "\n" + currentNumber );
 
-firstNumber = secondNumber;
-secondNumber = thirdNumber;
-thirdNumber = firstNumber + secondNumber;
-console.log(thirdNumber)
+for(let iterationCount = 2; iterationCount < rangeLimit; iterationCount++) {
+  
+  let nextNumber = previousNumber + currentNumber;
+  console.log(nextNumber);
+  
+  previousNumber = currentNumber;
+  currentNumber = nextNumber;
 
+}
 
-firstNumber = secondNumber;
-secondNumber = thirdNumber;
-thirdNumber = firstNumber + secondNumber;
-console.log(thirdNumber)
-
-
-firstNumber = secondNumber;
-secondNumber = thirdNumber;
-thirdNumber = firstNumber + secondNumber;
-console.log(thirdNumber)
