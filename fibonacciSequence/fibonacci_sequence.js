@@ -1,1 +1,3 @@
-console.log("Fibonacci sequence")
+const rangeLimit = 2;
+
+console.log("0 1");
