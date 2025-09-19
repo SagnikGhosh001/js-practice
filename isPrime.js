@@ -1,1 +1,2 @@
-console.log("2 is prime");
+const primeCandidate = 5;
+console.log(primeCandidate, "is prime");
