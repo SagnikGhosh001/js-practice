@@ -1,3 +1,6 @@
-const rangeLimit = 2;
+const rangeLimit = 3;
 
-console.log("0 1");
+const firstNumber = 0;
+const secondNumber = 1;
+const total = firstNumber + secondNumber;
+console.log(firstNumber,secondNumber,total)
