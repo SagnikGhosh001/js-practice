@@ -32,6 +32,6 @@ for (let currentTerm = 0; currentTerm < lengthOfTestCase; currentTerm++) {
 
 }
 
-minimumDistance = minimumDistance === 101 ? -1 : minimumDistance;
+minimumDistance = (minimumDistance === 101) ? -1 : minimumDistance;
 
 console.log("Input: ", testCaseToUse, "Output: ", minimumDistance);
