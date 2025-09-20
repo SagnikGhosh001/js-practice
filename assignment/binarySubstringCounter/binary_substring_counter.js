@@ -1,5 +1,5 @@
-const decimalValue = 65;
-const subString = "00";
+const decimalValue = 19;
+const subString = "1";
 
 let binaryValue = 0;
 let decimalValueForOperation = decimalValue;
@@ -10,10 +10,7 @@ while (decimalValueForOperation !== 0) {
   remainder = decimalValueForOperation % 2;
   binaryValue = binaryValue + remainder * binaryMultiplier;
   binaryMultiplier = binaryMultiplier * 10;
-  decimalValueForOperation = decimalValueForOperation / 2;
-  if(remainder){
-    decimalValueForOperation = decimalValueForOperation - (remainder / 2);
-  }
+  decimalValueForOperation = remainder ? ((decimalValueForOperation - 1) / 2) : (decimalValueForOperation / 2);
 }
 let binaryValueForOperation = binaryValue;
 
@@ -21,18 +18,13 @@ let binaryValueForOperation = binaryValue;
 const lengthOfSubString = subString.length;
 const divisor = (10 ** lengthOfSubString);
 let matchedAnswer = 0;
-let tempReminder = 0;
 
 while (binaryValueForOperation !== 0) {
+  let tempReminder = 0;
   remainder = binaryValueForOperation % divisor;
-  if((remainder - subString) === 0){
-    matchedAnswer++;
-  }
+  matchedAnswer = ((remainder - subString) === 0) ? matchedAnswer + 1 : matchedAnswer;
   tempReminder = binaryValueForOperation % 10;
-  binaryValueForOperation = binaryValueForOperation / 10;
-  if(tempReminder) {
-    binaryValueForOperation = binaryValueForOperation - (tempReminder / 10);
-  }
+  binaryValueForOperation = tempReminder ? ((binaryValueForOperation - 1) / 10) : (binaryValueForOperation / 10);
 }
 
  console.log('Number',decimalValue);
