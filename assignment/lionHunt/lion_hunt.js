@@ -8,16 +8,15 @@ const testCase7 = "Z   Z   Z";
 const testCase8 = "Z   L   L";
 const testCase9 = "Z   Z   L";
 
-const testCaseToUse = testCase8;
+const testCaseToUse = testCase6;
 
 const lengthOfTestCase = testCaseToUse.length;
-let minimumDistance = 101;
-let currentDistance = 0;
+let minimumDistance = Infinity;
 
 for (let currentTerm = 0; currentTerm < lengthOfTestCase; currentTerm++) {
   let isDifferentCharacterFound = false;
 
-  currentDistance = -1;
+  let currentDistance = -1;
   let nextTerm = currentTerm + 1;
 
   while (nextTerm < lengthOfTestCase && !isDifferentCharacterFound && testCaseToUse[currentTerm] !== " ") {
@@ -32,6 +31,6 @@ for (let currentTerm = 0; currentTerm < lengthOfTestCase; currentTerm++) {
 
 }
 
-minimumDistance = (minimumDistance === 101) ? -1 : minimumDistance;
+minimumDistance = (minimumDistance === Infinity) ? -1 : minimumDistance;
 
 console.log("Input: ", testCaseToUse, "Output: ", minimumDistance);
