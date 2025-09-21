@@ -1,65 +1,10 @@
-const numberToCheck = 12;
+const numberToCheck = 1;
 let countOfDivisor = 0;
 
-let currentTerm = 1;
-if(numberToCheck % currentTerm === 0 && currentTerm <= numberToCheck) {
-  countOfDivisor++;
-}
-currentTerm++;
+for(let currentTerm = 1; currentTerm <= numberToCheck; currentTerm++) {
 
-if(numberToCheck % currentTerm === 0 && currentTerm <= numberToCheck) {
-  countOfDivisor++;
+  countOfDivisor = (numberToCheck % currentTerm === 0 ) ? countOfDivisor + 1 : countOfDivisor;
 }
-currentTerm++;
 
-if(numberToCheck % currentTerm === 0 && currentTerm <= numberToCheck) {
-  countOfDivisor++;
-}
-currentTerm++;
-
-if(numberToCheck % currentTerm === 0 && currentTerm <= numberToCheck) {
-  countOfDivisor++;
-}
-currentTerm++;
-
-if(numberToCheck % currentTerm === 0 && currentTerm <= numberToCheck) {
-  countOfDivisor++;
-}
-currentTerm++;
-
-if(numberToCheck % currentTerm === 0 && currentTerm <= numberToCheck) {
-  countOfDivisor++;
-}
-currentTerm++;
-
-if(numberToCheck % currentTerm === 0 && currentTerm <= numberToCheck) {
-  countOfDivisor++;
-}
-currentTerm++;
-
-if(numberToCheck % currentTerm === 0 && currentTerm <= numberToCheck) {
-  countOfDivisor++;
-}
-currentTerm++;
-
-if(numberToCheck % currentTerm === 0 && currentTerm <= numberToCheck) {
-  countOfDivisor++;
-}
-currentTerm++;
-
-if(numberToCheck % currentTerm === 0 && currentTerm <= numberToCheck) {
-  countOfDivisor++;
-}
-currentTerm++;
-
-if(numberToCheck % currentTerm === 0 && currentTerm <= numberToCheck) {
-  countOfDivisor++;
-}
-currentTerm++;
-
-if(numberToCheck % currentTerm === 0 && currentTerm <= numberToCheck) {
-  countOfDivisor++;
-}
-currentTerm++;
 
 console.log("Input",numberToCheck,"Divisor Count",countOfDivisor);
