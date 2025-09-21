@@ -1,1 +1,2 @@
-console.log("Perfect Number");
+const numberToCheck = 6;
+console.log(numberToCheck,"perfect")
