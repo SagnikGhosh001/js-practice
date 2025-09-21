@@ -6,9 +6,7 @@ for (let number = startingValue ; number <= limit ; number++) {
   let divisor = 2
 
   while (divisor < number && !isComposite) {
-    if (number % divisor === 0) {
-      isComposite = true  
-    }
+    isComposite = (number % divisor === 0);
     divisor++;
   }
   
