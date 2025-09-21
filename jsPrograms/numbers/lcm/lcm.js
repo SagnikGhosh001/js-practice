@@ -11,4 +11,4 @@ for (let divisor = 2; divisor <= firstNumber && divisor <= secondNumber; divisor
 const lcm =(firstNumber * secondNumber) / gcd;
 
 
-console.log(lcm);
+console.log("lcm of",firstNumber,"and",secondNumber,"is",lcm);
