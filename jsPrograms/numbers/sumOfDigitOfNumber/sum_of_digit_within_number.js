@@ -3,13 +3,9 @@ let copyOfInput = input;
 let sum = 0;
 
 while (copyOfInput !== 0) {
-  let reminder = 0;
-  reminder = copyOfInput % 10;
-  sum = sum + reminder
-  copyOfInput = copyOfInput / 10;
-
-  if(reminder) {
-    copyOfInput = copyOfInput - (reminder / 10)
-  } 
+  let remainder = 0;
+  remainder = copyOfInput % 10;
+  sum = sum + remainder
+  copyOfInput = (copyOfInput - remainder)  / 10;
 }
 console.log(input,"=",sum);
