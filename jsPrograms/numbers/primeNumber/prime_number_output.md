@@ -1,6 +1,7 @@
 # expected output for prime number is
 
 |Input | Output|
+|-----|------|
 |2     | prime |
 |3     | prime|
 |4     | composite|
