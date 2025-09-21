@@ -1,6 +1,7 @@
 # expected output for factorial
 
 |input | output |
+|-----|------|
 |0     |1       |
 |1     |1       |
 |2     |2       |
