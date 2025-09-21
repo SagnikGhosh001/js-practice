@@ -1,27 +1,12 @@
-const firstNumber = 4;
-const secondNumber = 6;
+const firstNumber = 18;
+const secondNumber = 24;
 
 let gcd = 1;
 
-let divisor = 1;
-if(firstNumber % divisor === 0 && secondNumber % divisor === 0) {
-  gcd = divisor > gcd ? divisor : gcd;
+for (let divisor = 2; divisor <= firstNumber || divisor <= secondNumber; divisor++) {
+  if(firstNumber % divisor === 0 && secondNumber % divisor === 0) {
+    gcd = divisor > gcd ? divisor : gcd;
+  }
 }
-divisor++;
-
-if(firstNumber % divisor === 0 && secondNumber % divisor === 0) {
-  gcd = divisor > gcd ? divisor : gcd;
-}
-divisor++;
-
-if(firstNumber % divisor === 0 && secondNumber % divisor === 0) {
-  gcd = divisor > gcd ? divisor : gcd;
-}
-divisor++;
-
-if(firstNumber % divisor === 0 && secondNumber % divisor === 0) {
-  gcd = divisor > gcd ? divisor : gcd;
-}
-divisor++;
 
 console.log("gcd of",firstNumber,"and",secondNumber,"is",gcd);
