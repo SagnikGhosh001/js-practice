@@ -13,11 +13,7 @@ for (let number = startingValue; number < limit; number++) {
     let remainder = 0;
     remainder = copyOfNumber % 10;
     sum = sum + (remainder ** countOfDigit);
-    copyOfNumber = copyOfNumber / 10;
-
-    if (remainder) {
-      copyOfNumber = copyOfNumber - (remainder / 10);
-    }
+    copyOfNumber = (copyOfNumber -  remainder ) / 10;    
   }
 
   if (sum === number) {
