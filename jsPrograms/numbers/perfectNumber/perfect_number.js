@@ -1,32 +1,12 @@
-const numberToCheck = 6;
+const numberToCheck = 28;
+let sum = 0;
 const isPerfect = true
 const suffix = isPerfect ? "Perfect Number" : "Not a Perfect Number";
-let sum = 0;
-let i = 1;
-if(numberToCheck % i === 0) {
-  sum = sum + i;
-} 
-i = i + 1;
 
-if(numberToCheck % i === 0) {
-  sum = sum + i;
+for (let currentTerm = 1; currentTerm < numberToCheck; currentTerm++) {
+  sum = (numberToCheck % currentTerm === 0) ? sum + currentTerm : sum;
 }
-i = i + 1;
 
-if(numberToCheck % i === 0) {
-  sum = sum + i;
-}
-i = i + 1;
-
-if(numberToCheck % i === 0) {
-  sum = sum + i;
-}
-i = i + 1;
-
-if(numberToCheck % i === 0) {
-  sum = sum + i;
-}
-i = i + 1;
 
 console.log(sum);
 
