@@ -1,5 +1,3 @@
-
-
 //logical and, or and not
 let a = true;
 console.log(!a);
