@@ -1,2 +1,4 @@
 const numberToCheck = 6;
-console.log(numberToCheck,"perfect")
+const isPerfect = true
+const suffix = isPerfect ? "Perfect Number" : "Not a Perfect Number";
+console.log(numberToCheck,suffix)
