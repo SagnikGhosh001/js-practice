@@ -4,7 +4,7 @@
 //1.try not to use if
 //2.if you are using if try not to use else
 //3.if you use else if try not to write else
-if
+// if
 if(2 === 3) {
   console.log("this is true");
 } else {
