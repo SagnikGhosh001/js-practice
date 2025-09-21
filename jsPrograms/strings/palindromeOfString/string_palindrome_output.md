@@ -1,6 +1,7 @@
 # expected output for string pallindrome is
 
 |Input |Output |
+|-----|------|
 |aaaa | yes|
 |a | yes|
 |b | yes|
