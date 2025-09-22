@@ -1,16 +1,21 @@
-const numberToCheck = 14;
+const statingRange = 1;
+const endOfRange = 50;
 
-let numberForOperation = numberToCheck;
-let sumOfDigit = 0;
+console.log("Harshad Numbers betweeen",statingRange,"and",endOfRange,"is:-");
 
-while (numberForOperation !== 0) {
-  let remainder = 0;
-  remainder = numberForOperation % 10;
-  sumOfDigit = sumOfDigit + remainder;
-  numberForOperation = (numberForOperation - remainder) / 10;
+for (let numberToCheck = statingRange; numberToCheck <= endOfRange; numberToCheck++) {
+
+  let numberForOperation = numberToCheck;
+  let sumOfDigit = 0;
+  
+  while (numberForOperation !== 0) {
+    let remainder = 0;
+    remainder = numberForOperation % 10;
+    sumOfDigit = sumOfDigit + remainder;
+    numberForOperation = (numberForOperation - remainder) / 10;
+  }
+  
+  if (numberToCheck % sumOfDigit === 0) {
+    console.log(numberToCheck);
+  }  
 }
-
-let isHarshd = (numberToCheck % sumOfDigit === 0);
-
-const suffix = isHarshd ? "a harshad number" : "not a harshad number";
-console.log(numberToCheck,"is",suffix)
