@@ -1,8 +1,8 @@
-function calculatingNthFibonacciTerm(term) {
+function calculateNthFibonacciTerm(nThTerm) {
   let currentValue = 0;
   let nextValue = 1;
 
-  for (let currentTerm = 1; currentTerm < term; currentTerm++) {
+  for (let currentTerm = 1; currentTerm < nThTerm; currentTerm++) {
     const futureValue = currentValue + nextValue;
     currentValue = nextValue;
     nextValue = futureValue;
@@ -12,18 +12,18 @@ function calculatingNthFibonacciTerm(term) {
 }
 
 function getEmoji(result, expectedResult) {
-  return (result === expectedResult) ? "✅" : "❌";
+  return result === expectedResult ? "✅" : "❌";
 }
 
-function composeMessage(result, expectedResult, term) {
-  const emoji = getEmoji(result,expectedResult);
-  const message = emoji + "value = " + term + " result = " + result + " expected result = " + expectedResult;
+function composeMessage(result, expectedResult, nThTerm) {
+  const emoji = getEmoji(result, expectedResult);
+  const message = emoji + "nTh term = " + nThTerm + " result = " + result + " expected result = " + expectedResult;
   return message;
 }
 
-function testNthFibonacciTerm(term, expectedResult) {
-  const result = calculatingNthFibonacciTerm(term);
-  const message = composeMessage(result, expectedResult, term);
+function testNthFibonacciTerm(nThTerm, expectedResult) {
+  const result = calculateNthFibonacciTerm(nThTerm);
+  const message = composeMessage(result, expectedResult, nThTerm);
   console.log(message);
 }
 
