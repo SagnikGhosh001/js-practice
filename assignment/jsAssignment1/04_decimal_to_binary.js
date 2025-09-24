@@ -13,8 +13,12 @@ function decimalToBinary(decimalValue) {
   return binary;
 }
 
+function getEmoji(result, expectedResult) {
+  return (result === expectedResult) ? "✅" : "❌";
+}
+
 function composeMessage(result, expectedResult, decimalValue) {
-  const emoji = (result === expectedResult) ? "✅" : "❌";
+  const emoji = getEmoji(result,expectedResult);
   const message = emoji + " Decimal value = " + decimalValue + " result = " + result + " expected result = " + expectedResult;
   return message;
 }
