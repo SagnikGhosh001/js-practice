@@ -2,11 +2,11 @@ function calculateCompoundInterest(principal, time, rate) {
   let newPrincipal = principal;
 
   for (let currentTime = 1; currentTime <= time; currentTime++) {
-    let simpleInterest = (newPrincipal * rate) / 100;
+    const simpleInterest = (newPrincipal * rate) / 100;
     newPrincipal = newPrincipal + simpleInterest;
   }
 
-  return (newPrincipal - principal);
+  return newPrincipal - principal;
 }
 
 function getEmoji(result, expectedResult) {
@@ -14,8 +14,8 @@ function getEmoji(result, expectedResult) {
 }
 
 function isApproximatelyEqual(result, expectedResult) {
-  const tolerence = (expectedResult - result);
-  return (tolerence <= 0.01) && (tolerence >= -0.01)
+  const tolerance = (expectedResult - result);
+  return tolerance <= 0.01 && tolerance >= -0.01;
 }
 
 function composeMessage(result, expectedResult, principal, time, rate) {
