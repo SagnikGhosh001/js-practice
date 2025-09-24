@@ -8,8 +8,12 @@ function oddEvenPrintInRange(startOfTheRange, endOfTheRange) {
   return oddEvenSeries;
 }
 
+function getEmoji(result, expectedResult) {
+  return (result === expectedResult) ? "✅" : "❌";
+}
+
 function composeMessage(result, expectedResult, startOfTheRange, endOfTheRange) {
-  const emoji = (result === expectedResult) ? "✅" : "❌";
+  const emoji = getEmoji(result,expectedResult);
   const message = emoji + " start Of The Range = " + startOfTheRange + " end Of The Range = " + endOfTheRange + " result = " + result + " expected result = " + expectedResult;
   return message;
 }
