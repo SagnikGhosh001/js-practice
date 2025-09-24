@@ -9,7 +9,7 @@ function getEmoji(result, expectedResult) {
 }
 
 function composeMessage(result, expectedResult, principal, time, rate) {
-  const emoji = getEmoji(result,expectedResult);
+  const emoji = getEmoji(result, expectedResult);
   const message = emoji + " principal = " + principal + " time = " + time + " rate of interest = " + rate + " result = " + result + " expected result = " + expectedResult;
   return message;
 }
