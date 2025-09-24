@@ -1,6 +1,6 @@
 function decimalToBinary(decimalValue) {
   let binary = "";
-  
+
   if (decimalValue === 0) {
     return "0";
   }
@@ -18,7 +18,7 @@ function getEmoji(result, expectedResult) {
 }
 
 function composeMessage(result, expectedResult, decimalValue) {
-  const emoji = getEmoji(result,expectedResult);
+  const emoji = getEmoji(result, expectedResult);
   const message = emoji + " Decimal value = " + decimalValue + " result = " + result + " expected result = " + expectedResult;
   return message;
 }
@@ -30,11 +30,11 @@ function testDecimalToBinary(decimalValue, expectedResult) {
 }
 
 function main() {
-  testDecimalToBinary(0,"0");
-  testDecimalToBinary(1,"1");
-  testDecimalToBinary(6,"110");
-  testDecimalToBinary(8,"1000");
-  testDecimalToBinary(10,"1010");
+  testDecimalToBinary(0, "0");
+  testDecimalToBinary(1, "1");
+  testDecimalToBinary(6, "110");
+  testDecimalToBinary(8, "1000");
+  testDecimalToBinary(10, "1010");
 }
 
 main();
