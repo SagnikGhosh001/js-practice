@@ -1,18 +1,18 @@
-function calculateSimpleInterest(principal, time, roi) {
-  const simpleInterest = (principal * roi * time) / 100;
+function calculateSimpleInterest(principal, time, rate) {
+  const simpleInterest = (principal * rate * time) / 100;
 
   return simpleInterest;
 }
 
-function composeMessage(result, expectedResult, principal, time, roi) {
+function composeMessage(result, expectedResult, principal, time, rate) {
   const emoji = (result === expectedResult) ? "✅" : "❌";
-  const message = emoji + " principal = " + principal + " time = " + time + " rate of interest = " + roi + " result = " + result + " expected result = " + expectedResult;
+  const message = emoji + " principal = " + principal + " time = " + time + " rate of interest = " + rate + " result = " + result + " expected result = " + expectedResult;
   return message;
 }
 
-function testCalculateSimpleInterest(principal, time, roi, expectedResult) {
-  const result = calculateSimpleInterest(principal, time, roi);
-  const message = composeMessage(result, expectedResult, principal, time, roi);
+function testCalculateSimpleInterest(principal, time, rate, expectedResult) {
+  const result = calculateSimpleInterest(principal, time, rate);
+  const message = composeMessage(result, expectedResult, principal, time, rate);
   console.log(message);
 }
 
