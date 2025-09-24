@@ -13,11 +13,11 @@ function printFibonacciSeries(rangeLimit) {
 }
 
 function getEmoji(result, expectedResult) {
-  return (result === expectedResult) ? "✅" : "❌";
+  return result === expectedResult ? "✅" : "❌";
 }
 
 function composeMessage(result, expectedResult, rangeLimit) {
-  const emoji = getEmoji(result,expectedResult);
+  const emoji = getEmoji(result, expectedResult);
   const message = emoji + "limit of range = " + rangeLimit + " result = " + result + " expected sequence = " + expectedResult;
   return message;
 }
