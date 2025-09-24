@@ -1,33 +1,33 @@
-function oddEvenPrintInRange(startOfTheRange, endOfTheRange) {
-  const startOfTheRangeBasedOnEvenOdd = (startOfTheRange % 2 === 0) ? startOfTheRange : startOfTheRange + 1;
-  let oddEvenSeries = "";
+function printEvenNumbersInRange(start, end) {
+  const evenStart = (start % 2 === 0) ? start : start + 1;
+  let evenNumbers = "";
 
-  for (let currentNumber = startOfTheRangeBasedOnEvenOdd; currentNumber <= endOfTheRange; currentNumber = currentNumber + 2) {
-    oddEvenSeries = oddEvenSeries + currentNumber + " ";
+  for (let currentNumber = evenStart; currentNumber <= end; currentNumber = currentNumber + 2) {
+    evenNumbers = evenNumbers + currentNumber + " ";
   }
-  return oddEvenSeries;
+  return evenNumbers;
 }
 
 function getEmoji(result, expectedResult) {
-  return (result === expectedResult) ? "✅" : "❌";
+  return result === expectedResult ? "✅" : "❌";
 }
 
-function composeMessage(result, expectedResult, startOfTheRange, endOfTheRange) {
+function composeMessage(result, expectedResult, start, end) {
   const emoji = getEmoji(result,expectedResult);
-  const message = emoji + " start Of The Range = " + startOfTheRange + " end Of The Range = " + endOfTheRange + " result = " + result + " expected result = " + expectedResult;
+  const message = emoji + " start Of The Range = " + start + " end Of The Range = " + end + " result = " + result + " expected result = " + expectedResult;
   return message;
 }
 
-function testOddEven(startOfTheRange, endOfTheRange, expectedResult) {
-  const result = oddEvenPrintInRange(startOfTheRange, endOfTheRange);
-  const message = composeMessage(result, expectedResult, startOfTheRange, endOfTheRange);
+function testPrintEvenNumbersInRange(start, end, expectedResult) {
+  const result = printEvenNumbersInRange(start, end);
+  const message = composeMessage(result, expectedResult, start, end);
   console.log(message);
 }
 
 function main() {
-  testOddEven(0,10,"0 2 4 6 8 10 ");
-  testOddEven(11,20,"12 14 16 18 20 ");
-  testOddEven(16,21,"16 18 20 ");
+  testPrintEvenNumbersInRange(0,10,"0 2 4 6 8 10 ");
+  testPrintEvenNumbersInRange(11,20,"12 14 16 18 20 ");
+  testPrintEvenNumbersInRange(16,21,"16 18 20 ");
 }
 
 main();
