@@ -8,7 +8,7 @@ function decimalToBinary(decimalValue) {
   while (decimalValue > 0) {
     const remainder = decimalValue % 2;
     decimalValue = (decimalValue - remainder) / 2;
-    binary = binary + remainder;
+    binary = remainder + binary;
   }
   return binary;
 }
@@ -28,9 +28,9 @@ function testDecimalToBinary(decimalValue, expectedResult) {
 function main() {
   testDecimalToBinary(0,"0");
   testDecimalToBinary(1,"1");
-  testDecimalToBinary(6,"011");
-  testDecimalToBinary(8,"0001");
-  testDecimalToBinary(10,"0101");
+  testDecimalToBinary(6,"110");
+  testDecimalToBinary(8,"1000");
+  testDecimalToBinary(10,"1010");
 }
 
 main();
