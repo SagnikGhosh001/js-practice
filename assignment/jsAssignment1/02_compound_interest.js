@@ -9,13 +9,17 @@ function calculateCompoundInterest(principal, time, rate) {
   return (newPrincipal - principal);
 }
 
+function getEmoji(result, expectedResult) {
+  return isApproximatelyEqual(result, expectedResult) ? "✅" : "❌";
+}
+
 function isApproximatelyEqual(result, expectedResult) {
   const tolerence = (expectedResult - result);
   return (tolerence <= 0.01) && (tolerence >= -0.01)
 }
 
 function composeMessage(result, expectedResult, principal, time, rate) {
-  const emoji = isApproximatelyEqual(result, expectedResult) ? "✅" : "❌";
+  const emoji = getEmoji(result,expectedResult);
   const message = emoji + " principal = " + principal + " time = " + time + " rate of interest = " + rate + " result = " + result + " expected result = " + expectedResult;
   return message;
 }
