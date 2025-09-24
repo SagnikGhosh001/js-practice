@@ -23,9 +23,9 @@ function composeMessage(result, expectedResult, primeCandidate) {
   return message;
 }
 
-function testIsPrime(rangeLimit, expectedResult) {
-  const result = checkIsPrime(rangeLimit);
-  const message = composeMessage(result, expectedResult, rangeLimit);
+function testIsPrime(primeCandidate, expectedResult) {
+  const result = checkIsPrime(primeCandidate);
+  const message = composeMessage(result, expectedResult, primeCandidate);
   console.log(message);
 }
 
