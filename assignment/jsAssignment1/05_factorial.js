@@ -7,8 +7,12 @@ function calculatingFactorial(value) {
   return factorial;
 }
 
+function getEmoji(result, expectedResult) {
+  return (result === expectedResult) ? "✅" : "❌";
+}
+
 function composeMessage(result, expectedResult, factorial) {
-  const emoji = (result === expectedResult) ? "✅" : "❌";
+  const emoji = getEmoji(result,expectedResult);
   const message = emoji + "value = " + factorial + " factorial = " + result + " expected factorial = " + expectedResult;
   return message;
 }
