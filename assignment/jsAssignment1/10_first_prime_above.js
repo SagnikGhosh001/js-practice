@@ -22,7 +22,7 @@ function findFirstPrimeAfter(numberToCheckAfter) {
 
   while (true) {
     if (isPrime(numberToPerformOperation)) {
-      return numberToPerformOperation ;
+      return numberToPerformOperation;
     }
 
     numberToPerformOperation++;
