@@ -1,15 +1,15 @@
-function checkHasFactor(primeCandidate, divisor) {  
-  return (primeCandidate % divisor === 0);
+function hasFactor(primeCandidate, divisor) {
+  return primeCandidate % divisor === 0;
 }
 
-function checkIsPrime(primeCandidate) {
+function isPrime(primeCandidate) {
   if (primeCandidate <= 1) {
     return false;
   }
 
   let divisor = 2;
-  while (divisor < primeCandidate) {
-    if (checkHasFactor(primeCandidate,divisor)) {
+  while (divisor * divisor <= primeCandidate) {
+    if (hasFactor(primeCandidate, divisor)) {
       return false;
     }
     divisor++;
@@ -18,7 +18,7 @@ function checkIsPrime(primeCandidate) {
 }
 
 function getEmoji(result, expectedResult) {
-  return (result === expectedResult) ? "✅" : "❌";
+  return result === expectedResult ? "✅" : "❌";
 }
 
 function composeMessage(result, expectedResult, primeCandidate) {
@@ -27,25 +27,25 @@ function composeMessage(result, expectedResult, primeCandidate) {
   return message;
 }
 
-function testFindAllPrimeInRange(primeCandidate, expectedResult) {
-  const result = checkIsPrime(primeCandidate);
+function testIsPrime(primeCandidate, expectedResult) {
+  const result = isPrime(primeCandidate);
   const message = composeMessage(result, expectedResult, primeCandidate);
   console.log(message);
 }
 
 function main() {
-  testFindAllPrimeInRange(-1, false);
-  testFindAllPrimeInRange(1, false);
-  testFindAllPrimeInRange(2, true);
-  testFindAllPrimeInRange(3, true);
-  testFindAllPrimeInRange(4, false);
-  testFindAllPrimeInRange(5, true);
-  testFindAllPrimeInRange(6, false);
-  testFindAllPrimeInRange(7, true);
-  testFindAllPrimeInRange(8, false);
-  testFindAllPrimeInRange(9, false);
-  testFindAllPrimeInRange(10, false);
-  testFindAllPrimeInRange(11, true);
+  testIsPrime(-1, false);
+  testIsPrime(1, false);
+  testIsPrime(2, true);
+  testIsPrime(3, true);
+  testIsPrime(4, false);
+  testIsPrime(5, true);
+  testIsPrime(6, false);
+  testIsPrime(7, true);
+  testIsPrime(8, false);
+  testIsPrime(9, false);
+  testIsPrime(10, false);
+  testIsPrime(11, true);
 }
 
 main();
