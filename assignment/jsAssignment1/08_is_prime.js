@@ -3,10 +3,10 @@ function checkHasFactor(primeCandidate, divisor) {
 }
 
 function checkIsPrime(primeCandidate) {
-  if (primeCandidate === 1) {
+  if (primeCandidate <= 1) {
     return false;
   }
-  
+
   let divisor = 2;
   while (divisor < primeCandidate) {
     if (checkHasFactor(primeCandidate,divisor)) {
@@ -34,6 +34,7 @@ function testFindAllPrimeInRange(primeCandidate, expectedResult) {
 }
 
 function main() {
+  testFindAllPrimeInRange(-1, false);
   testFindAllPrimeInRange(1, false);
   testFindAllPrimeInRange(2, true);
   testFindAllPrimeInRange(3, true);
