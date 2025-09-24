@@ -11,9 +11,13 @@ function calculatingNthFibonacciTerm(term) {
   return currentValue;
 }
 
+function getEmoji(result, expectedResult) {
+  return (result === expectedResult) ? "✅" : "❌";
+}
+
 function composeMessage(result, expectedResult, term) {
-  const emoji = (result === expectedResult) ? "✅" : "❌";
-  const message = emoji + "value = " + term + " result = " + result + " expected factorial = " + expectedResult;
+  const emoji = getEmoji(result,expectedResult);
+  const message = emoji + "value = " + term + " result = " + result + " expected result = " + expectedResult;
   return message;
 }
 
