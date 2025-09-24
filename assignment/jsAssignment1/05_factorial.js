@@ -12,7 +12,7 @@ function getEmoji(result, expectedResult) {
 }
 
 function composeMessage(result, expectedResult, numberToCheckFactorial) {
-  const emoji = getEmoji(result,expectedResult);
+  const emoji = getEmoji(result, expectedResult);
   const message = emoji + "value = " + numberToCheckFactorial + " factorial = " + result + " expected factorial = " + expectedResult;
   return message;
 }
