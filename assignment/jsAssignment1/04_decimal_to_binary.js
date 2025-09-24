@@ -14,7 +14,7 @@ function decimalToBinary(decimalValue) {
 }
 
 function getEmoji(result, expectedResult) {
-  return (result === expectedResult) ? "✅" : "❌";
+  return result === expectedResult ? "✅" : "❌";
 }
 
 function composeMessage(result, expectedResult, decimalValue) {
