@@ -1,11 +1,15 @@
+function checkHasFactor(primeCandidate, divisor) {  
+  return (primeCandidate % divisor === 0);
+}
+
 function checkIsPrime(primeCandidate) {
   if (primeCandidate === 1) {
     return false;
   }
-
+  
   let divisor = 2;
   while (divisor < primeCandidate) {
-    if (primeCandidate % divisor === 0) {
+    if (checkHasFactor(primeCandidate,divisor)) {
       return false;
     }
     divisor++;
@@ -23,24 +27,24 @@ function composeMessage(result, expectedResult, primeCandidate) {
   return message;
 }
 
-function testIsPrime(primeCandidate, expectedResult) {
+function testFindAllPrimeInRange(primeCandidate, expectedResult) {
   const result = checkIsPrime(primeCandidate);
   const message = composeMessage(result, expectedResult, primeCandidate);
   console.log(message);
 }
 
 function main() {
-  testIsPrime(1, false);
-  testIsPrime(2, true);
-  testIsPrime(3, true);
-  testIsPrime(4, false);
-  testIsPrime(5, true);
-  testIsPrime(6, false);
-  testIsPrime(7, true);
-  testIsPrime(8, false);
-  testIsPrime(9, false);
-  testIsPrime(10, false);
-  testIsPrime(11, true);
+  testFindAllPrimeInRange(1, false);
+  testFindAllPrimeInRange(2, true);
+  testFindAllPrimeInRange(3, true);
+  testFindAllPrimeInRange(4, false);
+  testFindAllPrimeInRange(5, true);
+  testFindAllPrimeInRange(6, false);
+  testFindAllPrimeInRange(7, true);
+  testFindAllPrimeInRange(8, false);
+  testFindAllPrimeInRange(9, false);
+  testFindAllPrimeInRange(10, false);
+  testFindAllPrimeInRange(11, true);
 }
 
 main();
