@@ -1,6 +1,5 @@
 function calculateSimpleInterest(principal, time, rate) {
   const simpleInterest = (principal * rate * time) / 100;
-
   return simpleInterest;
 }
 
