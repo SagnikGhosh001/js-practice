@@ -12,9 +12,9 @@ function removeDuplicate(string) {
   let noDuplicateCharacterString = "";
 
   for (let index = 0; index < string.length; index++) {
-    noDuplicateCharacterString = isCharacterAvailable(noDuplicateCharacterString,string[index]) ? noDuplicateCharacterString : noDuplicateCharacterString + string[index];
+    noDuplicateCharacterString = isCharacterAvailable(noDuplicateCharacterString, string[index]) ? noDuplicateCharacterString : noDuplicateCharacterString + string[index];
   }
-  
+
   return noDuplicateCharacterString;
 }
 
@@ -24,7 +24,7 @@ function symbolSelection(result, expectedResult) {
 
 function composeMessage(result, expectedResult, string) {
   const symbol = symbolSelection(result, expectedResult);
-  const inputSection = "[" + result + "]";
+  const inputSection = "[" + string + "]";
   const resultSection = "result = " + result;
   const expectedResultSection = "Expected result = " + expectedResult;
 
@@ -46,9 +46,22 @@ function testRemoveDuplicate(string, expectedResult) {
 }
 
 function main() {
+  testRemoveDuplicate("aabbcc", "abc");
+  testRemoveDuplicate("hello", "helo");
+  testRemoveDuplicate("apple", "aple");
+  testRemoveDuplicate("banana", "ban");
+  testRemoveDuplicate("AaBbCc", "AaBbCc");
+  testRemoveDuplicate("AAaaBBbb", "AaBb");
+  testRemoveDuplicate("", "");
   testRemoveDuplicate("a", "a");
-  testRemoveDuplicate("aaaa", "a");
-  testRemoveDuplicate("abca", "abc");
+  testRemoveDuplicate("aaaaa", "a");
+  testRemoveDuplicate("abcabcabc", "abc");
+  testRemoveDuplicate("cababc", "cab");
+  testRemoveDuplicate("xyzzyx", "xyz");
+  testRemoveDuplicate("112233", "123");
+  testRemoveDuplicate("!@!!@@##", "!@#");
+  testRemoveDuplicate("abc123abc123", "abc123");
+
 }
 
 main();
