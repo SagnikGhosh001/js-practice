@@ -12,7 +12,19 @@ function isVowel(character) {
 }
 
 function distanceCalculation(string) {
-  return 3;
+  let shortestDistance = Infinity;
+  
+  for (let currentTerm = 0; currentTerm < string.length - 1; currentTerm++) {
+
+    for (let nextTermForMatch = currentTerm + 1; nextTermForMatch < string.length; nextTermForMatch++) {
+      if (isVowel(string[currentTerm]) && isVowel(string[nextTermForMatch])) {
+        const currentDistance = nextTermForMatch - currentTerm;
+        shortestDistance = currentDistance < shortestDistance ? currentDistance : shortestDistance;
+      }
+    }    
+  }
+
+  return shortestDistance === Infinity ? -1 : shortestDistance;
 }
 
 
@@ -44,7 +56,21 @@ function testDistanceCalculation(string, expectedResult) {
 }
 
 function main() {
-  testDistanceCalculation("hello",3);
+  testDistanceCalculation("hello", 3);
+  testDistanceCalculation("apple", 4);
+  testDistanceCalculation("strength", -1);
+  testDistanceCalculation("beautiful", 1);
+  testDistanceCalculation("abyss", -1);
+  testDistanceCalculation("a", -1);
+  testDistanceCalculation("aeiou", 1);
+  testDistanceCalculation("bbbbbb", -1);
+  testDistanceCalculation("coding", 2);
+  testDistanceCalculation("queueing", 1);
+  testDistanceCalculation("sequence", 1);
+  testDistanceCalculation("onomatopoeia", 1);
+  testDistanceCalculation("education", 1);
+  testDistanceCalculation("communication", 1);
+  testDistanceCalculation("strengths", -1);
 
 }
 
