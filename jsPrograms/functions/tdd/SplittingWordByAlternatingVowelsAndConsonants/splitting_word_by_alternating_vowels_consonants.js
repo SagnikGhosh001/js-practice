@@ -1,4 +1,4 @@
-let globalTrackString = "1";
+let globalTrackString = "";
 
 function isCharacterSame(character, smallCase, upperCase) {
   return character === smallCase || character === upperCase;
@@ -13,27 +13,49 @@ function isVowel(character) {
   return isA || isE || isI || isO || isU;
 }
 
+function updateTracking(index) {
+  let newtrack = "";
+  for (let i = 0; i < globalTrackString.length; i++) {
+    if (i === index) {
+      newtrack += "1";
+    } else {
+      newtrack += globalTrackString[i];
+    }
+  }
+  globalTrackString = newtrack;
+}
+
 function extractString(string, startIndex) {
   let resultString = string[startIndex];
 
-  for (let index = startIndex; index < string.length - 1; index++) {
-    if (isVowel(resultString[index]) !== isVowel(string[index + 1]) && globalTrackString[index + 1] !== "1") {
-      resultString += string[index + 1];
-      globalTrackString += 1;
-    } else {
-      globalTrackString += "0";
+  for (let index = startIndex + 1; index < string.length; index++) {
+    if (isVowel(resultString[index - 1]) !== isVowel(string[index]) && globalTrackString[index] === "0") {
+      resultString += string[index];
+      updateTracking(index)
     }
   }
-  console.log(globalTrackString);
-  
+
   return resultString;
 }
 
 function splittingWord(string) {
   let resultString = "";
+  for (let index = 0; index < string.length; index++) {
+    globalTrackString += "0";
+  }
 
-  resultString = extractString(string, 0);
+  let index = 0;
 
+  while (index < string.length) {
+
+    if (globalTrackString[index] === "0") {      
+      updateTracking(index);
+      resultString = resultString + extractString(string, index) + ",";
+    }
+    index++;
+  }
+
+  globalTrackString = "";
   return resultString;
 }
 
@@ -66,7 +88,11 @@ function testSplittingWord(string, expectedResult) {
 }
 
 function main() {
-  testSplittingWord("apple", "ape,p,l")
+  testSplittingWord("apple", "ape,p,l,");
+  testSplittingWord("there", "tere,h,");
+  testSplittingWord("hello", "helo,l,");
+  testSplittingWord("abyys", "ab,y,y,s,");
+  testSplittingWord("this", "ti,h,s,");
 }
 
 main();
