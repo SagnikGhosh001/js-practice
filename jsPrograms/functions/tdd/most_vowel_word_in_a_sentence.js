@@ -1,28 +1,35 @@
-function isVowel(letter) {
-  const isSmallAlphabetVowel = letter === "a" || letter === "e" || letter === "i" || letter === "o" || letter === "u";
-  const isCapitalAlphabetVowel = letter === "A" || letter === "E" || letter === "I" || letter === "O" || letter === "U";
-  return isSmallAlphabetVowel || isCapitalAlphabetVowel;
+function isCharacterSame(character, smallCase, upperCase) {
+  return character === smallCase || character === upperCase;
+}
+function isVowel(character) {
+  const isA = isCharacterSame(character, "a", "A");
+  const isE = isCharacterSame(character, "i", "A");
+  const isI = isCharacterSame(character, "e", "A");
+  const isO = isCharacterSame(character, "o", "A");
+  const isU = isCharacterSame(character, "u", "A");
+  return isA || isE || isI || isO || isU;
 }
 
 function findWordWithMostVowels(sentence) {
-  let maximumCountOfVowel = 0;
-  let currentCountOfvowel = 0;
+  let maximumVowelCount = 0;
+  let vowelCount = 0;
   let wordWithMostVowel = "";
   let currentWord = "";
 
   for (let index = 0; index < sentence.length; index++) {
     const isNonSpaceChar = sentence[index] !== " ";
+    const currentChar = sentence[index];
 
-    currentWord = isNonSpaceChar ? currentWord + sentence[index] : currentWord;
-    currentCountOfvowel = isVowel(sentence[index]) ? currentCountOfvowel + 1 : currentCountOfvowel;
+    currentWord = isNonSpaceChar ? currentWord + currentChar : currentWord;
+    vowelCount = isVowel(currentChar) ? vowelCount + 1 : vowelCount;
 
     if (!isNonSpaceChar || index === sentence.length - 1) {
-      if (currentCountOfvowel > maximumCountOfVowel) {
-        maximumCountOfVowel = currentCountOfvowel;
+      if (vowelCount > maximumVowelCount) {
+        maximumVowelCount = vowelCount;
         wordWithMostVowel = currentWord;
       }
       currentWord = "";
-      currentCountOfvowel = 0;
+      vowelCount = 0;
     }
   }
   return wordWithMostVowel;
@@ -61,8 +68,8 @@ function main() {
   testAll("i go to school", "school");
   testAll("i miss this puja vacation", "vacation");
   testAll("ajoy loves someone", "someone");
-  testAll("","");
-  testAll(" ","");
+  testAll("", "");
+  testAll(" ", "");
 }
 
 main();
