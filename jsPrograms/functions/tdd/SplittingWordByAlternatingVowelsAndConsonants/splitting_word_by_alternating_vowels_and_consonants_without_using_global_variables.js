@@ -8,7 +8,31 @@ function isVowel(character) {
   return isA || isE || isI || isO || isU;
 }
 
-function splitAlternatingSegment(string, isSegmentNeed) {
+function splitTheSegment(string) {
+  let currentTerm = 0;
+  let segment = "";
+
+  while (string[currentTerm] !== "|") {
+    segment = segment + string[currentTerm];
+    currentTerm++;
+  }
+
+  return segment;
+}
+
+function splitRemainingString(string, startIndex) {
+  let currentTerm = startIndex + 1;
+  let remainingString = "";
+
+  while (currentTerm < string.length) {
+    remainingString = remainingString + string[currentTerm];
+    currentTerm++;
+  }
+
+  return remainingString;
+}
+
+function splitAlternatingSegment(string) {
   let segmentString = string[0];
   let remainingString = "";
 
@@ -23,7 +47,7 @@ function splitAlternatingSegment(string, isSegmentNeed) {
     }
   }
 
-  return isSegmentNeed ? segmentString : remainingString;
+  return segmentString + '|' + remainingString;
 }
 
 function splitWordByAlternation(string) {
@@ -31,8 +55,11 @@ function splitWordByAlternation(string) {
   let stringForOperation = string;
 
   while (stringForOperation !== "") {
-    segmentString = segmentString + splitAlternatingSegment(stringForOperation, true) + ",";
-    stringForOperation = splitAlternatingSegment(stringForOperation, false);
+
+    const result = splitAlternatingSegment(stringForOperation);
+    const segment = splitTheSegment(result);
+    segmentString = segmentString + segment + ",";
+    stringForOperation = splitRemainingString(result, segment.length);
   }
 
   return segmentString;
