@@ -13,22 +13,17 @@ function isVowel(character) {
 
 function shortestDistanceBetweenVowels(string) {
   let shortestDistance = Infinity;
-  let lastVowelIndex = 0;
-  let currentChar = string[0];
-  let index = 0;
+  let lastVowelIndex = -1;
 
-  while (index < string.length) {
-    if (!isVowel(currentChar)) {
-      currentChar = string[index];
-      lastVowelIndex = isVowel(currentChar) ? index : lastVowelIndex;
-    }
+  for (let index = 0; index < string.length; index++) {
+    if (isVowel(string[index])) {
 
-    if (index !== lastVowelIndex && isVowel(string[index])) {
-      const distance = index - lastVowelIndex;
-      shortestDistance = distance < shortestDistance ? distance : shortestDistance;
+      if (lastVowelIndex !== -1) {
+        const distance = index - lastVowelIndex;
+        shortestDistance = distance < shortestDistance ? distance : shortestDistance;
+      }
       lastVowelIndex = index;
     }
-    index++;
   }
 
   return shortestDistance === Infinity ? -1 : shortestDistance;
