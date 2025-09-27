@@ -1,5 +1,5 @@
 function removeDuplicate(string) {
-
+  return "a"
 }
 
 function symbolSelection(result, expectedResult) {
@@ -30,7 +30,8 @@ function testRemoveDuplicate(string, expectedResult) {
 }
 
 function main() {
-
+  testRemoveDuplicate("a", "a");
+  testRemoveDuplicate("aaaa", "a");
 }
 
 main();
