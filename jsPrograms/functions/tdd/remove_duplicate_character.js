@@ -32,6 +32,7 @@ function testRemoveDuplicate(string, expectedResult) {
 function main() {
   testRemoveDuplicate("a", "a");
   testRemoveDuplicate("aaaa", "a");
+  testRemoveDuplicate("abca", "abc");
 }
 
 main();
