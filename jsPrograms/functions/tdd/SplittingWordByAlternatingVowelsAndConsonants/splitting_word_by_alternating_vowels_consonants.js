@@ -12,12 +12,18 @@ function isVowel(character) {
 
 function extractString(string, index) {
   let resultString = string[index];
+  let trackOfUsedLetter ="1";
 
   for (let index = 1; index < string.length; index++) {
     if (isVowel(resultString[index - 1]) !== isVowel(string[index])) {
       resultString += string[index];
+      trackOfUsedLetter += "1";
+    } else {
+      trackOfUsedLetter += "0";
     }
   }
+  console.log(trackOfUsedLetter);
+  
   return resultString;
 }
 
