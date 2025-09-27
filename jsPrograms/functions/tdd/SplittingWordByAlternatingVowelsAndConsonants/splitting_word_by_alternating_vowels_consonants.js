@@ -1,4 +1,4 @@
-let globalTrackString = "";
+let usedCharTrackString = "";
 
 function isCharacterSame(character, smallCase, upperCase) {
   return character === smallCase || character === upperCase;
@@ -10,51 +10,58 @@ function isVowel(character) {
   const isI = isCharacterSame(character, "i", "I");
   const isO = isCharacterSame(character, "o", "O");
   const isU = isCharacterSame(character, "u", "U");
+
   return isA || isE || isI || isO || isU;
 }
 
 function updateTracking(matchingIndex) {
   let updatedTrack = "";
 
-  for (let index = 0; index < globalTrackString.length; index++) {
-    updatedTrack = index === matchingIndex ? updatedTrack + "1" : updatedTrack + globalTrackString[index];
+  for (let index = 0; index < usedCharTrackString.length; index++) {
+    const isIndexMatch = index === matchingIndex;
+
+    updatedTrack += isIndexMatch ? "1" : usedCharTrackString[index];
   }
-  
-  globalTrackString = updatedTrack;
+
+  usedCharTrackString = updatedTrack;
 }
 
 function extractString(string, startIndex) {
-  let resultString = string[startIndex];
+  let splitString = string[startIndex];
 
   for (let index = startIndex + 1; index < string.length; index++) {
-    if (isVowel(resultString[resultString.length - 1]) !== isVowel(string[index]) && globalTrackString[index] === "0") {
-      resultString += string[index];
-      updateTracking(index)
+    const stringLength = splitString.length;
+    const isSplitStringLastCharVowel = isVowel(splitString[stringLength - 1]);
+    const isMainStringLastCharVowel = isVowel(string[index]);
+    const consonantCheck = isSplitStringLastCharVowel !== isMainStringLastCharVowel;
+
+    if (consonantCheck && usedCharTrackString[index] === "0") {
+      splitString = splitString + string[index];
+      updateTracking(index);
     }
   }
 
-  return resultString;
+  return splitString;
 }
 
 function splittingWord(string) {
-  let resultString = "";
+  let splitString = "";
   for (let index = 0; index < string.length; index++) {
-    globalTrackString += "0";
+    usedCharTrackString = usedCharTrackString + "0";
   }
 
   let index = 0;
-
   while (index < string.length) {
 
-    if (globalTrackString[index] === "0") {    
+    if (usedCharTrackString[index] === "0") {
       updateTracking(index);
-      resultString = resultString + extractString(string, index) + ",";
+      splitString = splitString + extractString(string, index) + ",";
     }
     index++;
   }
 
-  globalTrackString = "";
-  return resultString;
+  usedCharTrackString = "";
+  return splitString;
 }
 
 
@@ -93,6 +100,7 @@ function main() {
   testSplittingWord("this", "tis,h,");
   testSplittingWord("aaabbb", "ab,ab,ab,");
   testSplittingWord("aaaeee", "a,a,a,e,e,e,");
+  testSplittingWord("sagnik", "sagik,n,");
 }
 
 main();
