@@ -14,15 +14,13 @@ function isVowel(character) {
 }
 
 function updateTracking(index) {
-  let newtrack = "";
+  let updatedTrack = "";
+
   for (let newIndex = 0; newIndex < globalTrackString.length; newIndex++) {
-    if (newIndex === index) {
-      newtrack += "1";
-    } else {
-      newtrack += globalTrackString[newIndex];
-    }
+    updatedTrack = newIndex === index ? updatedTrack + "1" : updatedTrack + globalTrackString[newIndex];
   }
-  globalTrackString = newtrack;
+  
+  globalTrackString = updatedTrack;
 }
 
 function extractString(string, startIndex) {
