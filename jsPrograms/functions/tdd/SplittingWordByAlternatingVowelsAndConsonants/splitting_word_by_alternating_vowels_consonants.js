@@ -15,11 +15,11 @@ function isVowel(character) {
 
 function updateTracking(index) {
   let newtrack = "";
-  for (let index = 0; index < globalTrackString.length; index++) {
-    if (index === index) {
+  for (let newIndex = 0; newIndex < globalTrackString.length; newIndex++) {
+    if (newIndex === index) {
       newtrack += "1";
     } else {
-      newtrack += globalTrackString[index];
+      newtrack += globalTrackString[newIndex];
     }
   }
   globalTrackString = newtrack;
@@ -93,6 +93,8 @@ function main() {
   testSplittingWord("hello", "helo,l,");
   testSplittingWord("abyys", "ab,y,y,s,");
   testSplittingWord("this", "tis,h,");
+  testSplittingWord("aaabbb", "ab,ab,ab,");
+  testSplittingWord("aaaeee", "a,a,a,e,e,e,");
 }
 
 main();
