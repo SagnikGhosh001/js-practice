@@ -11,21 +11,28 @@ function isVowel(character) {
   return isA || isE || isI || isO || isU;
 }
 
-function distanceCalculation(string) {
-  let shortestDistance = Infinity;
-  
-  for (let currentTerm = 0; currentTerm < string.length - 1; currentTerm++) {
+function calculatingDistance(currentTerm, string, shortestDistance) {
 
-    for (let nextTermForMatch = currentTerm + 1; nextTermForMatch < string.length; nextTermForMatch++) {
-      if (isVowel(string[currentTerm]) && isVowel(string[nextTermForMatch])) {
-        const currentDistance = nextTermForMatch - currentTerm;
-        shortestDistance = currentDistance < shortestDistance ? currentDistance : shortestDistance;
-      }
-    }    
+  for (let nextTermForMatch = currentTerm + 1; nextTermForMatch < string.length; nextTermForMatch++) {
+    if (isVowel(string[currentTerm]) && isVowel(string[nextTermForMatch])) {
+      const currentDistance = nextTermForMatch - currentTerm;
+      shortestDistance = currentDistance < shortestDistance ? currentDistance : shortestDistance;
+    }
+  }
+
+  return shortestDistance;
+}
+
+function shortestDistanceBetweenVowels(string) {
+  let shortestDistance = Infinity;
+
+  for (let currentTerm = 0; currentTerm < string.length - 1; currentTerm++) {
+    shortestDistance = calculatingDistance(currentTerm, string, shortestDistance);
   }
 
   return shortestDistance === Infinity ? -1 : shortestDistance;
 }
+
 
 
 function symbolSelection(result, expectedResult) {
@@ -50,7 +57,7 @@ function composeMessage(result, expectedResult, string) {
 }
 
 function testDistanceCalculation(string, expectedResult) {
-  const result = distanceCalculation(string);
+  const result = shortestDistanceBetweenVowels(string);
   const message = composeMessage(result, expectedResult, string);
   console.log(message);
 }
