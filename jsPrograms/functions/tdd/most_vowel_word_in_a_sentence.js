@@ -3,8 +3,8 @@ function isCharacterSame(character, smallCase, upperCase) {
 }
 function isVowel(character) {
   const isA = isCharacterSame(character, "a", "A");
-  const isE = isCharacterSame(character, "i", "E");
-  const isI = isCharacterSame(character, "e", "I");
+  const isE = isCharacterSame(character, "e", "E");
+  const isI = isCharacterSame(character, "i", "I");
   const isO = isCharacterSame(character, "o", "O");
   const isU = isCharacterSame(character, "u", "U");
   return isA || isE || isI || isO || isU;
