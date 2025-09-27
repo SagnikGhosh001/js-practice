@@ -1,4 +1,4 @@
-function isCharacterAvailable(string, character) {
+function hasCharacters(string, character) {
   for (let index = 0; index < string.length; index++) {
     if (string[index] === character) {
       return true;
@@ -9,13 +9,14 @@ function isCharacterAvailable(string, character) {
 }
 
 function removeDuplicate(string) {
-  let noDuplicateCharacterString = "";
+  let uniqueChars = "";
 
   for (let index = 0; index < string.length; index++) {
-    noDuplicateCharacterString = isCharacterAvailable(noDuplicateCharacterString, string[index]) ? noDuplicateCharacterString : noDuplicateCharacterString + string[index];
+    const isCharAvailable = hasCharacters(uniqueChars, string[index]);
+    uniqueChars = isCharAvailable ? uniqueChars : uniqueChars + string[index];
   }
 
-  return noDuplicateCharacterString;
+  return uniqueChars;
 }
 
 function symbolSelection(result, expectedResult) {
