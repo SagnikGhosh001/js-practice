@@ -1,5 +1,15 @@
+function isCharacterAvailable(string, character) {
+  for (let index = 0; index < string.length; index++) {
+    if (string[index] === character) {
+      return true;
+    }
+  }
+  
+  return false;
+}
+
 function removeDuplicate(string) {
-  return "a"
+  return 'a';
 }
 
 function symbolSelection(result, expectedResult) {
