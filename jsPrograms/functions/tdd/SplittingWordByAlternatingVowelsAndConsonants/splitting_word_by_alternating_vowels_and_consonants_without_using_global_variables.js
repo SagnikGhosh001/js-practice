@@ -10,7 +10,7 @@ function isVowel(character) {
 
 function splitAlternatingSegment(string, isSegmentNeed) {
   let segmentString = string[0];
-  let leftString = "";
+  let remainingString = "";
 
   for (let index = 1; index < string.length; index++) {
     const isSegmentStringLastCharVowel = isVowel(segmentString[segmentString.length - 1]);
@@ -19,11 +19,11 @@ function splitAlternatingSegment(string, isSegmentNeed) {
     if (isSegmentStringLastCharVowel !== isMainStringLastCharVowel) {
       segmentString = segmentString + string[index];
     } else {
-      leftString = leftString + string[index];
+      remainingString = remainingString + string[index];
     }
   }
 
-  return isSegmentNeed ? segmentString : leftString;
+  return isSegmentNeed ? segmentString : remainingString;
 }
 
 function splitWordByAlternation(string) {
@@ -74,6 +74,7 @@ function main() {
   testSplittingWord("aaabbb", "ab,ab,ab,");
   testSplittingWord("aaaeee", "a,a,a,e,e,e,");
   testSplittingWord("sagnik", "sagik,n,");
+  testSplittingWord("three", "te,he,r,");
 }
 
 main();
