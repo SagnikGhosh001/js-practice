@@ -1,35 +1,38 @@
+let globalTrackString = "1";
+
 function isCharacterSame(character, smallCase, upperCase) {
   return character === smallCase || character === upperCase;
 }
+
 function isVowel(character) {
   const isA = isCharacterSame(character, "a", "A");
-  const isE = isCharacterSame(character, "i", "E");
-  const isI = isCharacterSame(character, "e", "I");
+  const isE = isCharacterSame(character, "e", "E");
+  const isI = isCharacterSame(character, "i", "I");
   const isO = isCharacterSame(character, "o", "O");
   const isU = isCharacterSame(character, "u", "U");
   return isA || isE || isI || isO || isU;
 }
 
-function extractString(string, index) {
-  let resultString = string[index];
-  let trackOfUsedLetter ="1";
+function extractString(string, startIndex) {
+  let resultString = string[startIndex];
 
-  for (let index = 1; index < string.length; index++) {
-    if (isVowel(resultString[index - 1]) !== isVowel(string[index])) {
-      resultString += string[index];
-      trackOfUsedLetter += "1";
+  for (let index = startIndex; index < string.length - 1; index++) {
+    if (isVowel(resultString[index]) !== isVowel(string[index + 1]) && globalTrackString[index + 1] !== "1") {
+      resultString += string[index + 1];
+      globalTrackString += 1;
     } else {
-      trackOfUsedLetter += "0";
+      globalTrackString += "0";
     }
   }
-  console.log(trackOfUsedLetter);
+  console.log(globalTrackString);
   
   return resultString;
 }
 
 function splittingWord(string) {
-  let index = 0;
-  let resultString = extractString(string, index);
+  let resultString = "";
+
+  resultString = extractString(string, 0);
 
   return resultString;
 }
