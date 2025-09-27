@@ -4,12 +4,18 @@ function isCharacterAvailable(string, character) {
       return true;
     }
   }
-  
+
   return false;
 }
 
 function removeDuplicate(string) {
-  return 'a';
+  let noDuplicateCharacterString = "";
+
+  for (let index = 0; index < string.length; index++) {
+    noDuplicateCharacterString = isCharacterAvailable(noDuplicateCharacterString,string[index]) ? noDuplicateCharacterString : noDuplicateCharacterString + string[index];
+  }
+  
+  return noDuplicateCharacterString;
 }
 
 function symbolSelection(result, expectedResult) {
