@@ -13,11 +13,11 @@ function isVowel(character) {
   return isA || isE || isI || isO || isU;
 }
 
-function updateTracking(index) {
+function updateTracking(matchingIndex) {
   let updatedTrack = "";
 
-  for (let newIndex = 0; newIndex < globalTrackString.length; newIndex++) {
-    updatedTrack = newIndex === index ? updatedTrack + "1" : updatedTrack + globalTrackString[newIndex];
+  for (let index = 0; index < globalTrackString.length; index++) {
+    updatedTrack = index === matchingIndex ? updatedTrack + "1" : updatedTrack + globalTrackString[index];
   }
   
   globalTrackString = updatedTrack;
