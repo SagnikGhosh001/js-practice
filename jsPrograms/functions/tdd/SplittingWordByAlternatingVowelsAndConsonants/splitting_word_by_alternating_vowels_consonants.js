@@ -1,15 +1,11 @@
 let usedCharTrackString = "";
 
-function isCharacterSame(character, smallCase, upperCase) {
-  return character === smallCase || character === upperCase;
-}
-
 function isVowel(character) {
-  const isA = isCharacterSame(character, "a", "A");
-  const isE = isCharacterSame(character, "e", "E");
-  const isI = isCharacterSame(character, "i", "I");
-  const isO = isCharacterSame(character, "o", "O");
-  const isU = isCharacterSame(character, "u", "U");
+  const isA = character === "a";
+  const isE = character === "e";
+  const isI = character === "i";
+  const isO = character === "o";
+  const isU = character === "u";
 
   return isA || isE || isI || isO || isU;
 }
