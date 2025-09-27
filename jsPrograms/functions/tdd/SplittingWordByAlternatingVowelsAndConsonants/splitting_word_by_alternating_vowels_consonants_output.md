@@ -51,7 +51,7 @@ ape,p,l
 | apple | ape,p,l   |
 | there | tere,h    |
 | hello | helo,l    |
-| abyss | a,b,y,s,s |
-| this  | ti,h,s    |
+| abyss | ab,y,s,s  |
+| this  | tis,h     |
 
 ---
