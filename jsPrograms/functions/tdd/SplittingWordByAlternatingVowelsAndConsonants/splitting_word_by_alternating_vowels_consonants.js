@@ -3,14 +3,16 @@ function isCharacterSame(character, smallCase, upperCase) {
 }
 function isVowel(character) {
   const isA = isCharacterSame(character, "a", "A");
-  const isE = isCharacterSame(character, "i", "A");
-  const isI = isCharacterSame(character, "e", "A");
-  const isO = isCharacterSame(character, "o", "A");
-  const isU = isCharacterSame(character, "u", "A");
+  const isE = isCharacterSame(character, "i", "E");
+  const isI = isCharacterSame(character, "e", "I");
+  const isO = isCharacterSame(character, "o", "O");
+  const isU = isCharacterSame(character, "u", "U");
   return isA || isE || isI || isO || isU;
 }
 
-function extractString(string, resultString) {
+function extractString(string, index) {
+  let resultString = string[index];
+
   for (let index = 1; index < string.length; index++) {
     if (isVowel(resultString[index - 1]) !== isVowel(string[index])) {
       resultString += string[index];
@@ -20,9 +22,8 @@ function extractString(string, resultString) {
 }
 
 function splittingWord(string) {
-  let resultString = string[0];
-
-  resultString = extractString(string, resultString);
+  let index = 0;
+  let resultString = extractString(string, index);
 
   return resultString;
 }
