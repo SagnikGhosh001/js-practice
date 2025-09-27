@@ -8,11 +8,11 @@ function isVowel(character) {
   return isA || isE || isI || isO || isU;
 }
 
-function splitAlternatingSegment(string, startIndex, isSegmentNeed) {
+function splitAlternatingSegment(string, isSegmentNeed) {
   let segmentString = string[0];
   let leftString = "";
 
-  for (let index = startIndex + 1; index < string.length; index++) {
+  for (let index = 1; index < string.length; index++) {
     const isSegmentStringLastCharVowel = isVowel(segmentString[segmentString.length - 1]);
     const isMainStringLastCharVowel = isVowel(string[index]);
 
@@ -31,8 +31,8 @@ function splitWordByAlternation(string) {
   let stringForOperation = string;
 
   while (stringForOperation !== "") {
-    segmentString = segmentString + splitAlternatingSegment(stringForOperation, 0, true) + ",";
-    stringForOperation = splitAlternatingSegment(stringForOperation, 0, false);
+    segmentString = segmentString + splitAlternatingSegment(stringForOperation, true) + ",";
+    stringForOperation = splitAlternatingSegment(stringForOperation, false);
   }
 
   return segmentString;
@@ -60,7 +60,7 @@ function composeMessage(result, expectedResult, string) {
 }
 
 function testSplittingWord(string, expectedResult) {
-  const result = splittingWord(string);
+  const result = splitWordByAlternation(string);
   const message = composeMessage(result, expectedResult, string);
   console.log(message);
 }
