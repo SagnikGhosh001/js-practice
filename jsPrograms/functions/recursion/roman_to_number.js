@@ -20,31 +20,33 @@ function convertRomanToNumber(string, index, number) {
     return number;
   }
 
-  const currentValue = romanDigitToNumber(string[index]);
+  const currValue = romanDigitToNumber(string[index]);
   const nextValue = index - 1 < 0 ? 0 : romanDigitToNumber(string[index - 1]);
 
-  if (currentValue === -1 || nextValue === -1) {
+  if (currValue === -1 || nextValue === -1) {
     return -1;
   }
 
-  number += currentValue === nextValue || nextValue === 0 ? currentValue + nextValue : 0;
-  number += currentValue > nextValue && nextValue !== 0 ? currentValue - nextValue : 0;
-  number += currentValue < nextValue ? currentValue + nextValue : 0;
+  const isLastChar = nextValue === 0;
+
+  number += currValue === nextValue || isLastChar ? currValue + nextValue : 0;
+  number += currValue > nextValue && !isLastChar ? currValue - nextValue : 0;
+  number += currValue < nextValue ? currValue + nextValue : 0;
 
   return convertRomanToNumber(string, index - 2, number);
 }
 
 function romanToNumber(string) {
   const upperCase = string.toUpperCase();
-  const isInvalidVString = upperCase.includes("VV");
-  const isInvalidLString = upperCase.includes("LL");
-  const isInvalidDString = upperCase.includes("DD");
-  const isInvalidIString = upperCase.includes("IIII");
-  const isInvalidXString = upperCase.includes("XXXX");
-  const isInvalidCString = upperCase.includes("CCCC");
-  const isInvalidMString = upperCase.includes("MMMM");
+  const isInvalidV = upperCase.includes("VV");
+  const isInvalidL = upperCase.includes("LL");
+  const isInvalidD = upperCase.includes("DD");
+  const isInvalidI = upperCase.includes("IIII");
+  const isInvalidX = upperCase.includes("XXXX");
+  const isInvalidC = upperCase.includes("CCCC");
+  const isInvalidM = upperCase.includes("MMMM");
 
-  if (isInvalidVString || isInvalidLString || isInvalidDString || isInvalidIString || isInvalidXString || isInvalidCString || isInvalidMString) {
+  if (isInvalidV || isInvalidL || isInvalidD || isInvalidI || isInvalidX || isInvalidC || isInvalidM) {
     return -1;
   }
 
