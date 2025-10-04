@@ -20,23 +20,16 @@ function convertRomanToNumber(string, index, number) {
     return number;
   }
 
-  const currentRomanValue = romanDigitToNumber(string[index]);
-  let NextRomanValue = romanDigitToNumber(string[index - 1]);
-  if(index - 1 < 0) {
-    NextRomanValue = 0;
-  }
-
-  if (currentRomanValue === NextRomanValue) {
-    number = currentRomanValue + NextRomanValue;
-  } else if (currentRomanValue > NextRomanValue) {
-    number = number + currentRomanValue - NextRomanValue;
-  } else {
-    number = number + NextRomanValue + currentRomanValue;
-  }
-
-  if (currentRomanValue === -1 || NextRomanValue === -1) {
+  const currentValue = romanDigitToNumber(string[index]);
+  const nextValue = index - 1 < 0 ? 0 : romanDigitToNumber(string[index - 1]);
+  
+  if (currentValue === -1 || nextValue === -1) {
     return -1;
   }
+  
+  number = currentValue === nextValue ? currentValue + nextValue : number;
+  number += currentValue > nextValue ? currentValue - nextValue : 0;
+  number += currentValue < nextValue ? currentValue + nextValue : 0;
 
   return convertRomanToNumber(string, index - 2, number);
 }
