@@ -20,6 +20,9 @@ function convertRomanToNumber(string, index) {
     return 0;
   }
   const romanValue = romanDigitToNumber(string[index]);
+  if (romanValue === -1) {
+    return -1;
+  }
 
   return romanValue - convertRomanToNumber(string, index - 1);
 }
@@ -55,6 +58,7 @@ function main() {
   testRomanToNumber("IV", 4, "for Subtractive Notation");
   testRomanToNumber("IX", 9, "for Subtractive Notation");
   testRomanToNumber("R", -1, "for wrong digit");
+  testRomanToNumber("IR", -1, "for wrong digit in moe than 1 string");
 }
 
 main();
