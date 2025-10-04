@@ -15,21 +15,40 @@ function getEmoji(result, expected) {
   return result === expected ? "✅" : "❌";
 }
 
-function convertRomanToNumber(string, index) {
+function convertRomanToNumber(string, index, number) {
   if (index < 0) {
-    return 0;
+    return number;
   }
-  const romanValue = romanDigitToNumber(string[index]);
-  if (romanValue === -1) {
+
+  const currentRomanValue = romanDigitToNumber(string[index]);
+  let NextRomanValue = romanDigitToNumber(string[index - 1]);
+  if(index - 1 < 0) {
+    NextRomanValue = 0;
+  }
+
+  if (currentRomanValue === NextRomanValue) {
+    number = currentRomanValue + NextRomanValue;
+  } else if (currentRomanValue > NextRomanValue) {
+    number = number + currentRomanValue - NextRomanValue;
+  } else {
+    number = number + NextRomanValue + currentRomanValue;
+  }
+
+  if (currentRomanValue === -1 || NextRomanValue === -1) {
     return -1;
   }
 
-  return romanValue - convertRomanToNumber(string, index - 1);
+  return convertRomanToNumber(string, index - 2, number);
 }
 
 function romanToNumber(string) {
   const upperCase = string.toUpperCase();
-  return convertRomanToNumber(upperCase, upperCase.length - 1);
+
+  if (upperCase.length === 1) {
+    return romanDigitToNumber(string);
+  }
+
+  return convertRomanToNumber(upperCase, upperCase.length - 1, 0);
 }
 
 function composeMsg(result, expected, string, purpose) {
@@ -57,8 +76,16 @@ function main() {
   testRomanToNumber("I", 1, "for single digit");
   testRomanToNumber("IV", 4, "for Subtractive Notation");
   testRomanToNumber("IX", 9, "for Subtractive Notation");
+  testRomanToNumber("II", 2, "for Repeat Value");
+  testRomanToNumber("XX", 20, "for Repeat Value");
+  testRomanToNumber("VI", 6, "for Mixed Value");
+  testRomanToNumber("XIV", 14, "for Mixed Value");
+  testRomanToNumber("LXXX", 80, "for Mixed Value");
+  testRomanToNumber("CXL", 140, "for Mixed Value");
+  testRomanToNumber("CDXLIV", 444, "for Mixed Value");
   testRomanToNumber("R", -1, "for wrong digit");
-  testRomanToNumber("IR", -1, "for wrong digit in moe than 1 string");
+  testRomanToNumber("jDXIIV", -1, "for wrong digit in more than 1 string");
+  testRomanToNumber("IR", -1, "for wrong digit in more than 1 string");
 }
 
 main();
