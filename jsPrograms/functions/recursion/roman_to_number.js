@@ -11,8 +11,6 @@ function romanDigitToNumber(char) {
   }
 }
 
-
-
 function convertRomanToNumber(string, index, number) {
   if (index < 0) {
     return number;
@@ -35,25 +33,41 @@ function convertRomanToNumber(string, index, number) {
   return convertRomanToNumber(string, index - 2, number);
 }
 
-function isOverRepeatation(upperCase) {
-  const isInvalidI = upperCase.includes("IIII");
-  const isInvalidX = upperCase.includes("XXXX");
-  const isInvalidC = upperCase.includes("CCCC");
-  const isInvalidM = upperCase.includes("MMMM");
-  return isInvalidC || isInvalidI || isInvalidM || isInvalidX;
+function isOverRepeatation(upperCase, index, countI, countX, countC, countM) {
+  if (index === upperCase.length) {
+    return false;
+  }
+  countI += upperCase[index] === "I" ? 1 : 0;
+  countX += upperCase[index] === "X" ? 1 : 0;
+  countC += upperCase[index] === "C" ? 1 : 0;
+  countM += upperCase[index] === "M" ? 1 : 0;
+
+  if (countI >= 4 || countC >= 4 || countX >= 4 || countM >= 4) {
+    return true
+  }
+
+  return isOverRepeatation(upperCase, index + 1, countI, countX, countC, countM);
 }
 
-function isDoubleRepeatation(upperCase) {
-  const isInvalidV = upperCase.includes("VV");
-  const isInvalidL = upperCase.includes("LL");
-  const isInvalidD = upperCase.includes("DD");
-  return isInvalidL || isInvalidV || isInvalidD;
+function isDoubleRepeatation(upperCase, index, countV, countL, countD) {
+  if (index === upperCase.length) {
+    return false;
+  }
+  countD += upperCase[index] === "D" ? 1 : 0;
+  countV += upperCase[index] === "V" ? 1 : 0;
+  countL += upperCase[index] === "L" ? 1 : 0;
+
+  if (countD >= 2 || countL >= 2 || countV >= 2) {
+    return true
+  }
+
+  return isDoubleRepeatation(upperCase, index + 1, countV, countL, countD);
 }
 
 function romanToNumber(string) {
   const upperCase = string.toUpperCase();
 
-  if (isDoubleRepeatation(upperCase) || isOverRepeatation(upperCase)) {
+  if (isDoubleRepeatation(upperCase, 0, 0, 0, 0) || isOverRepeatation(upperCase, 0, 0, 0, 0, 0)) {
     return -1;
   }
 
@@ -112,6 +126,8 @@ function main() {
   testRomanToNumber("R", -1, "for wrong digit");
   testRomanToNumber("jDXIIV", -1, "for wrong digit in more than 1 string");
   testRomanToNumber("IR", -1, "for wrong digit in more than 1 string");
+  testRomanToNumber("XVIV", -1, "for wrong digit in more than 1 string");
+  testRomanToNumber("XIIVII", -1, "for wrong digit in more than 1 string");
 }
 
 main();
