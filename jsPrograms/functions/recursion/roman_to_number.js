@@ -11,27 +11,26 @@ function romanDigitToNumber(char) {
   }
 }
 
-function getEmoji(result, expected) {
-  return result === expected ? "✅" : "❌";
-}
+
 
 function convertRomanToNumber(string, index, number) {
   if (index < 0) {
     return number;
   }
 
+  const isLastChar = index === 0;
   const currValue = romanDigitToNumber(string[index]);
-  const nextValue = index - 1 < 0 ? 0 : romanDigitToNumber(string[index - 1]);
+  const nextValue = isLastChar ? 0 : romanDigitToNumber(string[index - 1]);
 
   if (currValue === -1 || nextValue === -1) {
     return -1;
   }
 
-  const isLastChar = nextValue === 0;
-
-  number += currValue === nextValue || isLastChar ? currValue + nextValue : 0;
-  number += currValue > nextValue && !isLastChar ? currValue - nextValue : 0;
-  number += currValue < nextValue ? currValue + nextValue : 0;
+  if (currValue > nextValue && !isLastChar) {
+    number += currValue - nextValue;
+  } else {
+    number += currValue + nextValue;
+  }
 
   return convertRomanToNumber(string, index - 2, number);
 }
@@ -55,6 +54,10 @@ function romanToNumber(string) {
   }
 
   return convertRomanToNumber(upperCase, upperCase.length - 1, 0);
+}
+
+function getEmoji(result, expected) {
+  return result === expected ? "✅" : "❌";
 }
 
 function composeMsg(result, expected, string, purpose) {
