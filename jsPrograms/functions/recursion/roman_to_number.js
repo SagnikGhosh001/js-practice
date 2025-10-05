@@ -35,17 +35,25 @@ function convertRomanToNumber(string, index, number) {
   return convertRomanToNumber(string, index - 2, number);
 }
 
-function romanToNumber(string) {
-  const upperCase = string.toUpperCase();
-  const isInvalidV = upperCase.includes("VV");
-  const isInvalidL = upperCase.includes("LL");
-  const isInvalidD = upperCase.includes("DD");
+function isOverRepeatation(upperCase) {
   const isInvalidI = upperCase.includes("IIII");
   const isInvalidX = upperCase.includes("XXXX");
   const isInvalidC = upperCase.includes("CCCC");
   const isInvalidM = upperCase.includes("MMMM");
+  return isInvalidC || isInvalidI || isInvalidM || isInvalidX;
+}
 
-  if (isInvalidV || isInvalidL || isInvalidD || isInvalidI || isInvalidX || isInvalidC || isInvalidM) {
+function isDoubleRepeatation(upperCase) {
+  const isInvalidV = upperCase.includes("VV");
+  const isInvalidL = upperCase.includes("LL");
+  const isInvalidD = upperCase.includes("DD");
+  return isInvalidL || isInvalidV || isInvalidD;
+}
+
+function romanToNumber(string) {
+  const upperCase = string.toUpperCase();
+
+  if (isDoubleRepeatation(upperCase) || isOverRepeatation(upperCase)) {
     return -1;
   }
 
