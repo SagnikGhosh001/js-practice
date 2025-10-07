@@ -1,4 +1,4 @@
-function checkingWithNextCharacter(string, currIndex, matchIndex) {
+function isRepeatation(string, currIndex, matchIndex) {
   if (matchIndex === string.length) {
     return true;
   }
@@ -7,23 +7,23 @@ function checkingWithNextCharacter(string, currIndex, matchIndex) {
     return false;
   }
 
-  return checkingWithNextCharacter(string, currIndex, matchIndex + 1);
+  return isRepeatation(string, currIndex, matchIndex + 1);
 }
 
-function checkingCurrentCharacter(string, index) {
+function findNonRepeatedCharacter(string, index) {
   if (index === string.length) {
     return "";
   }
 
-  if (checkingWithNextCharacter(string, index, 0)) {
+  if (isRepeatation(string, index, 0)) {
     return string[index];
   }
 
-  return checkingCurrentCharacter(string, index + 1);
+  return findNonRepeatedCharacter(string, index + 1);
 }
 
-function findNonRepeatedCharacter(string) {
-  return checkingCurrentCharacter(string, 0);
+function nonRepeatedCharacter(string) {
+  return findNonRepeatedCharacter(string, 0);
 }
 
 function getEmoji(result, expected) {
@@ -46,7 +46,7 @@ function composeMsg(result, expected, string, purpose) {
 }
 
 function testNonRepeatedCharacter(string, expected, purpose) {
-  const result = findNonRepeatedCharacter(string);
+  const result = nonRepeatedCharacter(string);
   const msg = composeMsg(result, expected, string, purpose);
   console.log(msg);
 }
