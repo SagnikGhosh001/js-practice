@@ -11,8 +11,8 @@ function areArrayEquals(array1, array2, index) {
     return true;
   }
 
-  const isLengthOfBothArrayNotEual = array1.length !== array2.length;
-  if (isLengthOfBothArrayNotEual || !isEqualValue(array1[index], array2[index])) {
+  const isLengthOfArraysEqual = array1.length === array2.length;
+  if (!isLengthOfArraysEqual || !isEqualValue(array1[index], array2[index])) {
     return false;
   }
 
