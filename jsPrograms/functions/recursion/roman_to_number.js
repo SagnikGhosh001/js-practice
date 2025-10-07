@@ -11,6 +11,8 @@ function romanDigitToNumber(char) {
   }
 }
 
+
+
 function convertRomanToNumber(string, index, number) {
   if (index < 0) {
     return number;
@@ -24,11 +26,7 @@ function convertRomanToNumber(string, index, number) {
     return -1;
   }
 
-  if (currValue > nextValue && !isLastChar) {
-    number += currValue - nextValue;
-  } else {
-    number += currValue + nextValue;
-  }
+  number += currValue > nextValue && !isLastChar ? currValue - nextValue : currValue + nextValue;
 
   return convertRomanToNumber(string, index - 2, number);
 }
