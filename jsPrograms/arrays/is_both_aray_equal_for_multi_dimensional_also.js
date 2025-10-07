@@ -12,7 +12,7 @@ function areArrayEquals(array1, array2, index) {
   }
 
   const isLengthOfArraysEqual = array1.length === array2.length;
-  if (!isLengthOfArraysEqual || !isEqualValue(array1[index], array2[index])) {
+  if (!isLengthOfArraysEqual) {
     return false;
   }
 
@@ -20,5 +20,9 @@ function areArrayEquals(array1, array2, index) {
     return areArrayEquals(array1[index], array2[index], 0)
   }
 
+  if(!isEqualValue(array1[index], array2[index])) {
+    return false;
+  }
+  
   return areArrayEquals(array1, array2, index + 1);
 }
