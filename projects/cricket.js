@@ -6,7 +6,7 @@ const WHO_IS_OUT = [false, false];
 let track_current_player = 0;
 
 function takingInput() {
-  let response = prompt("Choose between 1 to 6 :-");
+  const response = prompt("Choose between 1 to 6 :-");
   const responseToNumber = parseInt(response) - 1;
 
   if (responseToNumber < 0 && responseToNumber > 6) {
