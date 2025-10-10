@@ -5,17 +5,6 @@ const TOTAL_RUN = [0, 0];
 const WHO_IS_OUT = [false, false];
 let track_current_player = 0;
 
-function takingInput() {
-  const response = prompt("Choose between 1 to 6 :-");
-  const responseToNumber = parseInt(response) - 1;
-
-  if (responseToNumber < 0 && responseToNumber > 6) {
-    console.log("Invalid Input");
-    return;
-  }
-  return response;
-}
-
 function randomNumberBetween(start, end) {
   const randomNumber = ((Math.random() * (end - start)) + start);
   return Math.round(randomNumber);
@@ -55,7 +44,7 @@ function formatHeading() {
   console.log("\n");
 }
 
-function inputTaking() {
+function takingInput() {
   const response = prompt("Press Any Number between 0 to 6:-");
   const userResponse = parseInt(response);
 
@@ -63,7 +52,7 @@ function inputTaking() {
     return userResponse;
   }
   console.log("Choose between 0 to 6:-");
-  return inputTaking();
+  return takingInput();
 }
 
 function whoWon() {
@@ -80,7 +69,7 @@ function whoWon() {
 
 function playerBatitng() {
   formatHeading();
-  const userResponse = inputTaking();
+  const userResponse = takingInput();
   const aiResponse = randomNumberBetween(0, 6);
   console.log("You choose", userResponse);
   console.log("Ai choose", aiResponse);
@@ -99,7 +88,7 @@ function playerBatitng() {
 
 function aiBatitng() {
   formatHeading();
-  const userResponse = inputTaking();
+  const userResponse = takingInput();
   const aiResponse = randomNumberBetween(0, 6);
   console.log("You choose", userResponse);
   console.log("Ai choose", aiResponse);
