@@ -78,7 +78,12 @@ function clue() {
   return "Time loops again. Everything resets.";
 }
 
-function play(memory) {
+function play(memory, turn = 5) {
+  if (turn === 0) {
+    console.clear();
+    console.log("You Loose and trapped for eternity");
+    return;
+  }
   console.log("\nMemory:-", memory, "\n")
 
   for (let term = 0; term < 3; term++) {
@@ -93,7 +98,7 @@ function play(memory) {
   }
 
   memory = clue();
-  play(memory)
+  play(memory, turn - 1)
 }
 
 function main() {
