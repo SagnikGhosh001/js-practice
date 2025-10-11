@@ -55,16 +55,18 @@ function takingInput() {
   return takingInput();
 }
 
-function whoWon() {
+function isWon() {
   if (TOTAL_RUN[0] > TOTAL_RUN[1] && WHO_IS_OUT[1]) {
-    console.log("You Won");
-    return;
+    console.log("\nYou Won");
+    return true;
   }
 
   if (TOTAL_RUN[0] < TOTAL_RUN[1] && WHO_IS_OUT[0]) {
-    console.log("You Loose");
-    return;
+    console.log("\nYou Loose");
+    return true;
   }
+
+  return false;
 }
 
 function playerBatitng() {
@@ -78,11 +80,14 @@ function playerBatitng() {
     console.log("Out\n");
     track_current_player = PLAYERS[1];
     WHO_IS_OUT[0] = true;
+    isWon();
     return;
   }
   
-  whoWon();
   TOTAL_RUN[0] += userResponse;
+  if (isWon()) {
+    return;
+  }
   playerBatitng();
 }
 
@@ -97,11 +102,14 @@ function aiBatitng() {
     console.log("Out\n");
     track_current_player = PLAYERS[0];
     WHO_IS_OUT[1] = true;
+    isWon();
     return;
   }
-  
-  whoWon();
+
   TOTAL_RUN[1] += aiResponse;
+  if (isWon()) {
+    return;
+  }
   aiBatitng();
 }
 
