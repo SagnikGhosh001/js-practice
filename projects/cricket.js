@@ -23,7 +23,7 @@ function chooseHeadAndTail() {
   const userResponse = prompt("Type 'h' for head and 't' for tail:-").toLowerCase();
   if (userResponse !== "h" && userResponse !== 't') {
     console.log("Invalid Input");
-    chooseHeadAndTail();
+    return chooseHeadAndTail();
   }
 
   const generatedResponse = randomNumberBetween(0, 1);
@@ -45,13 +45,13 @@ function formatHeading() {
 }
 
 function takingInput() {
-  const response = prompt("Press Any Number between 0 to 6:-");
+  const response = prompt("Press Any Number between 1 to 6:-");
   const userResponse = parseInt(response);
 
-  if (userResponse >= 0 && userResponse <= 6) {
+  if (userResponse >= 1 && userResponse <= 6) {
     return userResponse;
   }
-  console.log("Choose between 0 to 6:-");
+  console.log("Choose between 1 to 6:-");
   return takingInput();
 }
 
@@ -69,60 +69,32 @@ function isWon() {
   return false;
 }
 
-function playerBatitng() {
+function batitng(currentPlayer) {
+  if (WHO_IS_OUT[0] && WHO_IS_OUT[1]) return;
   formatHeading();
   const userResponse = takingInput();
-  const aiResponse = randomNumberBetween(0, 6);
-  console.log("You choose", userResponse);
+  const aiResponse = randomNumberBetween(1, 6);
+  console.log("\nYou choose", userResponse);
   console.log("Ai choose", aiResponse);
 
   if (userResponse === aiResponse) {
     console.log("Out\n");
-    track_current_player = PLAYERS[1];
-    WHO_IS_OUT[0] = true;
-    isWon();
-    return;
-  }
-  
-  TOTAL_RUN[0] += userResponse;
-  if (isWon()) {
-    return;
-  }
-  playerBatitng();
-}
-
-function aiBatitng() {
-  formatHeading();
-  const userResponse = takingInput();
-  const aiResponse = randomNumberBetween(0, 6);
-  console.log("You choose", userResponse);
-  console.log("Ai choose", aiResponse);
-  
-  if (userResponse === aiResponse) {
-    console.log("Out\n");
-    track_current_player = PLAYERS[0];
-    WHO_IS_OUT[1] = true;
-    isWon();
-    return;
+    WHO_IS_OUT[currentPlayer] = true;
+    if (isWon()) return;
+    currentPlayer = Math.abs(currentPlayer - 1);
+    track_current_player = PLAYERS[currentPlayer];
+    return batitng(currentPlayer);
   }
 
-  TOTAL_RUN[1] += aiResponse;
-  if (isWon()) {
-    return;
-  }
-  aiBatitng();
+  TOTAL_RUN[currentPlayer] += currentPlayer === 0 ? userResponse : aiResponse;
+  if (isWon()) return;
+  return batitng(currentPlayer);
 }
 
 function play() {
   chooseHeadAndTail();
-
-  if (track_current_player === "user") {
-    playerBatitng();
-    aiBatitng();
-  } else {
-    aiBatitng();
-    playerBatitng();
-  }
+  const arg = track_current_player === "user" ? 0 : 1;
+  batitng(arg);
 
   console.log("Your Run", TOTAL_RUN[0]);
   console.log("Ai Run", TOTAL_RUN[1]);
