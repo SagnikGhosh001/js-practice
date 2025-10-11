@@ -1,5 +1,3 @@
-const DICE_OUTCOME = [1, 2, 3, 4, 5, 6];
-
 function randomNumberBetween(start, end) {
   const randomNumber = ((Math.random() * (end - start)) + start);
   return Math.round(randomNumber);
@@ -31,8 +29,8 @@ function play(point = 0) {
   const numberIsSameAndUserGussedWrong = userResponse && numberToShow !== aiResponse;
   const msg = numberIsSameAndUserGussedWrong ? "lie" : "truth";
   console.log(`Oops he was telling ${msg} he got ${aiResponse}`);
-  console.log("your point is",point);
-  
+  console.log("your point is", point);
+
 }
 
 play();
