@@ -78,10 +78,10 @@ function playerBatitng() {
     console.log("Out\n");
     track_current_player = PLAYERS[1];
     WHO_IS_OUT[0] = true;
-    whoWon();
     return;
   }
   
+  whoWon();
   TOTAL_RUN[0] += userResponse;
   playerBatitng();
 }
@@ -97,10 +97,10 @@ function aiBatitng() {
     console.log("Out\n");
     track_current_player = PLAYERS[0];
     WHO_IS_OUT[1] = true;
-    whoWon();
     return;
   }
-
+  
+  whoWon();
   TOTAL_RUN[1] += aiResponse;
   aiBatitng();
 }
