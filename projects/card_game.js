@@ -47,7 +47,7 @@ const ATMOSPHERE = [
   "Something watches you from the dark."
 ];
 
-let isDouble = false;
+const isDouble = [false, 2];
 
 const lastCard = [];
 const MODES = [NORMAL, CAUTIOUS, BOLD, DESPERATE];
@@ -87,10 +87,11 @@ function mysteryValueGenerate(value) {
 }
 
 function randomlyChangeStats() {
-  return PLAYER_STATS[randomNumberBetween(0, PLAYER_STATS.length - 1)] += mysteryValueGenerate(5);
+  return PLAYER_STATS[randomNumberBetween(1, PLAYER_STATS.length - 1)] += mysteryValueGenerate(5);
 }
 
 function changeStats(cardGot, multiplier) {
+  multiplier *= isDouble[0] ? 2 : 1;
   switch (cardGot) {
     case TREASURE:
       PLAYER_STATS[2] += 5 * multiplier;
@@ -119,10 +120,15 @@ function changeStats(cardGot, multiplier) {
       PLAYER_STATS[3] -= 1;
       break;
     case DOUBLE:
-      isDouble = true;
+      isDouble[0] = true;
       break;
     case MIRROR:
-      return changeStats(lastCard, multiplier);
+      if (lastCard[0] !== MIRROR) {
+        return changeStats(lastCard[0], multiplier);
+      } else {
+        console.log("The mirror shows only emptiness...");
+      }
+      break;
     case VISION:
       console.log("Yet To Implemet");
       break;
@@ -141,6 +147,10 @@ function changeStats(cardGot, multiplier) {
     case TWIST:
       randomlyChangeStats();
       break;
+  }
+
+  if (cardGot !== DOUBLE) {
+    isDouble[0] = false;
   }
 }
 
