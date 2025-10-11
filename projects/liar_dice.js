@@ -31,6 +31,8 @@ function play(point = 0) {
   const numberIsSameAndUserGussedWrong = userResponse && numberToShow !== aiResponse;
   const msg = numberIsSameAndUserGussedWrong ? "lie" : "truth";
   console.log(`Oops he was telling ${msg} he got ${aiResponse}`);
+  console.log("your point is",point);
+  
 }
 
 play();
