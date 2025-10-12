@@ -7,7 +7,7 @@ const BOARD = [
   [WHITE, WHITE, WHITE],
 ];
 const usedPosition = [];
-const WINNING_COMBINATION = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 6]];
+const WINNING_COMBINATION = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
 const firstPlayerUsedPosition = [];
 const secondPlayerUsedPosition = [];
 
@@ -61,6 +61,7 @@ function changeBoard(selectedPos, userResponse) {
 }
 
 function playerOneTurn() {
+  showBoard();
   console.log("First Player is Playing");
   const selectedPos = selectPosition();
   if (usedPosition.includes(selectedPos)) {
@@ -73,6 +74,7 @@ function playerOneTurn() {
 }
 
 function playerTwoTurn() {
+  showBoard();
   console.log("Second Player is Playing");
   const selectedPos = selectPosition();
   if (usedPosition.includes(selectedPos)) {
@@ -102,14 +104,17 @@ function isWinner(playerUsedPositions) {
 
 function gameStop() {
   if (isWinner(firstPlayerUsedPosition)) {
+    showBoard();
     console.log(`Player One ${CROSS} won`);
     return true
   }
   if (isWinner(secondPlayerUsedPosition)) {
+    showBoard();
     console.log(`Player Two ${CIRCLE} won`);
     return true;
   }
   if (usedPosition.length === 9) {
+    showBoard();
     console.log("Match Draw");
     return true;
   }
@@ -118,20 +123,17 @@ function gameStop() {
 
 function play() {
   console.clear();
-  showBoard();
   playerOneTurn();
-  showBoard();
-  if (gameStop()) return
+  if (gameStop()) return;
   playerTwoTurn();
-  if (gameStop()) {
-    showBoard();
-    return
-  }
+  if (gameStop()) return;
   return play();
 
 }
 
 function main() {
+  showBoard();
+  prompt("press any key to start:-");
   play();
 }
 
