@@ -25,7 +25,7 @@ function selectPosition() {
 }
 
 function changeBoard(pos, userResponse) {
-  const innerPos = pos <= 3 ? 0 : (pos <= 6 ? 1 : 2);
+  const innerPos = Math.floor((pos - 1) / 3);
   const outerPos = (pos - 1) % 3;
   return BOARD[innerPos][outerPos] = userResponse;
 }
