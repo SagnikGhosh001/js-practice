@@ -108,9 +108,11 @@ function startTyping(sentences) {
   const startTime = Date.now();
   const answear = prompt("").trim();
   const endTime = Date.now();
-
+  
   const wpm = calculateWpm(sentence, startTime, endTime);
   const accuracy = calculateAccuracy(sentence, answear);
+  console.clear();
+  console.log(sentence);
   const result = showResultString(sentence, answear);
   console.log(result);
   console.log(`WPM = ${wpm} and Accuracy = ${accuracy}`);
