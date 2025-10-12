@@ -17,15 +17,6 @@ function showBoard() {
   }
 }
 
-// function takingInput() {
-//   const input = prompt("Enter your choice 1 for cross 2 for circle:-");
-//   if (input !== "1" && input !== "2") {
-//     console.log(("Enter valid Input"));
-//     return takingInput();
-//   }
-//   return input === "1" ? CROSS : CIRCLE;
-// }
-
 function selectPosition() {
   const input = prompt("Enter your choice between 1 to 9:-");
   const selectedPos = parseInt(input);
