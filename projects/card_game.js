@@ -90,6 +90,26 @@ function randomlyChangeStats() {
   return PLAYER_STATS[randomNumberBetween(1, PLAYER_STATS.length - 1)] += mysteryValueGenerate(5);
 }
 
+function cardChooseForVision(card1, card2, multiplier) {
+  const cardChoose = prompt(`Select Between These Two Card ${card1} or ${card2} :-`);
+  if (cardChoose !== card1 && cardChoose !== card2) {
+    console.log("Please select a valid input");
+    return cardChooseForVision(card1, card2, multiplier);
+  }
+  console.log(`You chose: ${cardChoose}`);
+  console.log(CARDSMSG[CARDS.indexOf(cardChoose)]);
+  changeStats(cardChoose, multiplier);
+}
+
+function visionCardSelector(multiplier) {
+  const card1 = CARDS[randomNumberBetween(0, CARDS.length - 1)];
+  const card2 = CARDS[randomNumberBetween(0, CARDS.length - 1)];
+  if (card1 === VISION || card2 === VISION) {
+    return visionCardSelector(multiplier);
+  }
+  cardChooseForVision(card1, card2, multiplier);
+}
+
 function changeStats(cardGot, multiplier) {
   multiplier *= isDouble[0] ? 2 : 1;
   switch (cardGot) {
@@ -130,7 +150,8 @@ function changeStats(cardGot, multiplier) {
       }
       break;
     case VISION:
-      console.log("Yet To Implemet");
+      prompt("You can choose between Random Two Card, Are You Ready ?");
+      visionCardSelector(multiplier);
       break;
     case DRAIN:
       PLAYER_STATS[1] -= 5 * multiplier;
@@ -188,12 +209,25 @@ function play() {
   console.log(CARDSMSG[CARDS.indexOf(cardGot)]);
   lastCard[0] = cardGot;
   PLAYER_STATS[0] += 1;
+  const before = PLAYER_STATS.slice(1);
   changeStats(cardGot, multiplier);
+  const after = PLAYER_STATS.slice(1);
+  const diffHP = after[0] - before[0];
+  const diffFP = after[1] - before[1];
+  const diffMD = after[2] - before[2];
+  console.log(`(Δ HP: ${diffHP >= 0 ? "+" + diffHP : diffHP}, Δ FP: ${diffFP >= 0 ? "+" + diffFP : diffFP}, Δ MD: ${diffMD >= 0 ? "+" + diffMD : diffMD})\n`);
   if (isEnd()) return;
   return play();
 }
 
 function main() {
+  console.clear();
+  console.log("\nIf You Match any of the following criteria you wil win:-");
+  console.log("1.Survive for 20 turns");
+  console.log("2.If your FP (Fate Points) become 50 or more than 50:-\n");
+  console.log("If You Match any of the following criteria you wil loose:-");
+  console.log("1.Lose if MD (Madness) become 10 or more than 10:-");
+  console.log("2.Death If HP reaches to 0:-\n")
   play();
 }
 
