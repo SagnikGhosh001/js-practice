@@ -20,8 +20,8 @@ function showBoard() {
 function selectPosition() {
   const input = prompt("Enter your choice between 1 to 9:-");
   const selectedPos = parseInt(input);
-  if (selectedPos < 1 || selectedPos > 9) {
-    console.log(("Enter valid Input"));
+  if (isNaN(selectedPos) || selectedPos < 1 || selectedPos > 9) {
+    console.log("Enter valid Input");
     return selectPosition();
   }
   return selectedPos;
@@ -31,32 +31,6 @@ function changeBoard(selectedPos, userResponse) {
   const innerPos = selectedPos <= 3 ? 0 : (selectedPos <= 6 ? 1 : 2);
   const outerPos = (selectedPos - 1) % 3;
   return BOARD[innerPos][outerPos] = userResponse;
-}
-
-function playerOneTurn() {
-  showBoard();
-  console.log("First Player is Playing");
-  const selectedPos = selectPosition();
-  if (usedPosition.includes(selectedPos)) {
-    console.log("this position is already used");
-    return playerOneTurn();
-  }
-  firstPlayerUsedPosition.push(selectedPos);
-  usedPosition.push(selectedPos);
-  changeBoard(selectedPos, CROSS);
-}
-
-function playerTwoTurn() {
-  showBoard();
-  console.log("Second Player is Playing");
-  const selectedPos = selectPosition();
-  if (usedPosition.includes(selectedPos)) {
-    console.log("this position is already used");
-    return playerTwoTurn();
-  }
-  secondPlayerUsedPosition.push(selectedPos);
-  usedPosition.push(selectedPos);
-  changeBoard(selectedPos, CIRCLE);
 }
 
 function isWinner(playerUsedPositions) {
@@ -75,16 +49,11 @@ function isWinner(playerUsedPositions) {
   return false;
 }
 
-function gameStop() {
-  if (isWinner(firstPlayerUsedPosition)) {
+function gameStop(positionArray, symbol) {
+  if (isWinner(positionArray)) {
     showBoard();
-    console.log(`Player One ${CROSS} won`);
+    console.log(`Player ${symbol} won`);
     return true
-  }
-  if (isWinner(secondPlayerUsedPosition)) {
-    showBoard();
-    console.log(`Player Two ${CIRCLE} won`);
-    return true;
   }
   if (usedPosition.length === 9) {
     showBoard();
@@ -94,18 +63,72 @@ function gameStop() {
   return false;
 }
 
-function play() {
+function reset() {
+  for (let i = 0; i < BOARD.length; i++) {
+    BOARD[i] = [WHITE, WHITE, WHITE]; // Reset the board
+  }
+  usedPosition.length = 0;
+  firstPlayerUsedPosition.length = 0;
+  secondPlayerUsedPosition.length = 0;
+}
+
+
+function dowantToPlayAgain() {
+  const response = confirm("Do you want to play again:-");
+  if (response) {
+    console.clear();
+    reset();
+    play();
+  }
+  console.log("Thx for playing");
+  return;
+}
+
+function checkIfPositionIsUsed(selectedPos, currentPlayer) {
+  if (usedPosition.includes(selectedPos)) {
+    console.log("this position is already used");
+    return playerTurn(currentPlayer);
+  }
+}
+
+function positionArraySelect(currentPlayer) {
+  return currentPlayer === 0 ? firstPlayerUsedPosition : secondPlayerUsedPosition
+}
+
+function symbolSelect(currentPlayer) {
+  return currentPlayer === 0 ? CROSS : CIRCLE;
+}
+
+function pushedValueIntoArray(postionArray, selectedPos) {
+  postionArray.push(selectedPos);
+  usedPosition.push(selectedPos);
+}
+
+function playerTurn(currentPlayer) {
+  const playerDetails = [CROSS, CIRCLE];
+  showBoard();
+  console.log(`${playerDetails[currentPlayer]} is Playing`);
+
+  const selectedPos = selectPosition();
+
+  checkIfPositionIsUsed(selectedPos, currentPlayer);
+  const postionArray = positionArraySelect(currentPlayer);
+  pushedValueIntoArray(postionArray, selectedPos);
+
+  const symbol = symbolSelect(currentPlayer);
+  changeBoard(selectedPos, symbol);
+
+  if (gameStop(postionArray, symbol)) dowantToPlayAgain();
   console.clear();
-  playerOneTurn();
-  if (gameStop()) return;
-  playerTwoTurn();
-  if (gameStop()) return;
-  return play();
+
+  return playerTurn(Math.abs(currentPlayer - 1));
+}
+
+function play() {
+  playerTurn(0);
 }
 
 function main() {
-  showBoard();
-  prompt("press any key to start:-");
   play();
 }
 
