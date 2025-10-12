@@ -2,15 +2,16 @@ const WHITE = "⬜️";
 const CROSS = "❌";
 const CIRCLE = "⭕️";
 const BOARD = [
-  [WHITE, WHITE, WHITE],
-  [WHITE, WHITE, WHITE],
-  [WHITE, WHITE, WHITE],
+  WHITE, WHITE, WHITE,
+  WHITE, WHITE, WHITE,
+  WHITE, WHITE, WHITE,
 ];
 const WINNING_COMBINATION = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
 
 function showBoard() {
-  for (let index = 0; index < BOARD.length; index++) {
-    console.log(BOARD[index].join(""));
+  for (let index = 0; index < BOARD.length; index = index + 3) {
+    const stringBoard = BOARD.slice(index, index + 3).join("");
+    console.log(stringBoard);
   }
 }
 
@@ -25,9 +26,7 @@ function selectPosition() {
 }
 
 function changeBoard(pos, userResponse) {
-  const innerPos = Math.floor((pos - 1) / 3);
-  const outerPos = (pos - 1) % 3;
-  return BOARD[innerPos][outerPos] = userResponse;
+  return BOARD[pos - 1] = userResponse;
 }
 
 function isWinner(symbol) {
@@ -37,14 +36,7 @@ function isWinner(symbol) {
     const pos2 = winningCombo[1] - 1;
     const pos3 = winningCombo[2] - 1;
 
-    const row1 = Math.floor(pos1 / 3);
-    const col1 = pos1 % 3;
-    const row2 = Math.floor(pos2 / 3);
-    const col2 = pos2 % 3;
-    const row3 = Math.floor(pos3 / 3);
-    const col3 = pos3 % 3;
-
-    if (BOARD[row1][col1] === symbol && BOARD[row2][col2] === symbol && BOARD[row3][col3] === symbol) {
+    if (BOARD[pos1] === symbol && BOARD[pos2] === symbol && BOARD[pos3] === symbol) {
       return true;
     }
   }
@@ -67,7 +59,7 @@ function gameStop(moves, symbol, players, currentPlayer) {
 
 function reset() {
   for (let i = 0; i < BOARD.length; i++) {
-    BOARD[i] = [WHITE, WHITE, WHITE];
+    BOARD[i] = WHITE;
   }
 }
 
