@@ -30,29 +30,34 @@ function changeBoard(pos, userResponse) {
   return BOARD[innerPos][outerPos] = userResponse;
 }
 
-function isWinner(playerUsedPositions) {
+function isWinner(symbol) {
   for (let i = 0; i < WINNING_COMBINATION.length; i++) {
     const winningCombo = WINNING_COMBINATION[i];
-    let count = 0;
-    for (let j = 0; j < winningCombo.length; j++) {
-      if (playerUsedPositions.includes(winningCombo[j])) {
-        count++;
-      }
-    }
-    if (count === 3) {
+    const pos1 = winningCombo[0] - 1;
+    const pos2 = winningCombo[1] - 1;
+    const pos3 = winningCombo[2] - 1;
+
+    const row1 = Math.floor(pos1 / 3);
+    const col1 = pos1 % 3;
+    const row2 = Math.floor(pos2 / 3);
+    const col2 = pos2 % 3;
+    const row3 = Math.floor(pos3 / 3);
+    const col3 = pos3 % 3;
+
+    if (BOARD[row1][col1] === symbol && BOARD[row2][col2] === symbol && BOARD[row3][col3] === symbol) {
       return true;
     }
   }
   return false;
 }
 
-function gameStop(moves, players, currentPlayer, p1Moves, p2Moves) {
-  if (isWinner(moves)) {
+function gameStop(moves, symbol, players, currentPlayer) {
+  if (isWinner(symbol)) {
     showBoard();
     console.log(`${players[currentPlayer]} won`);
     return true
   }
-  if (p1Moves.length + p2Moves.length === 9) {
+  if (moves.length === 9) {
     showBoard();
     console.log("Match Draw");
     return true;
@@ -78,42 +83,37 @@ function dowantToPlayAgain() {
   return;
 }
 
-function checkIfPositionIsUsed(pos, p1Moves, p2Moves) {
-  if (!p1Moves.includes(pos) && !p2Moves.includes(pos)) {
+function checkIfPositionIsUsed(pos, moves) {
+  if (!moves.includes(pos)) {
     return false;
   }
   console.log("This position is already used");
   return true;
 }
 
-function positionArraySelect(currentPlayer, p1Moves, p2Moves) {
-  return currentPlayer === 0 ? p1Moves : p2Moves
-}
-
-function playerTurn(currentPlayer, players, p1Moves = [], p2Moves = []) {
+function playerTurn(currentPlayer, players, moves = []) {
   const symbols = [CROSS, CIRCLE];
 
   showBoard();
   console.log(`${players[currentPlayer]} is Playing`);
 
   let pos = selectPosition();
-  while (checkIfPositionIsUsed(pos, p1Moves, p2Moves)) {
+  while (checkIfPositionIsUsed(pos, moves)) {
     pos = selectPosition();
   }
 
-  const moves = positionArraySelect(currentPlayer, p1Moves, p2Moves);
   moves.push(pos);
 
   const symbol = symbols[currentPlayer];
   changeBoard(pos, symbol);
 
-  if (gameStop(moves, players, currentPlayer, p1Moves, p2Moves)) {
+  if (gameStop(moves, symbol, players, currentPlayer)) {
     dowantToPlayAgain();
     return;
   }
   console.clear();
   const nextPlayer = 1 - currentPlayer;
-  return playerTurn(nextPlayer, players, p1Moves, p2Moves);
+  return playerTurn(nextPlayer, players, moves);
 }
 
 function play() {
