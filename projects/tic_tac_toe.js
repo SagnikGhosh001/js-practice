@@ -46,13 +46,13 @@ function isWinner(playerUsedPositions) {
   return false;
 }
 
-function gameStop(moves, players, currentPlayer, allMoves, symbol) {
+function gameStop(moves, players, currentPlayer, p1Moves, p2Moves) {
   if (isWinner(moves)) {
     showBoard();
     console.log(`${players[currentPlayer]} won`);
     return true
   }
-  if (allMoves.length === 9) {
+  if (p1Moves.length + p2Moves.length === 9) {
     showBoard();
     console.log("Match Draw");
     return true;
@@ -78,44 +78,42 @@ function dowantToPlayAgain() {
   return;
 }
 
-function checkIfPositionIsUsed(pos, players, p1Moves, p2Moves, allMoves, currentPlayer) {
-  if (allMoves.includes(pos)) {
-    console.log("this position is already used");
-    return playerTurn(currentPlayer, players, p1Moves, p2Moves, allMoves);
+function checkIfPositionIsUsed(pos, p1Moves, p2Moves) {
+  if (!p1Moves.includes(pos) && !p2Moves.includes(pos)) {
+    return false;
   }
+  console.log("This position is already used");
+  return true;
 }
 
 function positionArraySelect(currentPlayer, p1Moves, p2Moves) {
   return currentPlayer === 0 ? p1Moves : p2Moves
 }
 
-function pushedValueIntoArray(postionArray, allMoves, pos) {
-  postionArray.push(pos);
-  allMoves.push(pos);
-}
-
-function playerTurn(currentPlayer, players, p1Moves = [], p2Moves = [], allMoves = []) {
+function playerTurn(currentPlayer, players, p1Moves = [], p2Moves = []) {
   const symbols = [CROSS, CIRCLE];
 
   showBoard();
   console.log(`${players[currentPlayer]} is Playing`);
 
-  const pos = selectPosition();
+  let pos = selectPosition();
+  while (checkIfPositionIsUsed(pos, p1Moves, p2Moves)) {
+    pos = selectPosition();
+  }
 
-  checkIfPositionIsUsed(pos, players, p1Moves, p2Moves, allMoves, currentPlayer);
   const moves = positionArraySelect(currentPlayer, p1Moves, p2Moves);
-  pushedValueIntoArray(moves, allMoves, pos);
+  moves.push(pos);
 
   const symbol = symbols[currentPlayer];
   changeBoard(pos, symbol);
 
-  if (gameStop(moves, players, currentPlayer, allMoves, symbol)) {
+  if (gameStop(moves, players, currentPlayer, p1Moves, p2Moves)) {
     dowantToPlayAgain();
     return;
   }
   console.clear();
-  const nextPlayer = Math.abs(currentPlayer - 1);
-  return playerTurn(nextPlayer, players, p1Moves, p2Moves, allMoves);
+  const nextPlayer = 1 - currentPlayer;
+  return playerTurn(nextPlayer, players, p1Moves, p2Moves);
 }
 
 function play() {
