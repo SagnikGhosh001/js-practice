@@ -6,10 +6,7 @@ const BOARD = [
   [WHITE, WHITE, WHITE],
   [WHITE, WHITE, WHITE],
 ];
-const usedPosition = [];
 const WINNING_COMBINATION = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
-const firstPlayerUsedPosition = [];
-const secondPlayerUsedPosition = [];
 
 function showBoard() {
   for (let index = 0; index < BOARD.length; index++) {
@@ -27,9 +24,9 @@ function selectPosition() {
   return selectedPos;
 }
 
-function changeBoard(selectedPos, userResponse) {
-  const innerPos = selectedPos <= 3 ? 0 : (selectedPos <= 6 ? 1 : 2);
-  const outerPos = (selectedPos - 1) % 3;
+function changeBoard(pos, userResponse) {
+  const innerPos = pos <= 3 ? 0 : (pos <= 6 ? 1 : 2);
+  const outerPos = (pos - 1) % 3;
   return BOARD[innerPos][outerPos] = userResponse;
 }
 
@@ -49,13 +46,13 @@ function isWinner(playerUsedPositions) {
   return false;
 }
 
-function gameStop(positionArray, symbol) {
-  if (isWinner(positionArray)) {
+function gameStop(moves, players, currentPlayer, allMoves, symbol) {
+  if (isWinner(moves)) {
     showBoard();
-    console.log(`Player ${symbol} won`);
+    console.log(`${players[currentPlayer]} won`);
     return true
   }
-  if (usedPosition.length === 9) {
+  if (allMoves.length === 9) {
     showBoard();
     console.log("Match Draw");
     return true;
@@ -65,11 +62,8 @@ function gameStop(positionArray, symbol) {
 
 function reset() {
   for (let i = 0; i < BOARD.length; i++) {
-    BOARD[i] = [WHITE, WHITE, WHITE]; // Reset the board
+    BOARD[i] = [WHITE, WHITE, WHITE];
   }
-  usedPosition.length = 0;
-  firstPlayerUsedPosition.length = 0;
-  secondPlayerUsedPosition.length = 0;
 }
 
 
@@ -84,48 +78,51 @@ function dowantToPlayAgain() {
   return;
 }
 
-function checkIfPositionIsUsed(selectedPos, currentPlayer) {
-  if (usedPosition.includes(selectedPos)) {
+function checkIfPositionIsUsed(pos, players, p1Moves, p2Moves, allMoves, currentPlayer) {
+  if (allMoves.includes(pos)) {
     console.log("this position is already used");
-    return playerTurn(currentPlayer);
+    return playerTurn(currentPlayer, players, p1Moves, p2Moves, allMoves);
   }
 }
 
-function positionArraySelect(currentPlayer) {
-  return currentPlayer === 0 ? firstPlayerUsedPosition : secondPlayerUsedPosition
+function positionArraySelect(currentPlayer, p1Moves, p2Moves) {
+  return currentPlayer === 0 ? p1Moves : p2Moves
 }
 
-function symbolSelect(currentPlayer) {
-  return currentPlayer === 0 ? CROSS : CIRCLE;
+function pushedValueIntoArray(postionArray, allMoves, pos) {
+  postionArray.push(pos);
+  allMoves.push(pos);
 }
 
-function pushedValueIntoArray(postionArray, selectedPos) {
-  postionArray.push(selectedPos);
-  usedPosition.push(selectedPos);
-}
+function playerTurn(currentPlayer, players, p1Moves = [], p2Moves = [], allMoves = []) {
+  const symbols = [CROSS, CIRCLE];
 
-function playerTurn(currentPlayer) {
-  const playerDetails = [CROSS, CIRCLE];
   showBoard();
-  console.log(`${playerDetails[currentPlayer]} is Playing`);
+  console.log(`${players[currentPlayer]} is Playing`);
 
-  const selectedPos = selectPosition();
+  const pos = selectPosition();
 
-  checkIfPositionIsUsed(selectedPos, currentPlayer);
-  const postionArray = positionArraySelect(currentPlayer);
-  pushedValueIntoArray(postionArray, selectedPos);
+  checkIfPositionIsUsed(pos, players, p1Moves, p2Moves, allMoves, currentPlayer);
+  const moves = positionArraySelect(currentPlayer, p1Moves, p2Moves);
+  pushedValueIntoArray(moves, allMoves, pos);
 
-  const symbol = symbolSelect(currentPlayer);
-  changeBoard(selectedPos, symbol);
+  const symbol = symbols[currentPlayer];
+  changeBoard(pos, symbol);
 
-  if (gameStop(postionArray, symbol)) dowantToPlayAgain();
+  if (gameStop(moves, players, currentPlayer, allMoves, symbol)) {
+    dowantToPlayAgain();
+    return;
+  }
   console.clear();
-
-  return playerTurn(Math.abs(currentPlayer - 1));
+  const nextPlayer = Math.abs(currentPlayer - 1);
+  return playerTurn(nextPlayer, players, p1Moves, p2Moves, allMoves);
 }
 
 function play() {
-  playerTurn(0);
+  console.clear();
+  const firstPlayerName = prompt("Enter First Player Name:-");
+  const secondPlayerName = prompt("Enter Second Player Name:-");
+  playerTurn(0, [firstPlayerName, secondPlayerName]);
 }
 
 function main() {
