@@ -200,11 +200,11 @@ function isEnd() {
 
 function play() {
   console.log(ATMOSPHERE[randomNumberBetween(0, ATMOSPHERE.length - 1)]);
-  formatHeading();
 
   const modeChoose = askModeChoice();
   const multiplier = chooseMultiplier(modeChoose);
   const cardGot = drawCard();
+  console.clear();
   console.log(`\nCard: ${cardGot}`);
   console.log(CARDSMSG[CARDS.indexOf(cardGot)]);
   lastCard[0] = cardGot;
@@ -216,7 +216,8 @@ function play() {
   const diffFP = after[1] - before[1];
   const diffMD = after[2] - before[2];
   console.log(`(Δ HP: ${diffHP >= 0 ? "+" + diffHP : diffHP}, Δ FP: ${diffFP >= 0 ? "+" + diffFP : diffFP}, Δ MD: ${diffMD >= 0 ? "+" + diffMD : diffMD})\n`);
-  if (isEnd()) return;
+  formatHeading();
+  if (isEnd()) return
   return play();
 }
 
@@ -228,6 +229,7 @@ function main() {
   console.log("If You Match any of the following criteria you wil loose:-");
   console.log("1.Lose if MD (Madness) become 10 or more than 10:-");
   console.log("2.Death If HP reaches to 0:-\n")
+  formatHeading();
   play();
 }
 
