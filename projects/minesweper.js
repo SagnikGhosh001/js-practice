@@ -1,5 +1,5 @@
 const BOMB = "💣";
-const SAFE = "✔️";
+const SAFE = "✅";
 const BOARD = [
   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
@@ -50,10 +50,11 @@ function extractRowAndCol(number) {
 function randomNmberForBomb(times) {
   const bombPos = [];
   while (times >= 0) {
-    const pos = randomNumberBetween(0, 100);
+    const pos = randomNumberBetween(1, 100);
     const rowAndCol = extractRowAndCol(pos);
     const row = rowAndCol[0];
     const col = rowAndCol[1];
+
     BOMB_BOARD[row][col] = BOMB;
     times--;
     bombPos.push(rowAndCol);
@@ -75,6 +76,7 @@ function takingUserResponse() {
 
 function checkIfPosIsUsed(usedPos, pos) {
   if (usedPos.includes(pos)) {
+    showBoard(BOARD);
     console.log("This Position is already used");
     return true;
   }
@@ -96,7 +98,7 @@ function checkifBombFound(rowAndCal, bombPos) {
 function play(bombPos, usedPos = [], point = 0) {
   console.log("Your point is,", point);
   let pos = takingUserResponse();
-  
+
   while (checkIfPosIsUsed(usedPos, pos)) {
     pos = takingUserResponse();
   }
@@ -118,9 +120,27 @@ function play(bombPos, usedPos = [], point = 0) {
   return play(bombPos, usedPos, point);
 }
 
+function levelSelect() {
+  console.log("Easy Level:- 25 Bombs");
+  console.log("Medium Level:- 50 Bombs");
+  console.log("Hard Level:- 75 Bombs");
+
+  const response = prompt("Press One For Easy, Two For Medium and Three For Hard:-");
+  const level = parseInt(response);
+  if (level >= 1 && level <= 3) {
+    return level;
+  }
+
+  console.log("Choose valid input");
+  return levelSelect();
+}
+
 function main() {
+  console.clear();
   showBoard(BOARD);
-  const bombPos = randomNmberForBomb(15);
+  const level = levelSelect();
+  const bombCount = level === 1 ? 25 : (level === 2 ? 50 : 75);
+  const bombPos = randomNmberForBomb(bombCount);
   play(bombPos);
 }
 
