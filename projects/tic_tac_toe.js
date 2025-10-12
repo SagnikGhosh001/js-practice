@@ -37,25 +37,7 @@ function selectPosition() {
 }
 
 function changeBoard(selectedPos, userResponse) {
-  let innerPos = 0;
-  switch (selectedPos) {
-    case 1:
-    case 2:
-    case 3:
-      innerPos = 0;
-      break;
-    case 4:
-    case 5:
-    case 6:
-      innerPos = 1;
-      break;
-    case 7:
-    case 8:
-    case 9:
-      innerPos = 2;
-      break;
-  }
-
+  const innerPos = selectedPos <= 3 ? 0 : (selectedPos <= 6 ? 1 : 2);
   const outerPos = (selectedPos - 1) % 3;
   return BOARD[innerPos][outerPos] = userResponse;
 }
@@ -128,7 +110,6 @@ function play() {
   playerTwoTurn();
   if (gameStop()) return;
   return play();
-
 }
 
 function main() {
