@@ -102,7 +102,7 @@ function main() {
   const level = levelSelect();
   const bombCount = level === 1 ? 25 : (level === 2 ? 50 : 75);
   const bombPos = randomNmberForBomb(bombCount);
-  console.log(bombPos);
+
   play(bombPos);
 }
 
