@@ -89,37 +89,30 @@ function checkIfNotWall(pos) {
   return true;
 }
 
+function moveAccordingResponse(x, y, addX, addY) {
+  if (checkIfNotWall([x + addX, y + addY])) {
+    BOARD[x + addX][y + addY] = START;
+    BOARD[x][y] = " ";
+    currentPos = [x + addX, y + addY];
+  }
+}
+
 function changePos(response) {
+
   if (response === "a") {
-    if (checkIfNotWall([currentPos[0], currentPos[1] - 1])) {
-      BOARD[currentPos[0]][currentPos[1] - 1] = START;
-      BOARD[currentPos[0]][currentPos[1]] = " ";
-      currentPos = [currentPos[0], currentPos[1] - 1];
-    }
+    moveAccordingResponse(currentPos[0], currentPos[1], 0, -1)
   }
 
   if (response === "s") {
-    if (checkIfNotWall([currentPos[0] + 1, currentPos[1]])) {
-      BOARD[currentPos[0] + 1][currentPos[1]] = START;
-      BOARD[currentPos[0]][currentPos[1]] = " ";
-      currentPos = [currentPos[0] + 1, currentPos[1]];
-    }
+    moveAccordingResponse(currentPos[0], currentPos[1], 1, 0)
   }
 
   if (response === "d") {
-    if (checkIfNotWall([currentPos[0], currentPos[1] + 1])) {
-      BOARD[currentPos[0]][currentPos[1] + 1] = START;
-      BOARD[currentPos[0]][currentPos[1]] = " ";
-      currentPos = [currentPos[0], currentPos[1] + 1];
-    }
+    moveAccordingResponse(currentPos[0], currentPos[1], 0, 1)
   }
 
   if (response === "w") {
-    if (checkIfNotWall([currentPos[0] - 1, currentPos[1]])) {
-      BOARD[currentPos[0] - 1][currentPos[1]] = START;
-      BOARD[currentPos[0]][currentPos[1]] = " ";
-      currentPos = [currentPos[0] - 1, currentPos[1]];
-    }
+    moveAccordingResponse(currentPos[0], currentPos[1], -1, 0)
   }
 }
 
@@ -139,17 +132,19 @@ function play(startTime) {
   play(startTime);
 }
 
-function main() {
-  randomMazeWallGeneration(30);
-  startSet();
+function initialBlockRemove() {
   if (!checkIfNotWall([currentPos[0] + 1, currentPos[1]])) {
     BOARD[currentPos[0] + 1][currentPos[1]] = " ";
   }
-  finishSet();
   if (!checkIfNotWall([finishPoint[0] - 1, finishPoint[1]])) {
     BOARD[finishPoint[0] - 1][finishPoint[1]] = " ";
   }
-
+}
+function main() {
+  randomMazeWallGeneration(30);
+  startSet();
+  finishSet();
+  initialBlockRemove();
   showBoard();
   const startTime = Date.now();
   play(startTime);
