@@ -142,13 +142,14 @@ function play(startTime) {
 function main() {
   randomMazeWallGeneration(30);
   startSet();
-  if (checkIfNotWall([currentPos[0] + 1, currentPos[1]])) {
-    BOARD[currentPos[0] + 1, currentPos[1]] = " ";
+  if (!checkIfNotWall([currentPos[0] + 1, currentPos[1]])) {
+    BOARD[currentPos[0] + 1][currentPos[1]] = " ";
   }
   finishSet();
-  if (checkIfNotWall([finishPoint[0] - 1, finishPoint[1]])) {
-    BOARD[finishPoint[0] - 1, finishPoint[1]] = " ";
+  if (!checkIfNotWall([finishPoint[0] - 1, finishPoint[1]])) {
+    BOARD[finishPoint[0] - 1][finishPoint[1]] = " ";
   }
+
   showBoard();
   const startTime = Date.now();
   play(startTime);
