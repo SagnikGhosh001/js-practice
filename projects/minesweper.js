@@ -1,38 +1,18 @@
-const BOMB = "💣";
-const SAFE = "✅";
-const BOARD = [
-  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-  [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-  [21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
-  [31, 32, 33, 34, 35, 36, 37, 38, 39, 40],
-  [41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
-  [51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
-  [61, 62, 63, 64, 65, 66, 67, 68, 69, 70],
-  [71, 72, 73, 74, 75, 76, 77, 78, 79, 80],
-  [81, 82, 83, 84, 85, 86, 87, 88, 89, 90],
-  [91, 92, 93, 94, 95, 96, 97, 98, 99, 100],
-];
+const BOMB = "💣\t";
+const SAFE = "✅\t";
+const BOARD = [];
+const BOMB_BOARD = [];
 
-const BOMB_BOARD = [
-  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-  [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-  [21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
-  [31, 32, 33, 34, 35, 36, 37, 38, 39, 40],
-  [41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
-  [51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
-  [61, 62, 63, 64, 65, 66, 67, 68, 69, 70],
-  [71, 72, 73, 74, 75, 76, 77, 78, 79, 80],
-  [81, 82, 83, 84, 85, 86, 87, 88, 89, 90],
-  [91, 92, 93, 94, 95, 96, 97, 98, 99, 100],
-];
+function putVlaues() {
+  for (let index = 0; index < 100; index++) {
+    BOARD[index] = (index + 1) + "\t";
+    BOMB_BOARD[index] = (index + 1) + "\t";
+  }
+}
 
 function showBoard(array) {
-  for (let index = 0; index < array.length; index++) {
-    if (index === 0) {
-      console.log(array[index].join("  | "));
-      continue;
-    }
-    console.log(array[index].join(" | "));
+  for (let index = 0; index < array.length; index = index + 10) {
+    console.log(array.slice(index, index + 10).join(""));
   }
 }
 
@@ -41,23 +21,13 @@ function randomNumberBetween(start, end) {
   return Math.round(randomNumber);
 }
 
-function extractRowAndCol(number) {
-  const row = Math.floor((number - 1) / 10);
-  const col = (number - 1) % 10;
-  return [row, col];
-}
-
 function randomNmberForBomb(times) {
   const bombPos = [];
   while (times >= 0) {
-    const pos = randomNumberBetween(1, 100);
-    const rowAndCol = extractRowAndCol(pos);
-    const row = rowAndCol[0];
-    const col = rowAndCol[1];
-
-    BOMB_BOARD[row][col] = BOMB;
+    const pos = randomNumberBetween(0, 99);
+    BOMB_BOARD[pos] = BOMB;
     times--;
-    bombPos.push(rowAndCol);
+    bombPos.push(pos);
   }
   return bombPos;
 }
@@ -84,15 +54,8 @@ function checkIfPosIsUsed(usedPos, pos) {
   return false;
 }
 
-function checkifBombFound(rowAndCal, bombPos) {
-  for (let index = 0; index < bombPos.length; index++) {
-    const bombLocation = bombPos[index];
-    if (rowAndCal[0] === bombLocation[0] && rowAndCal[1] === bombLocation[1]) {
-      return true;
-    }
-  }
-
-  return false;
+function checkifBombFound(pos, bombPos) {  
+  return bombPos.includes(pos);
 }
 
 function play(bombPos, usedPos = [], point = 0) {
@@ -104,18 +67,15 @@ function play(bombPos, usedPos = [], point = 0) {
   }
 
   usedPos.push(pos);
-  const rowAndCal = extractRowAndCol(pos);
-  const row = rowAndCal[0];
-  const col = rowAndCal[1];
 
-  if (checkifBombFound(rowAndCal, bombPos)) {
+  if (checkifBombFound(pos, bombPos)) {
     console.log("Bomb Found");
     showBoard(BOMB_BOARD);
     console.log("You loose, your point is", point);
     return;
   }
   point++;
-  BOARD[row][col] = SAFE;
+  BOARD[pos - 1] = SAFE;
   showBoard(BOARD);
   return play(bombPos, usedPos, point);
 }
@@ -137,10 +97,12 @@ function levelSelect() {
 
 function main() {
   console.clear();
+  putVlaues();
   showBoard(BOARD);
   const level = levelSelect();
   const bombCount = level === 1 ? 25 : (level === 2 ? 50 : 75);
   const bombPos = randomNmberForBomb(bombCount);
+  console.log(bombPos);
   play(bombPos);
 }
 
