@@ -9,29 +9,25 @@ const availablePath = [];
 
 let mazeArrays = [
   [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL],
-  [WL, ES, ES, ES, ES, ES, ES, WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL],
-  [WL, ES, WL, WL, WL, ES, WL, WL, ES, WL, WL, WL, ES, WL, WL, WL, ES, WL],
-  [WL, ES, WL, ES, ES, ES, ES, ES, ES, WL, ES, WL, ES, ES, ES, WL, ES, WL],
-  [WL, ES, WL, ES, WL, WL, WL, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL],
-  [WL, ES, WL, ES, ES, ES, ES, ES, ES, WL, ES, ES, WL, WL, ES, WL, ES, WL],
-  [WL, ES, WL, WL, WL, ES, WL, WL, WL, WL, WL, ES, WL, WL, ES, WL, ES, WL],
-  [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL, ES, ES, ES, ES, WL, ES, WL],
-  [WL, ES, WL, WL, WL, ES, WL, WL, WL, ES, WL, WL, WL, ES, WL, WL, WL, WL],
-  [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL, ES, ES, ES, ES, WL],
-  [WL, ES, WL, WL, WL, WL, WL, WL, ES, WL, WL, WL, WL, ES, WL, WL, ES, WL],
-  [WL, ES, WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL, ES, ES, WL, ES, WL],
-  [WL, ES, WL, ES, WL, WL, WL, WL, WL, WL, WL, WL, WL, ES, WL, WL, ES, WL],
+  [WL, ES, ES, ES, WL, ES, ES, ES, WL, ES, ES, ES, WL, ES, ES, ES, ES, WL],
+  [WL, WL, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, WL, ES, WL],
+  [WL, ES, ES, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, ES, WL],
+  [WL, ES, WL, WL, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, WL],
+  [WL, ES, WL, ES, ES, ES, WL, ES, ES, ES, WL, ES, WL, ES, WL, ES, ES, WL],
+  [WL, ES, WL, ES, WL, WL, WL, WL, WL, WL, WL, ES, WL, WL, WL, WL, ES, WL],
+  [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL, ES, WL],
+  [WL, WL, WL, WL, WL, WL, WL, ES, WL, WL, WL, WL, WL, ES, WL, WL, ES, WL],
+  [WL, ES, ES, ES, ES, ES, WL, ES, WL, ES, ES, ES, ES, ES, WL, ES, ES, WL],
+  [WL, ES, WL, WL, WL, ES, WL, ES, WL, ES, WL, WL, WL, WL, WL, ES, WL, WL],
+  [WL, ES, WL, ES, ES, ES, WL, ES, WL, ES, ES, ES, ES, ES, WL, ES, ES, WL],
+  [WL, ES, WL, ES, WL, WL, WL, ES, WL, WL, WL, WL, WL, ES, WL, WL, ES, WL],
   [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL, ES, WL, WL, ES, WL],
   [WL, WL, ES, WL, WL, WL, WL, WL, WL, ES, WL, WL, WL, ES, ES, WL, ES, WL],
   [WL, WL, ES, ES, ES, ES, ES, ES, WL, ES, WL, WL, WL, WL, ES, WL, ES, WL],
   [WL, PL, ES, WL, WL, ES, WL, ES, ES, ES, ES, ES, ES, ES, ES, WL, "🧀", WL],
   [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL]
-]
+];
 
-function randomNumberBetween(start, end) {
-  const randomNumber = ((Math.random() * (end - start)) + start);
-  return Math.round(randomNumber);
-}
 
 function showMaze() {
   for (let index = 0; index < mazeArrays.length; index++) {
@@ -75,40 +71,39 @@ function pushAvailablePath(x, y, addX, addY) {
   }
 }
 
-function autoSolve() {
-  let lastValidPosition = [START[0], START[1]];
+function autoSolve(point = 0) {
   while (!(START[0] === END[0] && START[1] === END[1])) {
 
-    const dx = END[0] - START[0];
-    const dy = END[1] - START[1];
-
-    const addX = dx !== 0 ? Math.sign(dx) : 0;
-    const addY = dy !== 0 ? Math.sign(dy) : 0;
-    console.log(START, addX, addY);
-
     availablePath.length = 0;
+
     pushAvailablePath(START[0], START[1], 0, 1);
     pushAvailablePath(START[0], START[1], 0, -1);
     pushAvailablePath(START[0], START[1], 1, 0);
     pushAvailablePath(START[0], START[1], -1, 0);
 
-    console.clear();
-    const moved = moveAccordingResponse(START[0], START[1], addX, addY);
+    let moved = false;
 
-    if (!moved) {
-      if (availablePath.length > 0) {
-        START = availablePath.pop();
-        mazeArrays[START[0]][START[1]] = PL;
-        mazeArrays[lastValidPosition[0]][lastValidPosition[1]] = VIS;
-      }
-    } else {
-      lastValidPosition[0] = START[0];
-      lastValidPosition[1] = START[1];
+    while (availablePath.length > 0 && !moved) {
+      const possiblePath = availablePath.shift();
+      const nextX = possiblePath[0];
+      const nextY = possiblePath[1];
+
+      const dx = nextX - START[0];
+      const dy = nextY - START[1];
+      moved = moveAccordingResponse(START[0], START[1], dx, dy);
     }
 
+    if (USED_PATH.length > 0 && !moved) {
+      const possiblePath = USED_PATH.pop();
+      mazeArrays[START[0]][START[1]] = VIS;
+      START = possiblePath;
+      mazeArrays[START[0]][START[1]] = PL;
+    }
+    point++;
     showMaze()
   }
-
+  console.log(point);
+  
 }
 
 function main() {
