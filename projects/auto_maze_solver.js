@@ -27,11 +27,6 @@ let mazeArrays = [
   [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL]
 ]
 
-function randomNumberBetween(start, end) {
-  const randomNumber = ((Math.random() * (end - start)) + start);
-  return Math.round(randomNumber);
-}
-
 function showMaze() {
   for (let index = 0; index < mazeArrays.length; index++) {
     console.log(mazeArrays[index].join(""));
@@ -39,11 +34,7 @@ function showMaze() {
 }
 
 function checkIfNotWall(pos) {
-  if (pos[0] < mazeArrays.length && pos[1] < mazeArrays.length) {
-    return mazeArrays[pos[0]][pos[1]] !== WL;
-  }
-
-  return false;
+  return mazeArrays[pos[0]][pos[1]] !== WL;
 }
 
 function checkIfPathAlreadyUsed(pos) {
@@ -62,17 +53,11 @@ function moveAccordingResponse(x, y, addX, addY) {
     mazeArrays[x + addX][y + addY] = PL;
     mazeArrays[x][y] = VIS;
     START = [x + addX, y + addY];
-    USED_PATH.push(START);
-  } else {
-    USED_PATH.pop();
-    const dx = END[0] - x;
-    const dy = END[1] - y;
-
-    addX = dx < dy ? Math.sign(dx) : 0;
-    addY = dy < dx ? Math.sign(dy) : 0;
-
-    return moveAccordingResponse(x, y, addX, addY);
+    USED_PATH.push([x + addX, y + addY]);
+    return true;
   }
+
+  return false;
 }
 
 function autoSolve(move = 0) {
@@ -88,7 +73,14 @@ function autoSolve(move = 0) {
   const addY = dy !== 0 ? Math.sign(dy) : 0;
 
   // console.clear();
-  moveAccordingResponse(START[0], START[1], addX, addY);
+  const moved = moveAccordingResponse(START[0], START[1], addX, addY);
+  if (!moved) {
+    USED_PATH.pop();
+    const lastPos = USED_PATH[USED_PATH.length - 1] || START;
+    START = lastPos;
+    return autoSolve(move + 1);
+  }
+
   showMaze()
   return autoSolve(move + 1);
 }
