@@ -57,11 +57,11 @@ function randomMazeWallGeneration(wallCount) {
   }
 }
 
-function finishSet() {
+function setFinish() {
   finishPoint = numberGenerationAndBoardChange(91, 98, FINISH);
 }
 
-function startSet() {
+function setStart() {
   currentPos = numberGenerationAndBoardChange(1, 8, START);
 }
 
@@ -119,6 +119,7 @@ function changePos(response) {
 function isWin() {
   return currentPos[0] === finishPoint[0] && currentPos[1] === finishPoint[1];
 }
+
 function play(startTime) {
   const response = takingInput();
   changePos(response);
@@ -140,10 +141,11 @@ function initialBlockRemove() {
     BOARD[finishPoint[0] - 1][finishPoint[1]] = " ";
   }
 }
+
 function main() {
   randomMazeWallGeneration(30);
-  startSet();
-  finishSet();
+  setStart();
+  setFinish();
   initialBlockRemove();
   showBoard();
   const startTime = Date.now();
