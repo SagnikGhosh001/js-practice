@@ -34,7 +34,12 @@ function straightLine(r, c, tiles) {
   return tiles[index];
 }
 
-function chooseTile(pattern, r, c, tiles) {
+function cross(r, c, tiles, cols) {
+  const index = r == c || (cols - c) === r + 1 ? 0 : 1;
+  return tiles[index];
+}
+
+function chooseTile(pattern, r, c, tiles, cols) {
   const CHECKERBOARD = 'checkerboard';
   const SINE_OF_THE_TIMES = 'sine-of-the-times';
   const CYCLED = 'cycled';
@@ -42,6 +47,7 @@ function chooseTile(pattern, r, c, tiles) {
   const STAGGERED = 'staggered';
   const DIAGONAL = 'diagonal';
   const ST_LINE = 'straight';
+  const CROSS = 'cross';
 
   switch (pattern) {
     case SINE_OF_THE_TIMES:
@@ -56,6 +62,8 @@ function chooseTile(pattern, r, c, tiles) {
       return diagonal(r, c, tiles);
     case ST_LINE:
       return straightLine(r, c, tiles);
+    case CROSS:
+      return cross(r, c, tiles, cols);
   }
   return checkerboard(r, c, tiles);
 }
@@ -63,7 +71,7 @@ function chooseTile(pattern, r, c, tiles) {
 function generateRow(pattern, r, cols, tiles) {
   let line = '';
   for (let c = 0; c < cols; c++) {
-    const tile = chooseTile(pattern, r, c, tiles);
+    const tile = chooseTile(pattern, r, c, tiles, cols);
     line += tile;
   }
   return line;
