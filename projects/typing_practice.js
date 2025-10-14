@@ -1,38 +1,71 @@
-// Mixed case sentences (upper and lower case)
-const mixedCaseSentences = [
-  "The quick brown Fox jumps over the lazy Dog",
-  "JavaScript is Fun and Powerful",
-  "This is a Test Sentence with Mixed CASE",
-  "Typing Practice Is Essential To Improve Speed",
-  "Every Developer Should Master the Basics"
-];
 
-// Uppercase and lowercase with punctuation
-const punctuatedMixedSentences = [
-  "Hello, world!",
-  "Can you believe it? This works perfectly.",
-  "Practice daily; improve consistently.",
-  "Well done! You’ve completed the first step.",
-  "Wait... are you serious?"
-];
+// This program generates random sentences using a simple grammar
+// Each grammar rule can be expanded into one of its productions
 
-// Lowercase only, no punctuation
-const lowercaseNoPunctuation = [
-  "the quick brown fox jumps over the lazy dog",
-  "javascript is fun to learn and use",
-  "typing fast requires a lot of practice",
-  "consistency is the key to improvement",
-  "never give up keep practicing"
-];
+// Grammar rules defined as an object where each key is a rule
+// and the value is an array of possible expansions
+function createGrammar() {
+  const grammar = {
+    START: [['SENTENCE']],
+    SENTENCE: [['NOUN_FRAGMENT', 'VERB_FRAGMENT']],
+    NOUN_FRAGMENT: [
+      ['ARTICLE', 'NOUN'],
+      ['ARTICLE', 'ADJECTIVE', 'NOUN'],
+    ],
+    VERB_FRAGMENT: [['VERB'], ['VERB', 'NOUN_FRAGMENT']],
+    ARTICLE: [['the'], ['a'], ['an']],
+    ADJECTIVE: [['happy'], ['sad'], ['tall'], ['small'], ['beautiful'], ['fast']],
+    NOUN: [['boy'], ['girl'], ['horse'], ['flower'], ['car'], ['table']],
+    VERB: [['runs'], ['jumps'], ['sleeps'], ['sees'], ['likes'], ['eat']],
+  };
+  return grammar;
+}
 
-// Lowercase with punctuation
-const lowercaseWithPunctuation = [
-  "the quick brown fox jumps over the lazy dog.",
-  "javascript is fun to learn, isn't it?",
-  "typing fast requires effort, practice, and focus.",
-  "consistency is key: never stop practicing.",
-  "never give up! keep going no matter what."
-];
+// Function to randomly select one production from an array of productions
+function chooseRandomProduction(productions) {
+  const randomIndex = Math.floor(Math.random() * productions.length);
+  return productions[randomIndex];
+}
+
+// Function to check if a symbol is terminal (actual word) or non-terminal (needs expansion)
+function isTerminal(symbol) {
+  // If the symbol is lowercase, it's a terminal (actual word)
+  return symbol === symbol.toLowerCase();
+}
+
+// Function to expand a symbol according to grammar rules
+function expandSymbol(symbol, grammar) {
+  // If it's a terminal, return it as is
+  if (isTerminal(symbol)) {
+    return symbol;
+  }
+
+  // Otherwise, find the rule for this symbol
+  const productions = grammar[symbol];
+  if (!productions) {
+    console.log(`Error: No rule found for symbol ${symbol}`);
+    return '';
+  }
+
+  // Choose one production randomly
+  const chosenProduction = chooseRandomProduction(productions);
+
+  // Expand each symbol in the chosen production
+  let result = [];
+  for (let i = 0; i < chosenProduction.length; i++) {
+    const expanded = expandSymbol(chosenProduction[i], grammar);
+    result.push(expanded);
+  }
+
+  return result.join(' ');
+}
+
+// Generate a sentence by starting with the START rule
+function generateSentence(yourText) {
+  if (yourText !== "") return yourText;
+  const grammar = createGrammar();
+  return expandSymbol('START', grammar);
+}
 
 function bold(text) {
   return "\x1B[1m" + text + "\x1B[0m";
@@ -72,7 +105,6 @@ function calculateWpm(sentence, startTime, endTime) {
   const wordCount = countWords(sentence);
   const timeInMinutes = (endTime - startTime) / 60000;
   return wordCount / timeInMinutes;
-
 }
 
 function calculateMistake(orginalSentence, typedSentence) {
@@ -101,14 +133,15 @@ function showResultString(orginalSentence, typedSentence) {
   return string;
 }
 
-function startTyping(sentences) {
+function startTyping(text = "") {
   console.clear();
-  const sentence = sentences[randomNumberBetween(0, sentences.length - 1)];
+  const sentence = generateSentence(text);
   console.log(sentence);
+
   const startTime = Date.now();
   const answear = prompt("").trim();
   const endTime = Date.now();
-  
+
   const wpm = calculateWpm(sentence, startTime, endTime);
   const accuracy = calculateAccuracy(sentence, answear);
   console.clear();
@@ -119,40 +152,15 @@ function startTyping(sentences) {
 
 }
 
-function chooseMode() {
-  console.log("Chose what mode do you want");
-  console.log("1.for Mixed case sentences (upper and lower case)");
-  console.log("2.for Uppercase and lowercase with punctuation");
-  console.log("3.for Lowercase only, no punctuation");
-  console.log("4.for Lowercase with punctuation");
-  const response = prompt("Choose Mode:-");
-  const mode = parseInt(response);
-  if (mode >= 1 && mode <= 4) {
-    return mode;
-  }
-
-  console.log("Choose valid mode");
-  return chooseMode()
-}
-
 function main() {
-  const mode = chooseMode();
-  prompt("\nReady To Start Typing ?\nAfter Pressing Enter Start Typing....");
-
-  switch (mode) {
-    case 1:
-      startTyping(mixedCaseSentences);
-      break;
-    case 2:
-      startTyping(punctuatedMixedSentences);
-      break;
-    case 3:
-      startTyping(lowercaseNoPunctuation);
-      break;
-    case 4:
-      startTyping(lowercaseWithPunctuation);
-      break;
+  const responce = confirm("Do You Want To Practice With Own Sentence:-");
+  if (responce) {
+    const text = prompt("type your sentence:-").trim();
+    startTyping(text);
+    return;
   }
+
+  startTyping();
 }
 
 main();
