@@ -29,7 +29,7 @@ function changeBoard(pos, userResponse) {
   return BOARD[pos - 1] = userResponse;
 }
 
-function isWinner(symbol) {
+function isWin(symbol) {
   for (let i = 0; i < WINNING_COMBINATION.length; i++) {
     const winningCombo = WINNING_COMBINATION[i];
     const pos1 = winningCombo[0] - 1;
@@ -44,7 +44,7 @@ function isWinner(symbol) {
 }
 
 function gameStop(moves, symbol, players, currentPlayer) {
-  if (isWinner(symbol)) {
+  if (isWin(symbol)) {
     showBoard();
     console.log(`${players[currentPlayer]} won`);
     return true
