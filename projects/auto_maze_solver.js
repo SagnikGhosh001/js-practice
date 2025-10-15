@@ -8,7 +8,7 @@ const END = [16, 16];
 const USED_PATH = [];
 const availablePath = [];
 
-let mazeArrays = [
+const mazeArrays = [
   [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL],
   [WL, ES, ES, ES, WL, ES, ES, ES, WL, ES, ES, ES, ES, ES, ES, ES, ES, WL],
   [WL, WL, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, WL, ES, WL],
