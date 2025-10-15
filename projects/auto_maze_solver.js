@@ -9,12 +9,12 @@ const availablePath = [];
 
 let mazeArrays = [
   [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL],
-  [WL, ES, ES, ES, WL, ES, ES, ES, WL, ES, ES, ES, WL, ES, ES, ES, ES, WL],
+  [WL, ES, ES, ES, WL, ES, ES, ES, WL, ES, ES, ES, ES, ES, ES, WL, ES, WL],
   [WL, WL, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, WL, ES, WL],
   [WL, ES, ES, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, ES, WL],
   [WL, ES, WL, WL, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, WL],
   [WL, ES, WL, ES, ES, ES, WL, ES, ES, ES, WL, ES, WL, ES, WL, ES, ES, WL],
-  [WL, ES, WL, ES, WL, WL, WL, WL, WL, WL, WL, ES, WL, WL, WL, WL, ES, WL],
+  [WL, ES, WL, ES, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, ES, WL],
   [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL, ES, WL],
   [WL, WL, WL, WL, WL, WL, WL, ES, WL, WL, WL, WL, WL, ES, WL, WL, ES, WL],
   [WL, ES, ES, ES, ES, ES, WL, ES, WL, ES, ES, ES, ES, ES, WL, ES, ES, WL],
@@ -24,7 +24,7 @@ let mazeArrays = [
   [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL, ES, WL, WL, ES, WL],
   [WL, WL, ES, WL, WL, WL, WL, WL, WL, ES, WL, WL, WL, ES, ES, WL, ES, WL],
   [WL, WL, ES, ES, ES, ES, ES, ES, WL, ES, WL, WL, WL, WL, ES, WL, ES, WL],
-  [WL, PL, ES, WL, WL, ES, WL, ES, ES, ES, ES, ES, ES, ES, ES, WL, "🧀", WL],
+  [WL, PL, ES, WL, WL, ES, WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, "🧀", WL],
   [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL]
 ];
 
@@ -71,20 +71,23 @@ function pushAvailablePath(x, y, addX, addY) {
   }
 }
 
+function delay(sec) {
+  for (let index = 0; index < 100000000 * sec; index++) {
+  }
+}
+
 function autoSolve(point = 0) {
   while (!(START[0] === END[0] && START[1] === END[1])) {
 
-    availablePath.length = 0;
-
     pushAvailablePath(START[0], START[1], 0, 1);
-    pushAvailablePath(START[0], START[1], 0, -1);
     pushAvailablePath(START[0], START[1], 1, 0);
+    pushAvailablePath(START[0], START[1], 0, -1);
     pushAvailablePath(START[0], START[1], -1, 0);
 
     let moved = false;
 
     while (availablePath.length > 0 && !moved) {
-      const possiblePath = availablePath.shift();
+      const possiblePath = availablePath.pop();
       const nextX = possiblePath[0];
       const nextY = possiblePath[1];
 
@@ -99,11 +102,13 @@ function autoSolve(point = 0) {
       START = possiblePath;
       mazeArrays[START[0]][START[1]] = PL;
     }
+    delay(7);
+    console.clear();
     point++;
     showMaze()
   }
   console.log(point);
-  
+
 }
 
 function main() {
