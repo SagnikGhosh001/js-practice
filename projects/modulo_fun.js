@@ -39,7 +39,12 @@ function cross(r, c, tiles, cols) {
   return tiles[index];
 }
 
-function chooseTile(pattern, r, c, tiles, cols) {
+function star(r, c, tiles, cols, rows) {
+  const index = r == c || (cols - c) === r + 1 || Math.floor(cols / 2) === c || Math.floor(rows / 2) === r ? 0 : 1;
+  return tiles[index];
+}
+
+function chooseTile(pattern, r, c, tiles, cols, rows) {
   const CHECKERBOARD = 'checkerboard';
   const SINE_OF_THE_TIMES = 'sine-of-the-times';
   const CYCLED = 'cycled';
@@ -48,6 +53,7 @@ function chooseTile(pattern, r, c, tiles, cols) {
   const DIAGONAL = 'diagonal';
   const ST_LINE = 'straight';
   const CROSS = 'cross';
+  const STAR = 'star';
 
   switch (pattern) {
     case SINE_OF_THE_TIMES:
@@ -64,14 +70,16 @@ function chooseTile(pattern, r, c, tiles, cols) {
       return straightLine(r, c, tiles);
     case CROSS:
       return cross(r, c, tiles, cols);
+    case STAR:
+      return star(r, c, tiles, cols, rows);
   }
   return checkerboard(r, c, tiles);
 }
 
-function generateRow(pattern, r, cols, tiles) {
+function generateRow(pattern, r, cols, rows, tiles) {
   let line = '';
   for (let c = 0; c < cols; c++) {
-    const tile = chooseTile(pattern, r, c, tiles, cols);
+    const tile = chooseTile(pattern, r, c, tiles, cols, rows);
     line += tile;
   }
   return line;
@@ -80,7 +88,7 @@ function generateRow(pattern, r, cols, tiles) {
 function generateTiles(pattern, rows, cols, tiles) {
   const lines = [];
   for (let row = 0; row < rows; row++) {
-    const line = generateRow(pattern, row, cols, tiles);
+    const line = generateRow(pattern, row, rows, cols, tiles);
     lines.push(line);
   }
   return lines.join('\n');
