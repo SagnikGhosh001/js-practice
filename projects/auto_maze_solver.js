@@ -1,7 +1,8 @@
 const WL = "🟫";
-const PL = "🐭";
+const PL = "🦁";
 const VIS = "🐾";
 const ES = "  ";
+const FN = "🦌"
 let START = [16, 1];
 const END = [16, 16];
 const USED_PATH = [];
@@ -9,7 +10,7 @@ const availablePath = [];
 
 let mazeArrays = [
   [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL],
-  [WL, ES, ES, ES, WL, ES, ES, ES, WL, ES, ES, ES, ES, ES, ES, WL, ES, WL],
+  [WL, ES, ES, ES, WL, ES, ES, ES, WL, ES, ES, ES, ES, ES, ES, ES, ES, WL],
   [WL, WL, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, WL, ES, WL],
   [WL, ES, ES, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, ES, WL],
   [WL, ES, WL, WL, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, WL],
@@ -24,7 +25,7 @@ let mazeArrays = [
   [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL, ES, WL, WL, ES, WL],
   [WL, WL, ES, WL, WL, WL, WL, WL, WL, ES, WL, WL, WL, ES, ES, WL, ES, WL],
   [WL, WL, ES, ES, ES, ES, ES, ES, WL, ES, WL, WL, WL, WL, ES, WL, ES, WL],
-  [WL, PL, ES, WL, WL, ES, WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, "🧀", WL],
+  [WL, PL, ES, WL, WL, ES, WL, ES, ES, ES, ES, ES, ES, ES, ES, WL, FN, WL],
   [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL]
 ];
 
