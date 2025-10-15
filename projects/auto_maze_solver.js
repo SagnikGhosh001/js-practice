@@ -1,36 +1,34 @@
 const WL = "🟫";
-const PL = "🐭";
-const CH = "🧀";
+const PL = "🦁";
+const VIS = "🐾";
 const ES = "  ";
-let START = [];
-let END = [];
+const FN = "🦌"
+let START = [16, 1];
+const END = [16, 16];
 const USED_PATH = [];
 const availablePath = [];
-let mazeArrays = [];
 
-function randomNumberBetween(start, end) {
-  const randomNumber = ((Math.random() * (end - start)) + start);
-  return Math.round(randomNumber);
-}
+const mazeArrays = [
+  [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL],
+  [WL, ES, ES, ES, WL, ES, ES, ES, WL, ES, ES, ES, ES, ES, ES, ES, ES, WL],
+  [WL, WL, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, WL, ES, WL],
+  [WL, ES, ES, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, ES, WL],
+  [WL, ES, WL, WL, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, ES, WL, WL],
+  [WL, ES, WL, ES, ES, ES, WL, ES, ES, ES, WL, ES, WL, ES, WL, ES, ES, WL],
+  [WL, ES, WL, ES, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, ES, WL],
+  [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL, ES, WL],
+  [WL, WL, WL, WL, WL, WL, WL, ES, WL, WL, WL, WL, WL, ES, WL, WL, ES, WL],
+  [WL, ES, ES, ES, ES, ES, WL, ES, WL, ES, ES, ES, ES, ES, WL, ES, ES, WL],
+  [WL, ES, WL, WL, WL, ES, WL, ES, WL, ES, WL, WL, WL, WL, WL, ES, WL, WL],
+  [WL, ES, WL, ES, ES, ES, WL, ES, WL, ES, ES, ES, ES, ES, WL, ES, ES, WL],
+  [WL, ES, WL, ES, WL, WL, WL, ES, WL, WL, WL, WL, WL, ES, WL, WL, ES, WL],
+  [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL, ES, WL, WL, ES, WL],
+  [WL, WL, ES, WL, WL, WL, WL, WL, WL, ES, WL, WL, WL, ES, ES, WL, ES, WL],
+  [WL, WL, ES, ES, ES, ES, ES, ES, WL, ES, WL, WL, WL, WL, ES, WL, ES, WL],
+  [WL, PL, ES, WL, WL, ES, WL, ES, ES, ES, ES, ES, ES, ES, ES, WL, FN, WL],
+  [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL]
+];
 
-function putValue(size) {
-  for (let i = 0; i < size; i++) {
-    mazeArrays[i] = [];
-    for (let j = 0; j < size; j++) {
-      mazeArrays[i][j] = WL;
-    }
-  }
-}
-
-function setStart(size) {
-  START = [1, randomNumberBetween(1, size - 1)];
-  mazeArrays[START[0]][START[1]] = PL
-}
-
-function setEnd(size) {
-  END = [size - 2, randomNumberBetween(1, size - 1)];
-  mazeArrays[END[0]][END[1]] = CH;
-}
 
 function showMaze() {
   for (let index = 0; index < mazeArrays.length; index++) {
@@ -38,9 +36,9 @@ function showMaze() {
   }
 }
 
-function checkIfNotSpace(pos) {
-  if (pos[0] > 0 && pos[0] < mazeArrays.length - 1 && pos[1] > 0 && pos[1] < mazeArrays[0].length - 1) {
-    return mazeArrays[pos[0]][pos[1]] !== ES;
+function checkIfNotWall(pos) {
+  if (pos[0] >= 0 && pos[0] < mazeArrays.length && pos[1] >= 0 && pos[1] < mazeArrays[0].length) {
+    return mazeArrays[pos[0]][pos[1]] !== WL;
   }
   return false;
 }
@@ -57,9 +55,9 @@ function checkIfPathAlreadyUsed(pos) {
 }
 
 function moveAccordingResponse(x, y, addX, addY) {
-  if (checkIfNotSpace([x + addX, y + addY])) {
+  if (checkIfNotWall([x + addX, y + addY])) {
     mazeArrays[x + addX][y + addY] = PL;
-    mazeArrays[x][y] = "  ";
+    mazeArrays[x][y] = VIS;
     START = [x + addX, y + addY];
     USED_PATH.push(START);
     return true;
@@ -79,13 +77,13 @@ function delay(sec) {
   }
 }
 
-function autoCreate(size) {
+function autoSolve(point = 0) {
   while (START[0] !== END[0] || START[1] !== END[1]) {
 
-    pushAvailablePath(START[0], START[1], 0, 1);
     pushAvailablePath(START[0], START[1], 1, 0);
     pushAvailablePath(START[0], START[1], 0, -1);
     pushAvailablePath(START[0], START[1], -1, 0);
+    pushAvailablePath(START[0], START[1], 0, 1);
 
     let moved = false;
 
@@ -107,19 +105,17 @@ function autoCreate(size) {
     }
     delay(7);
     console.clear();
-
+    point++;
     showMaze()
   }
+  console.log(point);
 
 }
 
-function main(size) {
-  putValue(size);
-  setStart(size);
-  setEnd(size);
+function main() {
   showMaze();
   prompt("")
-  autoCreate(size);
+  autoSolve();
 }
 
-main(30);
+main();
