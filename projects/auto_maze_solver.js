@@ -24,7 +24,7 @@ const mazeArrays = [
   [WL, ES, WL, ES, WL, WL, WL, ES, WL, WL, WL, WL, WL, ES, WL, WL, ES, WL],
   [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL, ES, WL, WL, ES, WL],
   [WL, WL, ES, WL, WL, WL, WL, WL, WL, ES, WL, WL, WL, ES, ES, WL, ES, WL],
-  [WL, WL, ES, ES, ES, ES, ES, ES, WL, ES, WL, WL, WL, WL, ES, WL, ES, WL],
+  [WL, WL, ES, ES, ES, ES, ES, ES, WL, ES, WL, WL, WL, WL, WL, WL, ES, WL],
   [WL, PL, ES, WL, WL, ES, WL, ES, ES, ES, ES, ES, ES, ES, ES, WL, FN, WL],
   [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL]
 ];
@@ -95,13 +95,6 @@ function autoSolve(point = 0) {
       const dx = nextX - START[0];
       const dy = nextY - START[1];
       moved = moveAccordingResponse(START[0], START[1], dx, dy);
-    }
-
-    if (USED_PATH.length > 0 && !moved) {
-      const possiblePath = USED_PATH.pop();
-      mazeArrays[START[0]][START[1]] = VIS;
-      START = possiblePath;
-      mazeArrays[START[0]][START[1]] = PL;
     }
     delay(7);
     console.clear();
