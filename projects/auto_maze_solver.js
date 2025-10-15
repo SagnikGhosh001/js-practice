@@ -79,10 +79,10 @@ function delay(sec) {
 function autoSolve(point = 0) {
   while (!(START[0] === END[0] && START[1] === END[1])) {
 
-    pushAvailablePath(START[0], START[1], 0, 1);
     pushAvailablePath(START[0], START[1], 1, 0);
     pushAvailablePath(START[0], START[1], 0, -1);
     pushAvailablePath(START[0], START[1], -1, 0);
+    pushAvailablePath(START[0], START[1], 0, 1);
 
     let moved = false;
 
