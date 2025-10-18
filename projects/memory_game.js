@@ -56,13 +56,33 @@ function randomNumberBetween(start, end) {
 }
 
 function takingUserResponse() {
-  const userResponse = prompt("Enter Word :-")
+  const userResponse = prompt("Enter All Word In Sequence separated By Space :-")
 
   return userResponse;
 }
 
-function play() {
-  const generatedWord = [];
+function isUserResponseCorrect(generatedWord, userResponse) {
+
+  const generatedWordIntoString = generatedWord.join(" ");
+  return generatedWordIntoString === userResponse;
+}
+
+function play(generatedWord = [], point = 0) {
+  console.clear();
   const randomWord = DATA_SET[randomNumberBetween(0, DATA_SET.length - 1)];
   generatedWord.push(randomWord);
+  console.log(`Word for round :${point + 1} is "${randomWord}"`);
+  const userResponse = takingUserResponse();
+  if (isUserResponseCorrect(generatedWord, userResponse)) {
+    return play(generatedWord, point + 1);
+  }
+  const generatedWordIntoString = generatedWord.join(" ");
+  console.log(`\nActual Sequence is ${generatedWordIntoString}, and you typed ${userResponse}`);
+  console.log(`your final score is ${point}`);
 }
+
+function main() {
+  play();
+}
+
+main();
