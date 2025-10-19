@@ -6,7 +6,6 @@ const TR = "🕷️"
 let head = [9, 8];
 const body = [head];
 let lastUsedMove = "";
-let lastUsedMoveFrequency = 0;
 const TARGET = [];
 
 const boardArrays = [
@@ -29,7 +28,14 @@ const boardArrays = [
   [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL],
   [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL]
 ];
- 
+
+const MOVES = ["w", "a", "d", "s"];
+const DIRECTIONS = [[-1, 0], [0, -1], [0, 1], [1, 0]];
+
+function getDirection(response) {
+  return DIRECTIONS[MOVES.indexOf(response)];
+}
+
 function randomNumberBetween(start, end) {
   const randomNumber = ((Math.random() * (end - start)) + start);
   return Math.round(randomNumber);
@@ -55,10 +61,11 @@ function showBoard() {
 function takingInput() {
   const response = prompt("w for up, a for left, s for down and d for right").toLowerCase().trim();
   console.clear();
-  if (response === "w" || response === "a" || response === "s" || response === "d") {
+  if (MOVES.includes(response)) {
     lastUsedMove = response;
     return response;
   }
+
   return lastUsedMove;
 }
 
@@ -67,41 +74,16 @@ function checkIfWall(pos) {
 }
 
 function changePos(response, point) {
-  if (response === "a") {
-    moveAccordingResponse(body[body.length - 1][0], body[body.length - 1][1], 0, -1, point)
-  }
-
-  if (response === "s") {
-    moveAccordingResponse(body[body.length - 1][0], body[body.length - 1][1], 1, 0, point)
-  }
-
-  if (response === "d") {
-    moveAccordingResponse(body[body.length - 1][0], body[body.length - 1][1], 0, 1, point)
-  }
-
-  if (response === "w") {
-    moveAccordingResponse(body[body.length - 1][0], body[body.length - 1][1], -1, 0, point)
-  }
+  const direcion = getDirection(response);
+  const headPos = body[body.length - 1];
+  moveAccordingResponse(headPos[0], headPos[1], direcion[0], direcion[1], point);
 }
 
 function addBody() {
-  if (lastUsedMove === "a") {
-    addBodyPosition(0, 1);
-  }
-
-  if (lastUsedMove === "s") {
-    addBodyPosition(-1, 0);
-  }
-
-  if (lastUsedMove === "d") {
-    addBodyPosition(0, -1);
-  }
-
-  if (lastUsedMove === "w") {
-    addBodyPosition(1, 0);
-  }
-
-  boardArrays[body[0][0]][body[0][1]] = PLBODY;
+  const directionToAdd = getDirection(lastUsedMove);
+  addBodyPosition(-directionToAdd[0], -directionToAdd[1]);
+  const tail = body[0];
+  boardArrays[tail[0]][tail[1]] = PLBODY;
 }
 
 function addBodyPosition(x, y) {
@@ -148,12 +130,17 @@ function moveAccordingResponse(x, y, addX, addY, point) {
   boardArrays[x + addX][y + addY] = PL;
 }
 
+function isEaten() {
+  const headPos = body[body.length - 1];
+  return headPos[0] === TARGET[0] && headPos[1] === TARGET[1]
+}
 
 function play(point = 0) {
   const userResponse = takingInput();
   changePos(userResponse, point);
   showBoard();
-  if (body[body.length - 1][0] === TARGET[0] && body[body.length - 1][1] === TARGET[1]) {
+
+  if (isEaten()) {
     addBody();
     console.clear();
     point = point + 1;
@@ -161,7 +148,7 @@ function play(point = 0) {
     showBoard()
   }
 
-  console.log(point);
+  console.log(`score :- ${point}`);
   return play(point);
 }
 
