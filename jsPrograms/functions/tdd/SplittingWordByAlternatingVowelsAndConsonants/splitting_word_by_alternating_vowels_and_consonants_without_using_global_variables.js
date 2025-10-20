@@ -31,8 +31,9 @@ function splitWordByAlternation(string) {
   let segmentString = "";
 
   while (stringForOperation !== "") {
-    segmentString += splitAlternatingSegment(stringForOperation)[0] + ",";
-    stringForOperation = splitAlternatingSegment(stringForOperation)[1];
+    const combinedResult = splitAlternatingSegment(stringForOperation);
+    segmentString += combinedResult[0] + ",";
+    stringForOperation = combinedResult[1];
   }
 
   return segmentString.slice(0, segmentString.length - 1);
