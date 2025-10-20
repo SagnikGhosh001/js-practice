@@ -8,30 +8,6 @@ function isVowel(character) {
   return isA || isE || isI || isO || isU;
 }
 
-function splitTheSegment(string) {
-  let currentTerm = 0;
-  let segment = "";
-
-  while (string[currentTerm] !== "|") {
-    segment = segment + string[currentTerm];
-    currentTerm++;
-  }
-
-  return segment;
-}
-
-function splitRemainingString(string, startIndex) {
-  let currentTerm = startIndex + 1;
-  let remainingString = "";
-
-  while (currentTerm < string.length) {
-    remainingString = remainingString + string[currentTerm];
-    currentTerm++;
-  }
-
-  return remainingString;
-}
-
 function splitAlternatingSegment(string) {
   let segmentString = string[0];
   let remainingString = "";
@@ -47,22 +23,19 @@ function splitAlternatingSegment(string) {
     }
   }
 
-  return segmentString + '|' + remainingString;
+  return [segmentString, remainingString];
 }
 
 function splitWordByAlternation(string) {
-  let segmentString = "";
   let stringForOperation = string;
+  let segmentString = "";
 
   while (stringForOperation !== "") {
-
-    const result = splitAlternatingSegment(stringForOperation);
-    const segment = splitTheSegment(result);
-    segmentString = segmentString + segment + ",";
-    stringForOperation = splitRemainingString(result, segment.length);
+    segmentString += splitAlternatingSegment(stringForOperation)[0] + ",";
+    stringForOperation = splitAlternatingSegment(stringForOperation)[1];
   }
 
-  return segmentString;
+  return segmentString.slice(0, segmentString.length - 1);
 }
 
 function symbolSelection(result, expectedResult) {
@@ -93,15 +66,15 @@ function testSplittingWord(string, expectedResult) {
 }
 
 function main() {
-  testSplittingWord("apple", "ape,p,l,");
-  testSplittingWord("there", "tere,h,");
-  testSplittingWord("hello", "helo,l,");
-  testSplittingWord("abyys", "ab,y,y,s,");
-  testSplittingWord("this", "tis,h,");
-  testSplittingWord("aaabbb", "ab,ab,ab,");
-  testSplittingWord("aaaeee", "a,a,a,e,e,e,");
-  testSplittingWord("sagnik", "sagik,n,");
-  testSplittingWord("three", "te,he,r,");
+  testSplittingWord("apple", "ape,p,l");
+  testSplittingWord("there", "tere,h");
+  testSplittingWord("hello", "helo,l");
+  testSplittingWord("abyys", "ab,y,y,s");
+  testSplittingWord("this", "tis,h");
+  testSplittingWord("aaabbb", "ab,ab,ab");
+  testSplittingWord("aaaeee", "a,a,a,e,e,e");
+  testSplittingWord("sagnik", "sagik,n");
+  testSplittingWord("three", "te,he,r");
 }
 
 main();
