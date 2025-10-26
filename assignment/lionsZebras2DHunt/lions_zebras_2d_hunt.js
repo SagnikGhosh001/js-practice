@@ -21,9 +21,9 @@ function findLionZebraLocation(grid) {
     const currentGridElement = grid[row];
 
     for (let col = 0; col < currentGridElement.length; col++) {
-      const cell = currentGridElement[col];
-      if (cell === "L") lionLoc.push([row, col]);
-      if (cell === "Z") zebraLoc.push([row, col]);
+      const element = currentGridElement[col];
+      if (element === "L") lionLoc.push([row, col]);
+      if (element === "Z") zebraLoc.push([row, col]);
     }
   }
 
