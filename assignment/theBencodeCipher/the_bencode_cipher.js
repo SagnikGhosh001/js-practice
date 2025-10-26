@@ -57,7 +57,7 @@ function findNextIndex(index, decodedElement, toDecode) {
 
 
   const indexOfLastE = toDecode.lastIndexOf("e");
-  return index + findLastE + 1;
+  return index + indexOfLastE + 1;
 }
 
 function decodeForArray(data) {
@@ -118,9 +118,9 @@ function getEmoji(result, expected) {
   return areEquals(result, expected) ? "✅" : "❌";
 }
 
-function composeMsg(result, expected, date, purpose) {
+function composeMsg(result, expected, data, purpose) {
   const emoji = getEmoji(result, expected);
-  const inputSection = "Inputs : [" + date + "]";
+  const inputSection = "Inputs : [" + data + "]";
   const resultSection = "result = " + result;
   const expectedSection = "expected result = " + expected;
   let message = emoji + purpose;
