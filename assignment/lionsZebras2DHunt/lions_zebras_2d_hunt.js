@@ -3,10 +3,10 @@ function manhattanDistance(x1, y1, x2, y2) {
 }
 
 function euclideanDistance(x1, y1, x2, y2) {
-  return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2))
+  return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
 }
 
-function calculateDistance(metric, x1, y1, x2, y2) {
+function chooseMetricAndCalculate(metric, x1, y1, x2, y2) {
   switch (metric) {
     case "manhattan": return manhattanDistance(x1, y1, x2, y2);
     case "euclidean": return euclideanDistance(x1, y1, x2, y2);
@@ -30,23 +30,28 @@ function findLionZebraLocation(grid) {
   return [lionLoc, zebraLoc];
 }
 
+function calculateDistance(metric, zebraLoc, x1, y1, minDistance) {
+  for (let zebra = 0; zebra < zebraLoc.length; zebra++) {
+    const x2 = zebraLoc[zebra][0];
+    const y2 = zebraLoc[zebra][1];
+    const currentDistance = chooseMetricAndCalculate(metric, x1, y1, x2, y2);
+
+    minDistance = Math.min(currentDistance, minDistance);
+  }
+
+  return minDistance;
+}
+
 function findShortestDist2D(grid, metric) {
   const locations = findLionZebraLocation(grid);
   const lionLoc = locations[0];
   const zebraLoc = locations[1];
-
   let minDistance = Infinity;
 
   for (let lion = 0; lion < lionLoc.length; lion++) {
-    for (let zebra = 0; zebra < zebraLoc.length; zebra++) {
-      const x1 = lionLoc[lion][0];
-      const y1 = lionLoc[lion][1];
-      const x2 = zebraLoc[zebra][0];
-      const y2 = zebraLoc[zebra][1];
-      const currentDistance = calculateDistance(metric, x1, y1, x2, y2);
-
-      minDistance = Math.min(currentDistance, minDistance);
-    }
+    const x1 = lionLoc[lion][0];
+    const y1 = lionLoc[lion][1];
+    minDistance = calculateDistance(metric, zebraLoc, x1, y1, minDistance);
   }
 
   return minDistance === Infinity ? null : minDistance;
