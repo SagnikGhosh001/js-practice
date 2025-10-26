@@ -1,3 +1,11 @@
+function isString(value) {
+  return typeof value === "string";
+}
+
+function isNumber(value) {
+  return typeof value === "number";
+}
+
 function encodeForArray(array) {
   let encodedString = "";
   for (let index = 0; index < array.length; index++) {
@@ -8,23 +16,23 @@ function encodeForArray(array) {
 }
 
 function encode(data) {
-  if (typeof data === "number") {
+  if (isNumber(data)) {
     return "i" + data + "e";
   }
 
-  if (Array.isArray(data)) {
-    return "l" + encodeForArray(data) + "e";
+  if (isString(data)) {
+    return data.length + ":" + data;
   }
 
-  return data.length + ":" + data;
+  return "l" + encodeForArray(data) + "e";
 }
 
 function decodeForString(data) {
   const colonIndex = data.indexOf(":");
   const lengthOfString = parseInt(data.slice(0, colonIndex));
-  if (isNaN(lengthOfString)) return;
   const startIndex = colonIndex + 1;
   const endIndex = startIndex + lengthOfString;
+
   return data.slice(startIndex, endIndex);
 }
 
@@ -39,22 +47,24 @@ function lengthOfNumber(number) {
 }
 
 function findNextIndex(index, decodedElement, toDecode) {
-  if (typeof decodedElement === "string") {
+  if (isString(decodedElement)) {
     return index + lengthOfNumber(decodedElement.length) + decodedElement.length + 1;
   }
 
-  if (Array.isArray(decodedElement)) {
-    const findLastE = toDecode.lastIndexOf("e");
-    return index + findLastE + 1;
+  if (isNumber(decodedElement)) {
+    return index + lengthOfNumber(decodedElement) + 2;
   }
 
-  return index + lengthOfNumber(decodedElement) + 2;
+
+  const indexOfLastE = toDecode.lastIndexOf("e");
+  return index + findLastE + 1;
 }
 
-function decodeForArray(data = "") {
+function decodeForArray(data) {
   const decodedArry = [];
   let index = 1;
   const endOfLoop = data.lastIndexOf("e");
+
   while (index < endOfLoop) {
     const toDecode = data.slice(index, data.length - 1);
     const decodedElement = decode(toDecode);
@@ -82,6 +92,7 @@ function areEquals(firstValue, secondValue) {
   if (Array.isArray(firstValue) && Array.isArray(secondValue)) {
     return areDeepEqual(firstValue, secondValue);
   }
+
   return firstValue === secondValue;
 }
 
