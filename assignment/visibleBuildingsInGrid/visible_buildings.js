@@ -66,11 +66,6 @@ function countVisibleBuildings(grid) {
   return visibleBuildings;
 }
 
-function areApproxEqual(result, expected) {
-  const tolerance = expected - result;
-  return tolerance <= 0.01 && tolerance >= -0.01;
-}
-
 function getEmoji(result, expected) {
   return result === expected ? "✅" : "❌";
 }
