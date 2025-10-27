@@ -20,37 +20,14 @@ function covertIntoMultiDimensionArray(grid) {
   return multiDGrid;
 }
 
-function countBorder(multiDGrid, row) {
-  let borderCount = 0;
-  for (let col = 0; col < multiDGrid[row].length; col++) {
-    if (multiDGrid[0][col] !== 0) {
-      borderCount++;
-    }
-  }
-
-  return borderCount;
-}
-
-function countBorderOfStartAndEnd(multiDGrid) {
-  if (multiDGrid.length === 1) return countBorder(multiDGrid, 0);
-
-  return countBorder(multiDGrid, 0) + countBorder(multiDGrid, multiDGrid.length - 1);
-}
-
 function calculateBorderNumber(multiDGrid) {
-  let borderCount = countBorderOfStartAndEnd(multiDGrid);
+  let borderCount = 0;
+  const rows = multiDGrid.length;
+  const cols = multiDGrid[0].length;
 
-  for (let row = 1; row < multiDGrid.length - 1; row++) {
-    if (multiDGrid[row].length === 1) {
-      borderCount += countBorder(multiDGrid, row);
-    }
-    else {
-      const lastCol = multiDGrid[row].length - 1;
-      if (multiDGrid[row][0] !== 0) {
-        borderCount++;
-      }
-
-      if (multiDGrid[row][lastCol] !== 0) {
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      if (multiDGrid[row][col] !== 0 && (row === 0 || row === rows - 1 || col === 0 || col === cols - 1)) {
         borderCount++;
       }
     }
@@ -58,10 +35,9 @@ function calculateBorderNumber(multiDGrid) {
 
   return borderCount;
 }
-
 function checkInDirections(multiDGrid, row, col, directionIndex = 0) {
   const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]];
-  if (directionIndex >= directions.length) {    
+  if (directionIndex >= directions.length) {
     return false;
   }
 
@@ -129,6 +105,11 @@ function main() {
   testCountVisibleBuildings(["9000", "0000", "0000", "0009"], 2, "For mixed 0");
   testCountVisibleBuildings(["123", "456", "789"], 9, "For all visible");
   testCountVisibleBuildings(["1212", "1231", "3143", "1111"], 15, "For 4 X 4");
+  testCountVisibleBuildings(["111", "121", "111"], 9, "Center 2 visible from all sides");
+  testCountVisibleBuildings(["101", "010", "101"], 5, "Zero-height interior with 1s on border");
+  testCountVisibleBuildings(["1212", "2321", "3143", "1111"], 15, "Multiple interior heights, some blocked");
+  testCountVisibleBuildings(["12", "21"], 4, "2x2 grid, all visible");
+
 }
 
 main();
