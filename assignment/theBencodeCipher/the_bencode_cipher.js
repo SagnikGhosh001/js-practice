@@ -15,16 +15,20 @@ function encodeForArray(array) {
   return encodedString;
 }
 
+function formatEncding(start, middle, end) {
+  return start + middle + end;
+}
+
 function encode(data) {
   if (isNumber(data)) {
-    return "i" + data + "e";
+    return formatEncding("i", data, "e");
   }
 
   if (isString(data)) {
-    return data.length + ":" + data;
+    return formatEncding(data.length, ":", data);
   }
 
-  return "l" + encodeForArray(data) + "e";
+  return formatEncding("l", encodeForArray(data), "e");
 }
 
 function decodeForString(data) {
@@ -55,7 +59,6 @@ function findNextIndex(index, decodedElement, toDecode) {
     return index + lengthOfNumber(decodedElement) + 2;
   }
 
-
   const indexOfLastE = toDecode.lastIndexOf("e");
   return index + indexOfLastE + 1;
 }
@@ -63,9 +66,8 @@ function findNextIndex(index, decodedElement, toDecode) {
 function decodeForArray(data) {
   const decodedArry = [];
   let index = 1;
-  const endOfLoop = data.lastIndexOf("e");
 
-  while (index < endOfLoop) {
+  while (index < data.length - 1) {
     const toDecode = data.slice(index, data.length - 1);
     const decodedElement = decode(toDecode);
 
