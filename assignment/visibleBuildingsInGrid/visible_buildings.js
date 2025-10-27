@@ -46,14 +46,22 @@ function checkInDirections(multiDGrid, row, col, directionIndex = 0) {
     return false;
   }
 
-  const checkRow = row + directions[directionIndex][0];
-  const checkCol = col + directions[directionIndex][1];
+  let currentRow = row;
+  let currentCol = col;
 
-  if (multiDGrid[row][col] > multiDGrid[checkRow][checkCol]) {
-    return true;
+  while (!isBorder(multiDGrid.length, currentRow, multiDGrid[0].length, currentCol)) {
+    const checkRow = currentRow + directions[directionIndex][0];
+    const checkCol = currentCol + directions[directionIndex][1];
+
+    if (multiDGrid[currentRow][currentCol] <= multiDGrid[checkRow][checkCol]) {
+      return checkInDirections(multiDGrid, row, col, directionIndex + 1);
+    }
+
+    currentRow = checkRow;
+    currentCol = checkCol;
   }
 
-  return checkInDirections(multiDGrid, row, col, directionIndex + 1);
+  return true;
 }
 
 function countVisibleBuildings(grid) {
@@ -109,6 +117,8 @@ function main() {
   testCountVisibleBuildings(["101", "010", "101"], 5, "Zero-height interior with 1s on border");
   testCountVisibleBuildings(["1212", "2321", "3143", "1111"], 15, "Multiple interior heights, some blocked");
   testCountVisibleBuildings(["12", "21"], 4, "2x2 grid, all visible");
+  testCountVisibleBuildings(["11111", "12921", "11111"], 15, "Interior taller building blocking neighbors");
+  testCountVisibleBuildings(["11911", "19391", "19491", "11911"], 18, "Interior taller building blocking neighbors");
 
 }
 
