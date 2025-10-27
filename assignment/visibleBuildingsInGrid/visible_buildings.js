@@ -39,6 +39,7 @@ function calculateBorderNumber(multiDGrid) {
 
   return borderCount;
 }
+
 function checkInDirections(multiDGrid, row, col, directionIndex = 0) {
   const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]];
   if (directionIndex >= directions.length) {
@@ -61,7 +62,7 @@ function countVisibleBuildings(grid) {
 
   for (let row = 1; row < multiDGrid.length - 1; row++) {
     for (let col = 1; col < multiDGrid[row].length - 1; col++) {
-      if (checkInDirections(multiDGrid, row, col) && multiDGrid[row][col] !== 0) {
+      if (multiDGrid[row][col] !== 0 && checkInDirections(multiDGrid, row, col)) {
         visibleBuildings++;
       }
     }
