@@ -20,6 +20,10 @@ function covertIntoMultiDimensionArray(grid) {
   return multiDGrid;
 }
 
+function isBorder(rows, row, cols, col) {
+  return row === 0 || row === rows - 1 || col === 0 || col === cols - 1;
+}
+
 function calculateBorderNumber(multiDGrid) {
   let borderCount = 0;
   const rows = multiDGrid.length;
@@ -27,7 +31,7 @@ function calculateBorderNumber(multiDGrid) {
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
-      if (multiDGrid[row][col] !== 0 && (row === 0 || row === rows - 1 || col === 0 || col === cols - 1)) {
+      if (multiDGrid[row][col] !== 0 && isBorder(rows, row, cols, col)) {
         borderCount++;
       }
     }
