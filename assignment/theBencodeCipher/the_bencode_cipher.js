@@ -52,7 +52,8 @@ function calculateLengthOfNumber(number) {
 
 function calculateNextIndex(index, decodedElement, toDecode) {
   if (isString(decodedElement)) {
-    return index + calculateLengthOfNumber(decodedElement.length) + decodedElement.length + 1;
+    const lengthOfDecodedElemnt = decodedElement.length;
+    return index + calculateLengthOfNumber(lengthOfDecodedElemnt) +lengthOfDecodedElemnt + 1;
   }
 
   if (isNumber(decodedElement)) {
