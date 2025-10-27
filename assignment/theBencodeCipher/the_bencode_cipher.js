@@ -15,20 +15,20 @@ function encodeForArray(array) {
   return encodedString;
 }
 
-function formatEncding(start, middle, end) {
+function formatEncoding(start, middle, end) {
   return start + middle + end;
 }
 
 function encode(data) {
   if (isNumber(data)) {
-    return formatEncding("i", data, "e");
+    return formatEncoding("i", data, "e");
   }
 
   if (isString(data)) {
-    return formatEncding(data.length, ":", data);
+    return formatEncoding(data.length, ":", data);
   }
 
-  return formatEncding("l", encodeForArray(data), "e");
+  return formatEncoding("l", encodeForArray(data), "e");
 }
 
 function decodeForString(data) {
@@ -46,21 +46,20 @@ function decodeForNumber(data) {
   return parseInt(numberInStringFormat);
 }
 
-function lengthOfNumber(number) {
+function calculateLengthOfNumber(number) {
   return number === 0 ? 1 : Math.ceil(Math.log10(number + 1));
 }
 
 function findNextIndex(index, decodedElement, toDecode) {
   if (isString(decodedElement)) {
-    return index + lengthOfNumber(decodedElement.length) + decodedElement.length + 1;
+    return index + calculateLengthOfNumber(decodedElement.length) + decodedElement.length + 1;
   }
 
   if (isNumber(decodedElement)) {
-    return index + lengthOfNumber(decodedElement) + 2;
+    return index + calculateLengthOfNumber(decodedElement) + 2;
   }
 
-  const indexOfLastE = toDecode.lastIndexOf("e");
-  return index + indexOfLastE + 1;
+  return index + toDecode.length;
 }
 
 function decodeForArray(data) {
@@ -163,6 +162,7 @@ function testAllDecode() {
   testDecode("l0:i0elee", ["", 0, []], "for nested empty array");
   testDecode("li0e0:l4:testee", [0, "", ["test"]], "for mixed element array");
   testDecode("l3:onel3:twol5:threeeee", ["one", ["two", ["three"]]], "for nested array");
+  testDecode("l3:onel3:twol5:threei12eeee", ["one", ["two", ["three", 12]]], "for complex nested array");
   console.log();
 }
 
@@ -178,6 +178,7 @@ function testAllEncode() {
   testEncode([0, "", ["test"]], "li0e0:l4:testee", "for mixed element array");
   testEncode(["", 0, []], "l0:i0elee", "for nested empty array");
   testEncode(["one", ["two", ["three"]]], "l3:onel3:twol5:threeeee", "for nested array");
+  testEncode(["one", ["two", ["three", 12]]], "l3:onel3:twol5:threei12eeee", "for complex nested array");
 }
 
 function main() {
