@@ -50,17 +50,9 @@ function calculateLengthOfNumber(number) {
   return number === 0 ? 1 : Math.ceil(Math.log10(number + 1));
 }
 
-function calculateNextIndex(index, decodedElement, toDecode) {
-  if (isString(decodedElement)) {
-    const lengthOfDecodedElemnt = decodedElement.length;
-    return index + calculateLengthOfNumber(lengthOfDecodedElemnt) +lengthOfDecodedElemnt + 1;
-  }
-
-  if (isNumber(decodedElement)) {
-    return index + calculateLengthOfNumber(decodedElement) + 2;
-  }
-
-  return index + toDecode.length;
+function calculateNextIndex(index, decodedElement) {
+  const encodedElement = encode(decodedElement);
+  return index + encodedElement.length;
 }
 
 function decodeForArray(data) {
@@ -72,7 +64,7 @@ function decodeForArray(data) {
     const decodedElement = decode(toDecode);
 
     decodedArry.push(decodedElement);
-    index = calculateNextIndex(index, decodedElement, toDecode);
+    index = calculateNextIndex(index, decodedElement);
   }
 
   return decodedArry;
