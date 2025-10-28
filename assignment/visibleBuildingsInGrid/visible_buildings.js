@@ -1,4 +1,4 @@
-function convertAllStringIntoNumber(array) {
+function convertStringsToNumbers(array) {
   const numberArray = [];
   for (let index = 0; index < array.length; index++) {
     const currentElement = array[index];
@@ -8,11 +8,11 @@ function convertAllStringIntoNumber(array) {
   return numberArray;
 }
 
-function covertIntoMultiDimensionArray(grid) {
+function convertIntoMultiDimensionArray(grid) {
   const multiDGrid = [];
   for (let index = 0; index < grid.length; index++) {
     const currentElement = grid[index].split("");
-    const currentElementIntoNumber = convertAllStringIntoNumber(currentElement);
+    const currentElementIntoNumber = convertStringsToNumbers(currentElement);
 
     multiDGrid.push(currentElementIntoNumber);
   }
@@ -24,23 +24,56 @@ function isBorder(rows, row, cols, col) {
   return row === 0 || row === rows - 1 || col === 0 || col === cols - 1;
 }
 
-function calculateBorderNumber(multiDGrid) {
-  let borderCount = 0;
-  const rows = multiDGrid.length;
-  const cols = multiDGrid[0].length;
+function calculateNonZeroValue(array) {
+  let count = 0;
 
-  for (let row = 0; row < rows; row++) {
-    for (let col = 0; col < cols; col++) {
-      if (multiDGrid[row][col] !== 0 && isBorder(rows, row, cols, col)) {
-        borderCount++;
-      }
+  for (let index = 0; index < array.length; index++) {
+    if (array[index] !== 0) {
+      count++;
     }
   }
+
+  return count;
+}
+
+function calculateNonZeroForBorderRows(multiDgrid) {
+  const startNonZero = calculateNonZeroValue(multiDgrid[0]);
+  const endNonZero = calculateNonZeroValue(multiDgrid[multiDgrid.length - 1]);
+
+  return multiDgrid.length > 1 ? startNonZero + endNonZero : endNonZero;
+}
+
+function singleColNonZeroCount(multiDGrid) {
+  let count = 0;
+
+  for (let row = 1; row < multiDGrid.length - 1; row++) {
+    if (multiDGrid[row][0] !== 0) count++;
+  }
+
+  return count;
+}
+
+function multiColNonZeroCount(multiDGrid, cols) {
+  let count = 0;
+
+  for (let row = 1; row < multiDGrid.length - 1; row++) {
+    if (multiDGrid[row][0] !== 0) count++;
+    if (multiDGrid[row][cols - 1] !== 0) count++;
+  }
+
+  return count;
+}
+
+function calculateBorderNonZeroNumber(multiDGrid) {
+  const cols = multiDGrid[0].length;
+  let borderCount = calculateNonZeroForBorderRows(multiDGrid);
+
+  borderCount += cols > 1 ? multiColNonZeroCount(multiDGrid, cols) : singleColNonZeroCount(multiDGrid);
 
   return borderCount;
 }
 
-function checkInDirections(multiDGrid, row, col, directionIndex = 0) {
+function isBuildingVisible(multiDGrid, row, col, directionIndex = 0) {
   const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]];
   if (directionIndex >= directions.length) {
     return false;
@@ -56,7 +89,7 @@ function checkInDirections(multiDGrid, row, col, directionIndex = 0) {
     const checkCol = currentCol + directions[directionIndex][1];
 
     if (multiDGrid[checkRow][checkCol] >= multiDGrid[currentRow][currentCol]) {
-      return checkInDirections(multiDGrid, row, col, directionIndex + 1);
+      return isBuildingVisible(multiDGrid, row, col, directionIndex + 1);
     }
 
     currentRow = checkRow;
@@ -66,16 +99,24 @@ function checkInDirections(multiDGrid, row, col, directionIndex = 0) {
   return true;
 }
 
+function countVisibleBuildingsInRow(multiDGrid, row) {
+  let visibleBuildings = 0;
+
+  for (let col = 1; col < multiDGrid[row].length - 1; col++) {
+    if (multiDGrid[row][col] !== 0 && isBuildingVisible(multiDGrid, row, col)) {
+      visibleBuildings++;
+    }
+  }
+
+  return visibleBuildings;
+}
+
 function countVisibleBuildings(grid) {
-  const multiDGrid = covertIntoMultiDimensionArray(grid);
-  let visibleBuildings = calculateBorderNumber(multiDGrid);
+  const multiDGrid = convertIntoMultiDimensionArray(grid);
+  let visibleBuildings = calculateBorderNonZeroNumber(multiDGrid);
 
   for (let row = 1; row < multiDGrid.length - 1; row++) {
-    for (let col = 1; col < multiDGrid[row].length - 1; col++) {
-      if (multiDGrid[row][col] !== 0 && checkInDirections(multiDGrid, row, col)) {
-        visibleBuildings++;
-      }
-    }
+    visibleBuildings += countVisibleBuildingsInRow(multiDGrid, row);
   }
 
   return visibleBuildings;
