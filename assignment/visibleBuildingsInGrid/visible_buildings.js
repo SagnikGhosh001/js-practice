@@ -46,10 +46,12 @@ function checkInDirections(multiDGrid, row, col, directionIndex = 0) {
     return false;
   }
 
+  const rows = multiDGrid.length;
+  const cols = multiDGrid[0].length;
   let currentRow = row;
   let currentCol = col;
 
-  while (!isBorder(multiDGrid.length, currentRow, multiDGrid[0].length, currentCol)) {
+  while (!isBorder(rows, currentRow, cols, currentCol)) {
     const checkRow = currentRow + directions[directionIndex][0];
     const checkCol = currentCol + directions[directionIndex][1];
 
