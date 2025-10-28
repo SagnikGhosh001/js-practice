@@ -40,7 +40,7 @@ function calculateNonZeroForBorderRows(multiDgrid) {
   const startNonZero = calculateNonZeroValue(multiDgrid[0]);
   const endNonZero = calculateNonZeroValue(multiDgrid[multiDgrid.length - 1]);
 
-  return multiDgrid.length > 1 ? startNonZero + endNonZero : endNonZero;
+  return multiDgrid.length > 1 ? startNonZero + endNonZero : startNonZero;
 }
 
 function singleColNonZeroCount(multiDGrid) {
