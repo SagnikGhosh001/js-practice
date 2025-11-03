@@ -31,7 +31,7 @@ function encode(data) {
   return formatEncoding("l", encodeForArray(data), "e");
 }
 
-function getNextIndexOfChar(data, index, char = "e") {
+function getSegmentLastIndex(data, index, char = "e") {
   while (index < data.length) {
     if (data[index] === char) {
       return index;
@@ -41,7 +41,7 @@ function getNextIndexOfChar(data, index, char = "e") {
 }
 
 function getLastIndexofString(data, index) {
-  const colonIndex = getNextIndexOfChar(data, index, ":");
+  const colonIndex = getSegmentLastIndex(data, index, ":");
   const lengthOfString = parseInt(data.slice(index, colonIndex));
   const startIndex = colonIndex + 1;
   const endIndex = startIndex + lengthOfString;
@@ -50,7 +50,7 @@ function getLastIndexofString(data, index) {
 }
 
 function decodeForString(data) {
-  const colonIndex = getNextIndexOfChar(data, 0, ":");
+  const colonIndex = getSegmentLastIndex(data, 0, ":");
   const startIndex = colonIndex + 1;
   const endIndex = getLastIndexofString(data, 0);
 
@@ -68,17 +68,16 @@ function calculateNextIndex(index, decodedElement) {
   return index + encodedElement.length;
 }
 
-function getIndexOfE(data, index) {
-
+function getLastIndexOfArray(data, index) {
   while (index < data.length) {
     switch (data[index]) {
       case "e": return index;
       case "i": {
-        index = getNextIndexOfChar(data, index + 1) + 1;
+        index = getSegmentLastIndex(data, index + 1) + 1;
         break;
       }
       case "l": {
-        index = getIndexOfE(data, index + 1) + 1;
+        index = getLastIndexOfArray(data, index + 1) + 1;
         break;
       }
       default: {
@@ -93,10 +92,10 @@ function getIndexOfE(data, index) {
 function decodeForArray(data) {
   const decodedArry = [];
   let index = 1;
-  const lastE = getIndexOfE(data, index);
+  const endOfArray = getLastIndexOfArray(data, index);
 
-  while (index < lastE) {
-    const toDecode = data.slice(index, lastE);
+  while (index < endOfArray) {
+    const toDecode = data.slice(index, endOfArray);
     const decodedElement = decode(toDecode);
 
     decodedArry.push(decodedElement);
