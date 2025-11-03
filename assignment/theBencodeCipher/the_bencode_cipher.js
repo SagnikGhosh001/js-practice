@@ -40,25 +40,21 @@ function getSegmentLastIndex(data, index, char = "e") {
   }
 }
 
-function getColonAndStartIndex(data, index = 0) {
-  const colonIndex = getSegmentLastIndex(data, index, ":");
-  const startIndex = colonIndex + 1;
-  return [startIndex, colonIndex];
+function getNextIndexOfColon(data, index = 0) {
+  return getSegmentLastIndex(data, index, ":") + 1;
 }
 
 function getLastIndexofString(data, index) {
-  const combinedResult = getColonAndStartIndex(data, index);
-  const startIndex = combinedResult[0];
-  const colonIndex = combinedResult[1];
-  const lengthOfString = parseInt(data.slice(index, colonIndex));
-  const endIndex = startIndex + lengthOfString;
+  const nextIndexOfColon = getNextIndexOfColon(data, index);
+  const lengthOfString = parseInt(data.slice(index, nextIndexOfColon - 1));
+  const endIndex = nextIndexOfColon + lengthOfString;
 
   return endIndex;
 }
 
 function decodeForString(data) {
-  const startIndex = getColonAndStartIndex(data)[0];;
-  const endIndex = getLastIndexofString(data);
+  const startIndex = getNextIndexOfColon(data);
+  const endIndex = getLastIndexofString(data, 0);
 
   return data.slice(startIndex, endIndex);
 }
@@ -80,7 +76,7 @@ function getLastIndexOfArray(data, index) {
   if (data[index] === "e") return index;
 
   if (data[index] === "i") {
-    newIndex = getSegmentLastIndex(data, index + 1) + 1;
+    newIndex = getSegmentLastIndex(data, index) + 1;
   }
 
   if (data[index] === "l") {
@@ -186,6 +182,7 @@ function heading(string) {
 function testAllDecode() {
   console.log(heading("Decode"));
   testDecode("5:hello", "hello", "for string");
+  testDecode("5:h:llo", "h:llo", "colon in string");
   testDecode("0:", "", "for empty string");
   testDecode("16:special!@#$chars", "special!@#$chars", "for special char string");
   testDecode("i123e", 123, "for positive number");
@@ -199,12 +196,15 @@ function testAllDecode() {
   testDecode("li1ei2ei3eli34eei6ei9ee", [1, 2, 3, [34], 6, 9], "for complex nested array in middle");
   testDecode("li1ei2ei3eli34e5:hello1:eei6ei9ee", [1, 2, 3, [34, "hello", "e"], 6, 9], "for complex nested array in middle");
   testDecode("l5:hello11:hello worlde", ["hello", "hello world"], "for string with l");
+  testDecode("l5:h:llo11:hello worlde", ["h:llo", "hello world"], "for string with l");
+  testDecode("llllli123e3:abeeeeee", [[[[[123, "abe"]]]]], "for string with l");
   console.log();
 }
 
 function testAllEncode() {
   console.log(heading("Encode"));
   testEncode("hello", "5:hello", "for string");
+  testEncode("h:llo", "5:h:llo", "colon in string");
   testEncode("", "0:", "for empty string");
   testEncode("special!@#$chars", "16:special!@#$chars", "for special char string");
   testEncode(123, "i123e", "for positive number");
