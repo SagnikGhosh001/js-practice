@@ -40,19 +40,25 @@ function getSegmentLastIndex(data, index, char = "e") {
   }
 }
 
-function getLastIndexofString(data, index) {
+function getColonAndStartIndex(data, index = 0) {
   const colonIndex = getSegmentLastIndex(data, index, ":");
-  const lengthOfString = parseInt(data.slice(index, colonIndex));
   const startIndex = colonIndex + 1;
+  return [startIndex, colonIndex];
+}
+
+function getLastIndexofString(data, index) {
+  const combinedResult = getColonAndStartIndex(data, index);
+  const startIndex = combinedResult[0];
+  const colonIndex = combinedResult[1];
+  const lengthOfString = parseInt(data.slice(index, colonIndex));
   const endIndex = startIndex + lengthOfString;
 
   return endIndex;
 }
 
 function decodeForString(data) {
-  const colonIndex = getSegmentLastIndex(data, 0, ":");
-  const startIndex = colonIndex + 1;
-  const endIndex = getLastIndexofString(data, 0);
+  const startIndex = getColonAndStartIndex(data)[0];;
+  const endIndex = getLastIndexofString(data);
 
   return data.slice(startIndex, endIndex);
 }
@@ -69,24 +75,23 @@ function calculateNextIndex(index, decodedElement) {
 }
 
 function getLastIndexOfArray(data, index) {
-  while (index < data.length) {
-    switch (data[index]) {
-      case "e": return index;
-      case "i": {
-        index = getSegmentLastIndex(data, index + 1) + 1;
-        break;
-      }
-      case "l": {
-        index = getLastIndexOfArray(data, index + 1) + 1;
-        break;
-      }
-      default: {
-        index = getLastIndexofString(data, index);
-      }
-    }
+  let newIndex = 0;
+
+  if (data[index] === "e") return index;
+
+  if (data[index] === "i") {
+    newIndex = getSegmentLastIndex(data, index + 1) + 1;
   }
 
-  return index;
+  if (data[index] === "l") {
+    newIndex = getLastIndexOfArray(data, index + 1) + 1;
+  }
+
+  if (data[index] !== "l" && data[index] !== "i") {
+    newIndex = getLastIndexofString(data, index);
+  }
+
+  return getLastIndexOfArray(data, newIndex);
 }
 
 function decodeForArray(data) {
