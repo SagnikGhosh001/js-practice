@@ -16,7 +16,7 @@ function encodeForArray(array) {
 }
 
 function formatEncoding(start, middle, end) {
-  return start + middle + end;
+  return `${start}${middle}${end}`;
 }
 
 function encode(data) {
