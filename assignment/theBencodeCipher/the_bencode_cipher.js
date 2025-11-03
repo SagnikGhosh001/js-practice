@@ -31,11 +31,28 @@ function encode(data) {
   return formatEncoding("l", encodeForArray(data), "e");
 }
 
-function decodeForString(data) {
-  const colonIndex = data.indexOf(":");
-  const lengthOfString = parseInt(data.slice(0, colonIndex));
+function getNextIndexOfChar(data, index, char = "e") {
+  while (index < data.length) {
+    if (data[index] === char) {
+      return index;
+    }
+    index++;
+  }
+}
+
+function getLastIndexofString(data, index) {
+  const colonIndex = getNextIndexOfChar(data, index, ":");
+  const lengthOfString = parseInt(data.slice(index, colonIndex));
   const startIndex = colonIndex + 1;
   const endIndex = startIndex + lengthOfString;
+
+  return endIndex;
+}
+
+function decodeForString(data) {
+  const colonIndex = getNextIndexOfChar(data, 0, ":");
+  const startIndex = colonIndex + 1;
+  const endIndex = getLastIndexofString(data, 0);
 
   return data.slice(startIndex, endIndex);
 }
@@ -46,21 +63,40 @@ function decodeForNumber(data) {
   return parseInt(numberInStringFormat);
 }
 
-function calculateLengthOfNumber(number) {
-  return number === 0 ? 1 : Math.ceil(Math.log10(number + 1));
-}
-
 function calculateNextIndex(index, decodedElement) {
   const encodedElement = encode(decodedElement);
   return index + encodedElement.length;
 }
 
+function getIndexOfE(data, index) {
+
+  while (index < data.length) {
+    switch (data[index]) {
+      case "e": return index;
+      case "i": {
+        index = getNextIndexOfChar(data, index + 1) + 1;
+        break;
+      }
+      case "l": {
+        index = getIndexOfE(data, index + 1) + 1;
+        break;
+      }
+      default: {
+        index = getLastIndexofString(data, index);
+      }
+    }
+  }
+
+  return index;
+}
+
 function decodeForArray(data) {
   const decodedArry = [];
   let index = 1;
+  const lastE = getIndexOfE(data, index);
 
-  while (index < data.length - 1) {
-    const toDecode = data.slice(index, data.length - 1);
+  while (index < lastE) {
+    const toDecode = data.slice(index, lastE);
     const decodedElement = decode(toDecode);
 
     decodedArry.push(decodedElement);
@@ -156,6 +192,9 @@ function testAllDecode() {
   testDecode("li0e0:l4:testee", [0, "", ["test"]], "for mixed element array");
   testDecode("l3:onel3:twol5:threeeee", ["one", ["two", ["three"]]], "for nested array");
   testDecode("l3:onel3:twol5:threei12eeee", ["one", ["two", ["three", 12]]], "for complex nested array");
+  testDecode("li1ei2ei3eli34eei6ei9ee", [1, 2, 3, [34], 6, 9], "for complex nested array in middle");
+  testDecode("li1ei2ei3eli34e5:hello1:eei6ei9ee", [1, 2, 3, [34, "hello", "e"], 6, 9], "for complex nested array in middle");
+  testDecode("l5:hello11:hello worlde", ["hello", "hello world"], "for string with l");
   console.log();
 }
 
@@ -172,6 +211,8 @@ function testAllEncode() {
   testEncode(["", 0, []], "l0:i0elee", "for nested empty array");
   testEncode(["one", ["two", ["three"]]], "l3:onel3:twol5:threeeee", "for nested array");
   testEncode(["one", ["two", ["three", 12]]], "l3:onel3:twol5:threei12eeee", "for complex nested array");
+  testEncode([1, 2, 3, [34], 6, 9], "li1ei2ei3eli34eei6ei9ee", "for complex nested array in middle");
+  testEncode([1, 2, 3, [34, "hello", "e"], 6, 9], "li1ei2ei3eli34e5:hello1:eei6ei9ee", "for complex nested array in middle");
 }
 
 function main() {
