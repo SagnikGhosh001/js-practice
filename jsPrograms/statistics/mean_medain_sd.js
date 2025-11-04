@@ -19,7 +19,7 @@ function calculateSD(array, mean) {
 
   for (let index = 0; index < array.length; index++) {
     const difference = mean - array[index];
-    sum += Math.pow(difference, 2);
+    sum = sum + Math.pow(difference, 2);
   }
 
   return Math.sqrt(sum / array.length);
@@ -34,7 +34,7 @@ function calculateMean(array) {
   let mean = 0;
 
   for (let index = 0; index < array.length; index++) {
-    mean += array[index];
+    mean = mean + array[index];
   }
 
   return mean / array.length;
