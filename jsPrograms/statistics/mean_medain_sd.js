@@ -36,7 +36,7 @@ function sort(data) {
 
   for (let i = 0; i < sortedArray.length - 1; i++) {
     for (let j = i + 1; j < sortedArray.length; j++) {
-      if (sortedArray[i] < sortedArray[j]) {
+      if (sortedArray[i] > sortedArray[j]) {
         const temp = sortedArray[i];
         sortedArray[i] = sortedArray[j];
         sortedArray[j] = temp;
@@ -101,20 +101,20 @@ function calculateStats(playerName, data) {
 
 function testMatch() {
   formatHeading("Test Match");
-  calculateStats("Sachin", TEST_RUNS_OF_SACHIN, TEST_RUNS_OF_VIRAT);
-  calculateStats("Virat", TEST_RUNS_OF_SACHIN, TEST_RUNS_OF_VIRAT);
+  calculateStats("Sachin", TEST_RUNS_OF_SACHIN);
+  calculateStats("Virat", TEST_RUNS_OF_VIRAT);
 }
 
 function iplMatch() {
   formatHeading("Ipl Match");
-  calculateStats("Sachin", IPL_RUNS_OF_SACHIN, IPL_RUNS_OF_VIRAT);
-  calculateStats("Virat", IPL_RUNS_OF_SACHIN, IPL_RUNS_OF_VIRAT);
+  calculateStats("Sachin", IPL_RUNS_OF_SACHIN);
+  calculateStats("Virat", IPL_RUNS_OF_VIRAT);
 }
 
 function odiMatch() {
   formatHeading("ODI Match");
-  calculateStats("Sachin", ODI_RUNS_OF_SACHIN, ODI_RUNS_OF_VIRAT);
-  calculateStats("Virat", ODI_RUNS_OF_SACHIN, ODI_RUNS_OF_VIRAT);
+  calculateStats("Sachin", ODI_RUNS_OF_SACHIN);
+  calculateStats("Virat", ODI_RUNS_OF_VIRAT);
 }
 
 function main() {
