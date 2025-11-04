@@ -36,7 +36,7 @@ function sort(data) {
 
   for (let i = 0; i < sortedArray.length - 1; i++) {
     for (let j = i + 1; j < sortedArray.length; j++) {
-      if (sortedArray[i] > sortedArray[j]) {
+      if (sortedArray[i] < sortedArray[j]) {
         const temp = sortedArray[i];
         sortedArray[i] = sortedArray[j];
         sortedArray[j] = temp;
@@ -59,8 +59,9 @@ function calculateSD(data, mean) {
 }
 
 function calculateMedian(data) {
+  const sortedData = sort(data);
   const middleIndex = Math.floor(data.length / 2);
-  return data[middleIndex];
+  return sortedData[middleIndex];
 }
 
 function calculateMean(data) {
@@ -74,7 +75,7 @@ function calculateMean(data) {
 }
 
 function displayStats(name, median, mean, sd) {
-  formatHeading(name,"=");
+  formatHeading(name, "=");
   console.log("Median", median);
   console.log("mean", mean);
   console.log("sd", sd);
@@ -90,25 +91,36 @@ function formatHeading(text, char = "-") {
   console.log(`${text}\n${underline}`);
 }
 
-function calculateStats(matchType, dataOfSachin, dataOfVirat) {
-  formatHeading(matchType);
-  const sachinSortedScore = sort(dataOfSachin);
-  const viratSortedScore = sort(dataOfVirat);
-  const medianOfSachin = calculateMedian(sachinSortedScore);
-  const medianOfVirat = calculateMedian(viratSortedScore);
-  const meanOfSachin = calculateMean(sachinSortedScore);
-  const meanOfVirat = calculateMean(viratSortedScore);
-  const sdOfSachin = calculateSD(sachinSortedScore, meanOfSachin);
-  const sdOfVirat = calculateSD(viratSortedScore, meanOfVirat);
+function calculateStats(playerName, data) {
+  const median = calculateMedian(data);
+  const mean = calculateMean(data);
+  const sd = calculateSD(data, mean);
 
-  displayStats("Sachin", medianOfSachin, meanOfSachin, sdOfSachin);
-  displayStats("Virat", medianOfVirat, meanOfVirat, sdOfVirat);
+  displayStats(playerName, median, mean, sd);
+}
+
+function testMatch() {
+  formatHeading("Test Match");
+  calculateStats("Sachin", TEST_RUNS_OF_SACHIN, TEST_RUNS_OF_VIRAT);
+  calculateStats("Virat", TEST_RUNS_OF_SACHIN, TEST_RUNS_OF_VIRAT);
+}
+
+function iplMatch() {
+  formatHeading("Ipl Match");
+  calculateStats("Sachin", IPL_RUNS_OF_SACHIN, IPL_RUNS_OF_VIRAT);
+  calculateStats("Virat", IPL_RUNS_OF_SACHIN, IPL_RUNS_OF_VIRAT);
+}
+
+function odiMatch() {
+  formatHeading("ODI Match");
+  calculateStats("Sachin", ODI_RUNS_OF_SACHIN, ODI_RUNS_OF_VIRAT);
+  calculateStats("Virat", ODI_RUNS_OF_SACHIN, ODI_RUNS_OF_VIRAT);
 }
 
 function main() {
-  calculateStats("Test Match", TEST_RUNS_OF_SACHIN, TEST_RUNS_OF_VIRAT);
-  calculateStats("Ipl Match", IPL_RUNS_OF_SACHIN, IPL_RUNS_OF_VIRAT);
-  calculateStats("ODI Match", ODI_RUNS_OF_SACHIN, ODI_RUNS_OF_VIRAT);
+  testMatch();
+  iplMatch();
+  odiMatch();
 }
 
 main();
