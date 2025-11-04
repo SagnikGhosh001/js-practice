@@ -25,16 +25,8 @@ function calculateSD(array, mean) {
   return Math.sqrt(sum / array.length);
 }
 
-function isEven(number) {
-  return number % 2;
-}
-
-function getMiddleIndex(length) {
-  return isEven(length) ? length / 2 : Math.floor(length / 2);
-}
-
 function calculateMedian(array) {
-  const middleIndex = getMiddleIndex(array.length);
+  const middleIndex = Math.floor(array.length / 2);
   return array[middleIndex];
 }
 
