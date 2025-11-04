@@ -74,19 +74,19 @@ function calculateMean(data) {
 }
 
 function displayStats(name, median, mean, sd) {
-  console.log(name);
+  formatHeading(name,"=");
   console.log("Median", median);
   console.log("mean", mean);
   console.log("sd", sd);
   console.log("\n");
 }
 
-function putUnderline(text) {
-  return "-".repeat(text.length);
+function putStokeUnder(text, char) {
+  return char.repeat(text.length);
 }
 
-function formatHeading(text) {
-  const underline = putUnderline(text);
+function formatHeading(text, char = "-") {
+  const underline = putStokeUnder(text, char);
   console.log(`${text}\n${underline}`);
 }
 
