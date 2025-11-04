@@ -22,7 +22,7 @@ const ODI_RUNS_OF_SACHIN = [
   12, 114, 52, 0, 92, 7, 32, 76, 4, 48, 12, 56, 3, 8, 62, 0, 45, 14, 94, 7
 ];
 
-const ODI_RUNS_VIRAT = [
+const ODI_RUNS_OF_VIRAT = [
   67, 5, 31, 89, 12, 44, 2, 76, 14, 58, 3, 39, 101, 7, 22, 65, 0, 48, 9, 33,
   82, 16, 29, 4, 51, 18, 37, 6, 45, 11, 64, 2, 28, 75, 13, 40, 1, 52, 19, 36,
   117, 55, 8, 95, 4, 61, 0, 34, 71, 10,
@@ -81,40 +81,19 @@ function composeData(name, median, mean, sd) {
   console.log("\n");
 }
 
-function testMatch() {
-  console.log("Test match");
-  const sachinSortedScore = sort(TEST_RUNS_OF_SACHIN);
-  const viratSortedScore = sort(TEST_RUNS_OF_VIRAT);
-  const medianOfSachin = calculateMedian(sachinSortedScore);
-  const medianOfVirat = calculateMedian(viratSortedScore);
-  const meanOfSachin = calculateMean(sachinSortedScore);
-  const meanOfVirat = calculateMean(viratSortedScore);
-  const sdOfSachin = calculateSD(sachinSortedScore, meanOfSachin);
-  const sdOfVirat = calculateSD(viratSortedScore, meanOfVirat);
-
-  composeData("Sachin", medianOfSachin, meanOfSachin, sdOfSachin);
-  composeData("Virat", medianOfVirat, meanOfVirat, sdOfVirat);
+function putUnderline(text) {
+  return "-".repeat(text.length);
 }
 
-function iplMatch() {
-  console.log("Ipl match");
-  const sachinSortedScore = sort(IPL_RUNS_OF_SACHIN);
-  const viratSortedScore = sort(IPL_RUNS_OF_VIRAT);
-  const medianOfSachin = calculateMedian(sachinSortedScore);
-  const medianOfVirat = calculateMedian(viratSortedScore);
-  const meanOfSachin = calculateMean(sachinSortedScore);
-  const meanOfVirat = calculateMean(viratSortedScore);
-  const sdOfSachin = calculateSD(sachinSortedScore, meanOfSachin);
-  const sdOfVirat = calculateSD(viratSortedScore, meanOfVirat);
-
-  composeData("Sachin", medianOfSachin, meanOfSachin, sdOfSachin);
-  composeData("Virat", medianOfVirat, meanOfVirat, sdOfVirat);
+function formatHeading(text) {
+  const underline = putUnderline(text);
+  console.log(`${text}\n${underline}`);
 }
 
-function odiMatch() {
-  console.log("ODI match");
-  const sachinSortedScore = sort(ODI_RUNS_OF_SACHIN);
-  const viratSortedScore = sort(ODI_RUNS_VIRAT);
+function calculateStat(matchType, dataOfSachin, dataOfVirat) {
+  formatHeading(matchType);
+  const sachinSortedScore = sort(dataOfSachin);
+  const viratSortedScore = sort(dataOfVirat);
   const medianOfSachin = calculateMedian(sachinSortedScore);
   const medianOfVirat = calculateMedian(viratSortedScore);
   const meanOfSachin = calculateMean(sachinSortedScore);
@@ -127,9 +106,9 @@ function odiMatch() {
 }
 
 function main() {
-  testMatch();
-  iplMatch();
-  odiMatch();
+  calculateStat("Test Match", TEST_RUNS_OF_SACHIN, TEST_RUNS_OF_VIRAT);
+  calculateStat("Ipl Match", IPL_RUNS_OF_SACHIN, IPL_RUNS_OF_VIRAT);
+  calculateStat("ODI Match", ODI_RUNS_OF_SACHIN, ODI_RUNS_OF_VIRAT);
 }
 
 main();
