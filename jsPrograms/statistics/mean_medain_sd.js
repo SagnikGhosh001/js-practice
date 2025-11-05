@@ -64,7 +64,7 @@ function findMostFrequent(data) {
     }
   }
 
-  return mostFrequentElements;
+  return [mostFrequentElements, highestFrequency];
 }
 
 function sort(data) {
@@ -110,12 +110,12 @@ function calculateMean(data) {
   return mean / data.length;
 }
 
-function displayStats(name, median, mean, sd, mode) {
+function displayStats(name, median, mean, sd, mode, modeFrequency) {
   formatHeading(name, "=");
   console.log("Median", median);
   console.log("mean", mean);
   console.log("sd", sd);
-  console.log("mode", mode);
+  console.log("mode", mode, modeFrequency, "times");
   console.log("\n");
 }
 
@@ -132,9 +132,10 @@ function calculateStats(playerName, data) {
   const median = calculateMedian(data);
   const mean = calculateMean(data);
   const sd = calculateSD(data, mean);
-  const mode = findMostFrequent(data);
+  const mode = findMostFrequent(data)[0];
+  const modeFrequency = findMostFrequent(data)[1];
 
-  displayStats(playerName, median, mean, sd, mode);
+  displayStats(playerName, median, mean, sd, mode, modeFrequency);
 }
 
 function testMatch() {
