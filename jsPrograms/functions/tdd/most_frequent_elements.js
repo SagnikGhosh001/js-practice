@@ -14,26 +14,21 @@ function sort(data) {
   return sortedArray;
 }
 
-function calculateFrequeny(sum, value) {
-  return (sum / value) + 1;
-}
-
 function findAllFrequency(data) {
   const sortedData = sort(data);
   const frequencyOfElements = [];
-  let sum = 0;
   let highestFrequency = 0;
+  let count = 0;
 
   for (let index = 0; index < sortedData.length; index++) {
     const current = sortedData[index];
     const next = sortedData[index + 1];
-    sum += current;
+    count++;
 
     if (current !== next) {
-      const frequency = calculateFrequeny(sum, current);
-      frequencyOfElements.push([current, frequency]);
-      highestFrequency = Math.max(highestFrequency, frequency);
-      sum = 0;
+      frequencyOfElements.push([current, count]);
+      highestFrequency = Math.max(highestFrequency, count);
+      count = 0;
     }
   }
 
@@ -107,6 +102,10 @@ function main() {
   testFindMostFrequent([1, 2, 3], [1, 2, 3], "all element with one frequency");
   testFindMostFrequent([1, 2, 1, 2, 3, 3], [1, 2, 3], "all element with two frequency");
   testFindMostFrequent([1, 4, 2, 2, 1, 2, 3, 3], [2], "highest frequency");
+  testFindMostFrequent([0, 0, 0, 1], [0], "for 0");
+  testFindMostFrequent([0, 0, 0, 1, 1, 1], [0, 1], "for same no of 0 and 1");
+  testFindMostFrequent([0, 0, 0, -1, -1, -1], [-1, 0], "for negative");
+  testFindMostFrequent([0, 0, -1, -1, -1], [-1], "for negative");
 }
 
 main();
