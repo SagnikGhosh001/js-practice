@@ -53,8 +53,9 @@ function findAllFrequency(data) {
 }
 
 function findMostFrequent(data) {
-  const frequencyOfElements = findAllFrequency(data)[0];
-  const highestFrequency = findAllFrequency(data)[1];
+  const elementFrequencyAndHigeshtFrequency = findAllFrequency(data);
+  const frequencyOfElements = elementFrequencyAndHigeshtFrequency[0];
+  const highestFrequency = elementFrequencyAndHigeshtFrequency[1];
   const mostFrequentElements = [];
 
   for (let index = 0; index < frequencyOfElements.length; index++) {
@@ -132,8 +133,9 @@ function calculateStats(playerName, data) {
   const median = calculateMedian(data);
   const mean = calculateMean(data);
   const sd = calculateSD(data, mean);
-  const mode = findMostFrequent(data)[0];
-  const modeFrequency = findMostFrequent(data)[1];
+  const modeAndModeFrequency = findMostFrequent(data)
+  const mode = modeAndModeFrequency[0];
+  const modeFrequency = modeAndModeFrequency[1];
 
   displayStats(playerName, median, mean, sd, mode, modeFrequency);
 }
