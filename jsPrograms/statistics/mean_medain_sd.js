@@ -31,6 +31,22 @@ const ODI_RUNS_OF_VIRAT = [
   82, 16, 29, 4, 51, 18, 37, 6, 45, 11
 ];
 
+function sort(data) {
+  const sortedArray = data.slice();
+
+  for (let i = 0; i < sortedArray.length - 1; i++) {
+    for (let j = i + 1; j < sortedArray.length; j++) {
+      if (sortedArray[i] > sortedArray[j]) {
+        const temp = sortedArray[i];
+        sortedArray[i] = sortedArray[j];
+        sortedArray[j] = temp;
+      }
+    }
+  }
+
+  return sortedArray;
+}
+
 function findAllFrequency(data) {
   const sortedData = sort(data);
   const frequencyOfElements = [];
@@ -66,22 +82,6 @@ function findMostFrequent(data) {
   }
 
   return [mostFrequentElements, highestFrequency];
-}
-
-function sort(data) {
-  const sortedArray = data.slice();
-
-  for (let i = 0; i < sortedArray.length - 1; i++) {
-    for (let j = i + 1; j < sortedArray.length; j++) {
-      if (sortedArray[i] > sortedArray[j]) {
-        const temp = sortedArray[i];
-        sortedArray[i] = sortedArray[j];
-        sortedArray[j] = temp;
-      }
-    }
-  }
-
-  return sortedArray;
 }
 
 function calculateSD(data, mean) {
