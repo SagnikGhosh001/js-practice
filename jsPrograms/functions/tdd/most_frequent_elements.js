@@ -25,12 +25,14 @@ function findAllFrequency(data) {
   let highestFrequency = 0;
 
   for (let index = 0; index < sortedData.length; index++) {
-    if (sortedData[index] === sortedData[index + 1]) {
-      sum += sortedData[index];
-    } else {
-      const frequency = calculateFrequeny(sum, sortedData[index]);
-      highestFrequency = frequency > highestFrequency ? frequency : highestFrequency;
-      frequencyOfElements.push([sortedData[index], frequency]);
+    const current = sortedData[index];
+    const next = sortedData[index + 1];
+    sum += current;
+
+    if (current !== next) {
+      const frequency = calculateFrequeny(sum, current);
+      frequencyOfElements.push([current, frequency]);
+      highestFrequency = Math.max(highestFrequency, frequency);
       sum = 0;
     }
   }
