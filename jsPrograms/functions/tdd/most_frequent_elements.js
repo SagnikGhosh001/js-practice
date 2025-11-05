@@ -36,8 +36,9 @@ function findAllFrequency(data) {
 }
 
 function findMostFrequent(data) {
-  const frequencyOfElements = findAllFrequency(data)[0];
-  const highestFrequency = findAllFrequency(data)[1];
+  const elementFrequencyAndHigeshtFrequency = findAllFrequency(data);
+  const frequencyOfElements = elementFrequencyAndHigeshtFrequency[0];
+  const highestFrequency = elementFrequencyAndHigeshtFrequency[1];
   const mostFrequentElements = [];
 
   for (let index = 0; index < frequencyOfElements.length; index++) {
