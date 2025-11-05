@@ -31,6 +31,42 @@ const ODI_RUNS_OF_VIRAT = [
   82, 16, 29, 4, 51, 18, 37, 6, 45, 11
 ];
 
+function findAllFrequency(data) {
+  const sortedData = sort(data);
+  const frequencyOfElements = [];
+  let highestFrequency = 0;
+  let count = 0;
+
+  for (let index = 0; index < sortedData.length; index++) {
+    const current = sortedData[index];
+    const next = sortedData[index + 1];
+    count++;
+
+    if (current !== next) {
+      frequencyOfElements.push([current, count]);
+      highestFrequency = Math.max(highestFrequency, count);
+      count = 0;
+    }
+  }
+
+  return [frequencyOfElements, highestFrequency];
+}
+
+function findMostFrequent(data) {
+  const frequencyOfElements = findAllFrequency(data)[0];
+  const highestFrequency = findAllFrequency(data)[1];
+  const mostFrequentElements = [];
+
+  for (let index = 0; index < frequencyOfElements.length; index++) {
+    const currentElement = frequencyOfElements[index];
+    if (currentElement[1] === highestFrequency) {
+      mostFrequentElements.push(currentElement[0]);
+    }
+  }
+
+  return mostFrequentElements;
+}
+
 function sort(data) {
   const sortedArray = data.slice();
 
@@ -74,11 +110,12 @@ function calculateMean(data) {
   return mean / data.length;
 }
 
-function displayStats(name, median, mean, sd) {
+function displayStats(name, median, mean, sd, mode) {
   formatHeading(name, "=");
   console.log("Median", median);
   console.log("mean", mean);
   console.log("sd", sd);
+  console.log("mode", mode);
   console.log("\n");
 }
 
@@ -95,8 +132,9 @@ function calculateStats(playerName, data) {
   const median = calculateMedian(data);
   const mean = calculateMean(data);
   const sd = calculateSD(data, mean);
+  const mode = findMostFrequent(data);
 
-  displayStats(playerName, median, mean, sd);
+  displayStats(playerName, median, mean, sd, mode);
 }
 
 function testMatch() {
