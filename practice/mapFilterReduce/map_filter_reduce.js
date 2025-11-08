@@ -230,6 +230,216 @@ const QUESTION30 = [
   'Compute total weight.'
 ];
 
+const QUESTION31 = [
+  "### **31. School Snack List**",
+  "Snacks:",
+  [
+    ["idli", "vada"],
+    ["vada", "upma"]
+  ],
+  'Unique snacks served.'
+];
+
+const QUESTION32 = [
+  "### **32. Photo Contest Entries**",
+  "Photographers submit sets:",
+  [
+    ["sunset", "bird"],
+    ["river"],
+    ["sunset"]
+  ],
+  'List unique themes.'
+];
+
+const QUESTION33 = [
+  "### **33. Electricity Reading Validation**",
+  "Readings:",
+  [
+    [110, 115],
+    [118],
+    [109]
+  ],
+  'Check if all readings are below 120.'
+];
+
+const QUESTION34 = [
+  "### **34. Jogging Lap Count**",
+  "Laps:",
+  [
+    [2, 3, 2],
+    [1],
+    [4]
+  ],
+  'Compute total laps.'
+];
+
+const QUESTION35 = [
+  "### **35. Music Playlist Repeats**",
+  "Songs played:",
+  [
+    ["track1", "track2", "track1"]
+  ],
+  'Count occurrences of "track1".'
+];
+
+const QUESTION36 = [
+  "### **36. Café Order Ingredients**",
+  "Ingredients:",
+  [
+    ["cheese", "bread"],
+    ["tomato"],
+    ["bread"]
+  ],
+  'Unique ingredients needed.'
+];
+
+const QUESTION37 = [
+  "### **37. Student Poetry Words**",
+  "Word lists:",
+  [
+    ["sky", "blue"],
+    ["night"],
+    ["sky", "dark"]
+  ],
+  'List all unique words.'
+];
+
+const QUESTION38 = [
+  "### **38. Gift Box Items**",
+  "Items:",
+  [
+    ["toy", "sticker"],
+    ["candy", "sticker"]
+  ],
+  'List unique items used.'
+];
+
+const QUESTION39 = [
+  "### **39. Gym Routine Count**",
+  "Routine counts:",
+  [
+    [6, 4],
+    [3, 2]
+  ],
+  'Total counts.'
+];
+
+
+const QUESTION40 = [
+  "### **40. Fish Tank Measurements**",
+  "Measurements:",
+  [
+    [5, 61],
+    [7],
+    [6]
+  ],
+  'Check if any measurement is above 7.'
+];
+
+const QUESTION41 = [
+  "### **41. Candy Distribution**",
+  "Candy numbers:",
+  [
+    [1, 2, 3],
+    [2]
+  ],
+  'Sum all candies.'
+];
+
+const QUESTION42 = [
+  "### **42. Workshop Attendance**",
+  "Participants:",
+  [
+    ["Tom", "Jerry"],
+    ["Jerry", "Spike"]
+  ],
+  'List unique participants.'
+];
+
+const QUESTION43 = [
+  "### **43. Space Camp Star Names**",
+  "Stars named:",
+  [
+    ["Vega", "Sirius"],
+    ["Vega", "Rigel"]
+  ],
+  'Unique star names.'
+];
+
+const QUESTION44 = [
+  "### **44. Train Car Passenger Check**",
+  "Counts:",
+  [
+    [10, 12],
+    [15]
+  ],
+  'Total passengers.'
+];
+
+const QUESTION45 = [
+  "### **45. Weekly Grocery Tally**",
+  "Quantities:",
+  [
+    [3, 5],
+    [2, 1]
+  ],
+  'Find the total.'
+];
+
+const QUESTION46 = [
+  "### **46. Tea Tasting Flavors**",
+  "Flavors:",
+  [
+    ["mint", "ginger"],
+    ["lemon"],
+    ["mint"]
+  ],
+  'Unique flavors.'
+];
+
+const QUESTION47 = [
+  "### **47. Photography Exposure Values**",
+  "Values:",
+  [
+    [2, 3],
+    [1],
+    [4, 2]
+  ],
+  'Check if any value equals 4.'
+];
+
+const QUESTION48 = [
+  "### **48. Drawing Class Tools**",
+  "Tools:",
+  [
+    ["pencil", "charcoal"],
+    ["ink"],
+    ["pencil"]
+  ],
+  'Unique tools used.'
+];
+
+const QUESTION49 = [
+  "### **49. Coin Collection Tally**",
+  "Coins collected:",
+  [
+    [1, 1, 2],
+    [2, 1]
+  ],
+  'Total coins.'
+];
+
+const QUESTION50 = [
+  "### **50. Cooking Class Spices**",
+  "Spices:",
+  [
+    ["salt", "pepper"],
+    ["turmeric"],
+    ["salt"]
+  ],
+  'Unique spices.'
+];
+
 const count = (result, element, toCount) => {
   return result += element === toCount ? 1 : 0;
 }
@@ -251,6 +461,26 @@ const hasMatch = (element, matchingElement) => {
 
 const isTemperatureUnder32 = (element) => {
   return element < 32;
+}
+
+const isBelow120 = (element) => {
+  return element < 120;
+}
+
+const isDistinct = (element, index, array) => {
+  return !array.some((ele, i) => ele === element && index !== i);
+}
+
+const isPositive = (element) => {
+  return element > 0;
+}
+
+const isABove7 = (element) => {
+  return element > 7;
+}
+
+const isEquals4 = (element) => {
+  return element === 4;
 }
 
 const question1Answear = (data, helper) => {
@@ -353,12 +583,112 @@ const question25Answear = (data, helper) => {
   return data.flat(Infinity).reduce(helper, []);
 }
 
-const showReuslt = (description, functionToUse, helper) => {
-  const data = description[2];
-  console.log(description[0]);
-  console.log(description[1]);
+const question26Answear = (data, helper) => {
+  return data.flat(Infinity).reduce(helper, 0);
+}
+
+const question27Answear = (data, helper) => {
+  return data.flat(Infinity).filter(helper);
+}
+
+const question28Answear = (data, helper) => {
+  return data.flat(Infinity).reduce(helper, 0);
+}
+
+const question29Answear = (data, helper) => {
+  return data.flat(Infinity).every(helper);
+}
+
+const question30Answear = (data, helper) => {
+  return data.flat(Infinity).reduce(helper, 0);
+}
+
+const question31Answear = (data, helper) => {
+  return data.flat(Infinity).filter(helper);
+}
+
+const question32Answear = (data, helper) => {
+  return data.flat(Infinity).filter(helper);
+}
+
+const question33Answear = (data, helper) => {
+  return data.flat(Infinity).every(helper);
+}
+
+const question34Answear = (data, helper) => {
+  return data.flat(Infinity).reduce(helper, 0);
+}
+
+const question35Answear = (data, helper) => {
+  return data.flat(Infinity).reduce((acc, ele) => helper(acc, ele, "track1"), 0);
+}
+
+const question36Answear = (data, helper) => {
+  return data.flat(Infinity).filter(helper, 0);
+}
+
+const question37Answear = (data, helper) => {
+  return data.flat(Infinity).filter(helper, 0);
+}
+
+const question38Answear = (data, helper) => {
+  return data.flat(Infinity).filter(helper, 0);
+}
+
+const question39Answear = (data, helper) => {
+  return data.flat(Infinity).reduce(helper, 0);
+}
+
+const question40Answear = (data, helper) => {
+  return data.flat(Infinity).some(helper);
+}
+
+const question41Answear = (data, helper) => {
+  return data.flat(Infinity).reduce(helper, 0);
+}
+
+const question42Answear = (data, helper) => {
+  return data.flat(Infinity).filter(helper);
+}
+
+const question43Answear = (data, helper) => {
+  return data.flat(Infinity).filter(helper);
+}
+
+const question44Answear = (data, helper) => {
+  return data.flat(Infinity).reduce(helper, 0);
+}
+
+const question45Answear = (data, helper) => {
+  return data.flat(Infinity).reduce(helper, 0);
+}
+
+const question46Answear = (data, helper) => {
+  return data.flat(Infinity).filter(helper);
+}
+
+const question47Answear = (data, helper) => {
+  return data.flat(Infinity).some(helper);
+}
+
+const question48Answear = (data, helper) => {
+  return data.flat(Infinity).filter(helper);
+}
+
+const question49Answear = (data, helper) => {
+  return data.flat(Infinity).reduce(helper, 0);
+}
+
+const question50Answear = (data, helper) => {
+  return data.flat(Infinity).filter(helper);
+}
+
+const showReuslt = (question, functionToUse, helper) => {
+  const data = question[2];
+  console.log(question[0]);
+  console.log(question[1]);
   console.log(data);
-  console.log(description[3]);
+  console.log(question[3]);
   const result = functionToUse(data, helper)
   console.log("result", result);
 }
@@ -389,6 +719,31 @@ const QUESTIONWITHSOLUTION = [
   [QUESTION23, question23Answear, removeDuplicate],
   [QUESTION24, question24Answear, count],
   [QUESTION25, question25Answear, removeDuplicate],
+  [QUESTION26, question26Answear, sum],
+  [QUESTION27, question27Answear, isDistinct],
+  [QUESTION28, question28Answear, sum],
+  [QUESTION29, question29Answear, isPositive],
+  [QUESTION30, question30Answear, sum],
+  [QUESTION31, question31Answear, isDistinct],
+  [QUESTION32, question32Answear, isDistinct],
+  [QUESTION33, question33Answear, isBelow120],
+  [QUESTION34, question34Answear, sum],
+  [QUESTION35, question35Answear, count],
+  [QUESTION36, question36Answear, isDistinct],
+  [QUESTION37, question37Answear, isDistinct],
+  [QUESTION38, question38Answear, isDistinct],
+  [QUESTION39, question39Answear, sum],
+  [QUESTION40, question40Answear, isABove7],
+  [QUESTION41, question41Answear, sum],
+  [QUESTION42, question42Answear, isDistinct],
+  [QUESTION43, question43Answear, isDistinct],
+  [QUESTION44, question44Answear, sum],
+  [QUESTION45, question45Answear, sum],
+  [QUESTION46, question46Answear, isDistinct],
+  [QUESTION47, question47Answear, isEquals4],
+  [QUESTION48, question48Answear, isDistinct],
+  [QUESTION49, question49Answear, sum],
+  [QUESTION50, question50Answear, isDistinct],
 ];
 
 const solution = () => {
