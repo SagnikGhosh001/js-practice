@@ -902,9 +902,7 @@ const removeDuplicate = (uniqueElements, element) => {
 
 const add = (sum, element) => sum + element;
 
-
 const hasMatch = (element, elementToMatch) => element === elementToMatch;
-
 
 const isBelow = (element, threshold) => element < threshold;
 
@@ -914,9 +912,7 @@ const isDistinct = (element, index, array) => {
 
 const isAbove = (element, threshold) => element > threshold;
 
-
 const isEquals = (element, threshold) => element === threshold;
-
 
 const reverse = (reversedElements, element) => {
   reversedElements.unshift(element);
@@ -946,9 +942,7 @@ const isSumEquals = (ele, threshold) => ele.reduce(add, 0) === threshold;
 
 const toLowerCase = (ele) => ele.toLowerCase();
 
-
 const isSkippedAll = (ele) => ele.every(ele => ele === 0);
-
 
 const solutionForCount = (array, reducer, initialValue, elemetnToCount) => {
   return array.flatMap(x => x).reduce((count, element) => reducer(count, element, elemetnToCount), initialValue);
