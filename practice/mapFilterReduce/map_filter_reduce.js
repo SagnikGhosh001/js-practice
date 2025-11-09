@@ -440,6 +440,228 @@ const QUESTION50 = [
   'Unique spices.'
 ];
 
+const QUESTION51 = [
+  "### **51. Count how many times “banana” appears in a fruit log**",
+  "Fruit log:",
+  [
+    "apple", "banana", "orange", "banana",
+    "grape", "banana", "kiwi"
+  ],
+  'Count of "banana".'
+];
+
+const QUESTION52 = [
+  "### **52. Combine all words written by students on three worksheets**",
+  "Worksheets:",
+  [
+    ["hello", "world", "cat"],
+    ["dog", "hello", "sun"],
+    ["moon", "cat", "jump"]
+  ],
+  'All words combined.'
+];
+
+const QUESTION53 = [
+  "### **53. Determine whether any student wrote the word “excellent”**",
+  "Student responses:",
+  [
+    ["good", "great", "awesome"],
+    ["excellent", "okay"],
+    ["fine", "nice"]
+  ],
+  'True if any student wrote "excellent".'
+];
+
+const QUESTION54 = [
+  "### **54. Check whether all recorded rainfall values are under 50**",
+  "Rainfall (mm):",
+  [12, 45, 23, 38, 49, 15, 42],
+  'True if all values < 50.'
+];
+
+const QUESTION55 = [
+  "### **55. Produce a list of unique movie genres mentioned by a club**",
+  "Genres by members:",
+  [
+    ["drama", "comedy"],
+    ["action", "comedy", "thriller"],
+    ["drama", "sci-fi"]
+  ],
+  'Unique genres.'
+];
+
+const QUESTION56 = [
+  "### **56. Compute the total number of pushups done in all sessions**",
+  "Pushup sessions:",
+  [25, 30, 20, 35, 40],
+  'Total pushups.'
+];
+
+const QUESTION57 = [
+  "### **57. Create a list of all unique bird species spotted on a trip**",
+  "Bird sightings:",
+  [
+    ["sparrow", "eagle", "sparrow"],
+    ["owl", "hawk"],
+    ["eagle", "sparrow", "kiwi"]
+  ],
+  'Unique bird species.'
+];
+
+const QUESTION58 = [
+  "### **58. Count how many tiles in a mosaic were listed as “red”**",
+  "Tile colors:",
+  ["blue", "red", "green", "red", "yellow", "red", "blue"],
+  'Count of "red" tiles.'
+];
+
+const QUESTION59 = [
+  "### **59. Sum all distances covered during cycling practice**",
+  "Distances (km):",
+  [12.5, 18, 15.3, 22, 19.7],
+  'Total distance.'
+];
+
+const QUESTION60 = [
+  "### **60. List unique flavors tried in an ice-cream tasting event**",
+  "Flavors tasted:",
+  [
+    ["vanilla", "chocolate", "strawberry"],
+    ["mint", "chocolate", "vanilla"],
+    ["cookie dough", "mango"]
+  ],
+  'Unique ice-cream flavors.'
+];
+
+const QUESTION61 = [
+  "### **61. Check if any participant scored above 90 in tests**",
+  "Test scores:",
+  [78, 92, 85, 88, 95, 76],
+  'True if any score > 90.'
+];
+
+const QUESTION62 = [
+  "### **62. Verify if all ages listed for an event are 18 or above**",
+  "Ages of attendees:",
+  [19, 21, 18, 25, 17, 20, 22],
+  'True if all ages >= 18.'
+];
+
+const QUESTION63 = [
+  "### **63. Combine the ingredients from all recipe attempts**",
+  "Recipe attempts:",
+  [
+    ["flour", "sugar", "eggs"],
+    ["butter", "flour", "milk"],
+    ["sugar", "eggs", "vanilla"]
+  ],
+  'All ingredients combined.'
+];
+
+const QUESTION64 = [
+  "### **64. Reverse the order of dance steps recorded by a choreographer**",
+  "Dance steps:",
+  ["step", "turn", "jump", "spin", "slide", "kick"],
+  'Steps in reverse order.'
+];
+
+const QUESTION65 = [
+  "### **65. Build a frequency summary of words used in a poem draft**",
+  "Poem draft words:",
+  ["moon", "star", "night", "moon", "light", "star", "dream", "night"],
+  'Object with word frequencies.'
+];
+
+const QUESTION66 = [
+  "### **66. Determine whether the note “fa” appears in any music sheet**",
+  "Music sheets:",
+  [
+    ["do", "re", "mi", "fa"],
+    ["sol", "la", "ti"],
+    ["re", "mi", "fa", "sol"]
+  ],
+  'True if "fa" appears in any sheet.'
+];
+
+const QUESTION67 = [
+  "### **67. Sum all weights of parcels recorded in a courier office**",
+  "Parcel weights (kg):",
+  [2.5, 1.8, 3.2, 0.9, 4.1, 2.7],
+  'Total weight.'
+];
+
+const QUESTION68 = [
+  "### **68. List distinct toppings chosen by pizza customers**",
+  "Customer orders:",
+  [
+    ["pepperoni", "mushrooms"],
+    ["olives", "pepperoni", "cheese"],
+    ["mushrooms", "onions", "olives"]
+  ],
+  'Unique toppings.'
+];
+
+const QUESTION69 = [
+  "### **69. Count how many times a student reread a particular chapter**",
+  "Reading log (chapter names):",
+  ["ch1", "ch2", "ch1", "ch3", "ch1", "ch2", "ch1"],
+  'Count of "ch1".'
+];
+
+const QUESTION70 = [
+  "### **70. Combine all color swatches from three design sets**",
+  "Design sets (color names):",
+  [
+    ["orange-red", "lime green", "bright blue"],
+    ["golden yellow", "orange-red", "crimson red"],
+    ["lime green", "deep red"]
+  ],
+  'All colors combined.'
+];
+
+const QUESTION71 = [
+  "### **71. Check if any experiment reading reached the maximum threshold of 100**",
+  "Experiment readings:",
+  [85, 92, 100, 78, 95],
+  'Did any reading hit 100?'
+];
+
+const QUESTION72 = [
+  "### **72. Confirm that every participant completed at least one task**",
+  "Tasks completed per participant:",
+  [3, 1, 4, 2, 1],
+  'Did every participant complete at least one task?'
+];
+
+const QUESTION73 = [
+  "### **73. List all unique destinations selected in the travel club survey**",
+  "Survey responses (destinations):",
+  [
+    ["Paris", "Tokyo", "New York"],
+    ["Tokyo", "Bali", "Paris"],
+    ["Cape Town", "Bali"]
+  ],
+  'All unique destinations.'
+];
+
+const QUESTION74 = [
+  "### **74. Calculate the total hours spent practicing an instrument**",
+  "Practice sessions (hours):",
+  [2.5, 3, 1.5, 4, 2],
+  'Total practice hours.'
+];
+
+const QUESTION75 = [
+  "### **75. Identify all distinct types of plants recorded during fieldwork**",
+  "Field notes (plant types):",
+  [
+    ["Fern", "Orchid", "Cactus"],
+    ["Orchid", "Rose", "Fern"],
+    ["Bamboo", "Cactus"]
+  ],
+  'All distinct plant types.'
+];
+
 const count = (result, element, toCount) => {
   return result += element === toCount ? 1 : 0;
 }
@@ -483,6 +705,49 @@ const isEquals4 = (element) => {
   return element === 4;
 }
 
+const isExcellent = (element) => {
+  return element === "excellent";
+}
+
+const isUnder50 = (element) => {
+  return element < 50;
+}
+
+const isGreater90 = (element) => {
+  return element > 90;
+}
+
+const isAbove100 = (element) => {
+  return element >= 100;
+}
+
+const isAbove1 = (element) => {
+  return element >= 1;
+}
+
+const isGreater18 = (element) => {
+  return element >= 18;
+}
+
+const reverse = (reverse, element) => {
+  reverse.unshift(element);
+  return reverse;
+}
+
+const frequency = (frequency, element) => {
+  if (!frequency.some(ele => element === ele[0])) {
+    frequency.push([element, 1]);
+    return frequency;
+  }
+
+  const index = frequency.reduce((acc, ele, index) => {
+    return ele[0] === element ? index : acc
+  }, 0)
+
+  frequency[index][1] += 1;
+  return frequency;
+}
+
 const question1Answear = (data, helper) => {
   return data.reduce((count, element) => helper(count, element, "blue"), 0);
 }
@@ -496,27 +761,27 @@ const question3Answear = (data, helper) => {
 }
 
 const question4Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, []);
+  return data.flat().reduce(helper, []);
 }
 
 const question5Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, 0);
+  return data.flat().reduce(helper, 0);
 }
 
 const question6Answear = (data, helper) => {
-  return data.flat(Infinity).some(ele => helper(ele, "do"));
+  return data.flat().some(ele => helper(ele, "do"));
 }
 
 const question7Answear = (data, helper) => {
-  return data.flat(Infinity).every(helper);
+  return data.flat().every(helper);
 }
 
 const question8Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, 0);
+  return data.flat().reduce(helper, 0);
 }
 
 const question9Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, []);
+  return data.flat().reduce(helper, []);
 }
 
 const question10Answear = (data, helper) => {
@@ -524,163 +789,263 @@ const question10Answear = (data, helper) => {
 }
 
 const question11Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, []);
+  return data.flat().reduce(helper, []);
 }
 
 const question12Answear = (data, helper) => {
-  return data.flat(Infinity).some(ele => helper(ele, "so"));
+  return data.flat().some(ele => helper(ele, "so"));
 }
 
 const question13Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper);
+  return data.flat().reduce(helper);
 }
 
 const question14Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, []);
+  return data.flat().reduce(helper, []);
 }
 
 const question15Answear = (data, helper) => {
-  return data.flat(Infinity).reduce((count, element) => helper(count, element, "deer"), 0);
+  return data.flat().reduce((count, element) => helper(count, element, "deer"), 0);
 }
 
 const question16Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, []);
+  return data.flat().reduce(helper, []);
 }
 
 const question17Answear = (data, helper) => {
-  return data.flat(Infinity).some(ele => helper(ele, "turn"));
+  return data.flat().some(ele => helper(ele, "turn"));
 }
 
 const question18Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper);
+  return data.flat().reduce(helper);
 }
 
 const question19Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper);
+  return data.flat().reduce(helper);
 }
 
 const question20Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, []);
+  return data.flat().reduce(helper, []);
 }
 
 const question21Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper);
+  return data.flat().reduce(helper);
 }
 
 const question22Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, []);
+  return data.flat().reduce(helper, []);
 }
 
 const question23Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, []);
+  return data.flat().reduce(helper, []);
 }
 
 const question24Answear = (data, helper) => {
-  return data.flat(Infinity).reduce((count, element) => helper(count, element, "chocolate"), 0);;
+  return data.flat().reduce((count, element) => helper(count, element, "chocolate"), 0);;
 }
 
 const question25Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, []);
+  return data.flat().reduce(helper, []);
 }
 
 const question26Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, 0);
+  return data.flat().reduce(helper, 0);
 }
 
 const question27Answear = (data, helper) => {
-  return data.flat(Infinity).filter(helper);
+  return data.flat().filter(helper);
 }
 
 const question28Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, 0);
+  return data.flat().reduce(helper, 0);
 }
 
 const question29Answear = (data, helper) => {
-  return data.flat(Infinity).every(helper);
+  return data.flat().every(helper);
 }
 
 const question30Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, 0);
+  return data.flat().reduce(helper, 0);
 }
 
 const question31Answear = (data, helper) => {
-  return data.flat(Infinity).filter(helper);
+  return data.flat().filter(helper);
 }
 
 const question32Answear = (data, helper) => {
-  return data.flat(Infinity).filter(helper);
+  return data.flat().filter(helper);
 }
 
 const question33Answear = (data, helper) => {
-  return data.flat(Infinity).every(helper);
+  return data.flat().every(helper);
 }
 
 const question34Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, 0);
+  return data.flat().reduce(helper, 0);
 }
 
 const question35Answear = (data, helper) => {
-  return data.flat(Infinity).reduce((acc, ele) => helper(acc, ele, "track1"), 0);
+  return data.flat().reduce((acc, ele) => helper(acc, ele, "track1"), 0);
 }
 
 const question36Answear = (data, helper) => {
-  return data.flat(Infinity).filter(helper, 0);
+  return data.flat().filter(helper, 0);
 }
 
 const question37Answear = (data, helper) => {
-  return data.flat(Infinity).filter(helper, 0);
+  return data.flat().filter(helper, 0);
 }
 
 const question38Answear = (data, helper) => {
-  return data.flat(Infinity).filter(helper, 0);
+  return data.flat().filter(helper, 0);
 }
 
 const question39Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, 0);
+  return data.flat().reduce(helper, 0);
 }
 
 const question40Answear = (data, helper) => {
-  return data.flat(Infinity).some(helper);
+  return data.flat().some(helper);
 }
 
 const question41Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, 0);
+  return data.flat().reduce(helper, 0);
 }
 
 const question42Answear = (data, helper) => {
-  return data.flat(Infinity).filter(helper);
+  return data.flat().filter(helper);
 }
 
 const question43Answear = (data, helper) => {
-  return data.flat(Infinity).filter(helper);
+  return data.flat().filter(helper);
 }
 
 const question44Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, 0);
+  return data.flat().reduce(helper, 0);
 }
 
 const question45Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, 0);
+  return data.flat().reduce(helper, 0);
 }
 
 const question46Answear = (data, helper) => {
-  return data.flat(Infinity).filter(helper);
+  return data.flat().filter(helper);
 }
 
 const question47Answear = (data, helper) => {
-  return data.flat(Infinity).some(helper);
+  return data.flat().some(helper);
 }
 
 const question48Answear = (data, helper) => {
-  return data.flat(Infinity).filter(helper);
+  return data.flat().filter(helper);
 }
 
 const question49Answear = (data, helper) => {
-  return data.flat(Infinity).reduce(helper, 0);
+  return data.flat().reduce(helper, 0);
 }
 
 const question50Answear = (data, helper) => {
-  return data.flat(Infinity).filter(helper);
+  return data.flat().filter(helper);
+}
+
+const question51Answear = (data, helper) => {
+  return data.flat().reduce((acc, ele) => helper(acc, ele, "banana"), 0);
+}
+
+const question52Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question53Answear = (data, helper) => {
+  return data.flat().some(helper);
+}
+
+const question54Answear = (data, helper) => {
+  return data.flat().every(helper);
+}
+
+const question55Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question56Answear = (data, helper) => {
+  return data.flat().reduce(helper, 0);
+}
+
+const question57Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question58Answear = (data, helper) => {
+  return data.flat().reduce((acc, ele) => helper(acc, ele, "red"), 0);
+}
+
+const question59Answear = (data, helper) => {
+  return data.flat().reduce(helper, 0);
+}
+
+const question60Answear = (data, helper) => {
+  return data.flat().filter(helper);
+}
+
+const question61Answear = (data, helper) => {
+  return data.flat().some(helper);
+}
+
+const question62Answear = (data, helper) => {
+  return data.flat().every(helper);
+}
+
+const question63Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question64Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question65Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question66Answear = (data, helper) => {
+  return data.flat().some(ele => helper(ele, "fa"));
+}
+
+const question67Answear = (data, helper) => {
+  return data.flat().reduce(helper, 0);
+}
+
+const question68Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question69Answear = (data, helper) => {
+  return data.flat().reduce((acc, ele) => helper(acc, ele, "ch1"), 0);
+}
+
+const question70Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question71Answear = (data, helper) => {
+  return data.flat().some(helper);
+}
+
+const question72Answear = (data, helper) => {
+  return data.flat().every(helper);
+}
+
+const question73Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question74Answear = (data, helper) => {
+  return data.flat().reduce(helper, 0);
+}
+
+const question75Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
 }
 
 const showReuslt = (question, functionToUse, helper) => {
@@ -695,7 +1060,7 @@ const showReuslt = (question, functionToUse, helper) => {
 
 const QUESTIONWITHSOLUTION = [
   [QUESTION1, question1Answear, count],
-  [QUESTION2, question2Answear, Infinity],
+  [QUESTION2, question2Answear, 1],
   [QUESTION3, question3Answear, removeDuplicate],
   [QUESTION4, question4Answear, removeDuplicate],
   [QUESTION5, question5Answear, sum],
@@ -744,6 +1109,31 @@ const QUESTIONWITHSOLUTION = [
   [QUESTION48, question48Answear, isDistinct],
   [QUESTION49, question49Answear, sum],
   [QUESTION50, question50Answear, isDistinct],
+  [QUESTION51, question51Answear, count],
+  [QUESTION52, question52Answear, removeDuplicate],
+  [QUESTION53, question53Answear, isExcellent],
+  [QUESTION54, question54Answear, isUnder50],
+  [QUESTION55, question55Answear, removeDuplicate],
+  [QUESTION56, question56Answear, sum],
+  [QUESTION57, question57Answear, removeDuplicate],
+  [QUESTION58, question58Answear, count],
+  [QUESTION59, question59Answear, sum],
+  [QUESTION60, question60Answear, isDistinct],
+  [QUESTION61, question61Answear, isGreater90],
+  [QUESTION62, question62Answear, isGreater18],
+  [QUESTION63, question63Answear, removeDuplicate],
+  [QUESTION64, question64Answear, reverse],
+  [QUESTION65, question65Answear, frequency],
+  [QUESTION66, question66Answear, hasMatch],
+  [QUESTION67, question67Answear, sum],
+  [QUESTION68, question68Answear, removeDuplicate],
+  [QUESTION69, question69Answear, count],
+  [QUESTION70, question70Answear, removeDuplicate],
+  [QUESTION71, question71Answear, isAbove100],
+  [QUESTION72, question72Answear, isAbove1],
+  [QUESTION73, question73Answear, removeDuplicate],
+  [QUESTION74, question74Answear, sum],
+  [QUESTION75, question75Answear, removeDuplicate],
 ];
 
 const solution = () => {
