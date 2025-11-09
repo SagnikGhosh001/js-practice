@@ -1015,344 +1015,84 @@ const isSkippedAll = (ele) => {
   return ele.every(ele => ele === 0);
 }
 
-const question1Answear = (data, helper) => {
-  return data.reduce((count, element) => helper(count, element, "blue"), 0);
-}
-
 const question2Answear = (data, helper) => {
   return data.flat(helper);
 }
 
-const question3Answear = (data, helper) => {
-  return data.reduce(helper, []);
-}
-
-const question4Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question5Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question6Answear = (data, helper) => {
-  return data.flat().some(ele => helper(ele, "do"));
-}
-
 const question7Answear = (data, helper) => {
-  return data.flat().every(helper);
-}
-
-const question8Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question9Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question10Answear = (data, helper) => {
-  return data.reduce((count, element) => helper(count, element, "Dune"), 0);
-}
-
-const question11Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question12Answear = (data, helper) => {
-  return data.flat().some(ele => helper(ele, "so"));
-}
-
-const question13Answear = (data, helper) => {
-  return data.flat().reduce(helper);
-}
-
-const question14Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question15Answear = (data, helper) => {
-  return data.flat().reduce((count, element) => helper(count, element, "deer"), 0);
-}
-
-const question16Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question17Answear = (data, helper) => {
-  return data.flat().some(ele => helper(ele, "turn"));
-}
-
-const question18Answear = (data, helper) => {
-  return data.flat().reduce(helper);
-}
-
-const question19Answear = (data, helper) => {
-  return data.flat().reduce(helper);
-}
-
-const question20Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question21Answear = (data, helper) => {
-  return data.flat().reduce(helper);
-}
-
-const question22Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question23Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question24Answear = (data, helper) => {
-  return data.flat().reduce((count, element) => helper(count, element, "chocolate"), 0);;
-}
-
-const question25Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question26Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question27Answear = (data, helper) => {
-  return data.flat().filter(helper);
-}
-
-const question28Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
+  return data.flatMap(ele => ele).every(helper);
 }
 
 const question29Answear = (data, helper) => {
-  return data.flat().every(helper);
-}
-
-const question30Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question31Answear = (data, helper) => {
-  return data.flat().filter(helper);
-}
-
-const question32Answear = (data, helper) => {
-  return data.flat().filter(helper);
+  return data.flatMap(ele => ele).every(helper);
 }
 
 const question33Answear = (data, helper) => {
-  return data.flat().every(helper);
-}
-
-const question34Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question35Answear = (data, helper) => {
-  return data.flat().reduce((acc, ele) => helper(acc, ele, "track1"), 0);
-}
-
-const question36Answear = (data, helper) => {
-  return data.flat().filter(helper, 0);
-}
-
-const question37Answear = (data, helper) => {
-  return data.flat().filter(helper, 0);
-}
-
-const question38Answear = (data, helper) => {
-  return data.flat().filter(helper, 0);
-}
-
-const question39Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
+  return data.flatMap(ele => ele).every(helper);
 }
 
 const question40Answear = (data, helper) => {
-  return data.flat().some(helper);
-}
-
-const question41Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question42Answear = (data, helper) => {
-  return data.flat().filter(helper);
-}
-
-const question43Answear = (data, helper) => {
-  return data.flat().filter(helper);
-}
-
-const question44Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question45Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question46Answear = (data, helper) => {
-  return data.flat().filter(helper);
+  return data.flatMap(ele => ele).some(helper);
 }
 
 const question47Answear = (data, helper) => {
-  return data.flat().some(helper);
-}
-
-const question48Answear = (data, helper) => {
-  return data.flat().filter(helper);
-}
-
-const question49Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question50Answear = (data, helper) => {
-  return data.flat().filter(helper);
-}
-
-const question51Answear = (data, helper) => {
-  return data.flat().reduce((acc, ele) => helper(acc, ele, "banana"), 0);
-}
-
-const question52Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
+  return data.flatMap(ele => ele).some(helper);
 }
 
 const question53Answear = (data, helper) => {
-  return data.flat().some(helper);
+  return data.flatMap(ele => ele).some(helper);
 }
 
 const question54Answear = (data, helper) => {
-  return data.flat().every(helper);
-}
-
-const question55Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question56Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question57Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question58Answear = (data, helper) => {
-  return data.flat().reduce((acc, ele) => helper(acc, ele, "red"), 0);
-}
-
-const question59Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question60Answear = (data, helper) => {
-  return data.flat().filter(helper);
+  return data.flatMap(ele => ele).every(helper);
 }
 
 const question61Answear = (data, helper) => {
-  return data.flat().some(helper);
+  return data.flatMap(ele => ele).some(helper);
 }
 
 const question62Answear = (data, helper) => {
-  return data.flat().every(helper);
-}
-
-const question63Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
+  return data.flatMap(ele => ele).every(helper);
 }
 
 const question64Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
+  return data.flatMap(ele => ele).reduce(helper, []);
 }
 
 const question65Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question66Answear = (data, helper) => {
-  return data.flat().some(ele => helper(ele, "fa"));
-}
-
-const question67Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question68Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question69Answear = (data, helper) => {
-  return data.flat().reduce((acc, ele) => helper(acc, ele, "ch1"), 0);
-}
-
-const question70Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
+  return data.flatMap(ele => ele).reduce(helper, []);
 }
 
 const question71Answear = (data, helper) => {
-  return data.flat().some(helper);
+  return data.flatMap(ele => ele).some(helper);
 }
 
 const question72Answear = (data, helper) => {
-  return data.flat().every(helper);
-}
-
-const question73Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question74Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question75Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question76Answear = (data, helper) => {
-  return data.flat().reduce((acc, ele) => helper(acc, ele, "p"), 0);
-}
-
-const question77Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
+  return data.flatMap(ele => ele).every(helper);
 }
 
 const question78Answear = (data, helper) => {
-  return data.flat().some(helper);
+  return data.flatMap(ele => ele).some(helper);
 }
 
 const question79Answear = (data, helper) => {
-  return data.flat().every(helper);
+  return data.flatMap(ele => ele).every(helper);
 }
 
 const question80Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
+  return data.flatMap(ele => ele).reduce(helper, []);
 }
 
 const question81Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
+  return data.flatMap(ele => ele).reduce(helper, []);
 }
 
 const question82Answear = (data, helper) => {
-  return data.flat().reduce((acc, ele) => helper(acc, ele), 0);
+  return data.flatMap(ele => ele).reduce((acc, ele) => helper(acc, ele), 0);
 }
 
 const question83Answear = (data, helper) => {
   return data.flat(helper);
-}
-
-const question84Answear = (data, helper) => {
-  return data.flat().filter(helper);
-}
-
-const question85Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
 }
 
 const question86Answear = (data, helper) => {
@@ -1363,174 +1103,166 @@ const question87Answear = (data, helper) => {
   return data.every(helper);
 }
 
-const question88Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
-}
-
-const question89Answear = (data, helper) => {
-  return data.flat().reduce(helper, 0);
-}
-
-const question90Answear = (data, helper) => {
-  return data.flat().filter(helper);
-}
-
-const question91Answear = (data, helper) => {
-  return data.flat().reduce((acc, ele) => helper(acc, ele, "white"), 0);
-}
-
 const question92Answear = (data, helper) => {
   return data.flat(helper);
 }
 
 const question93Answear = (data, helper) => {
-  return data.flat().some(helper);
+  return data.flatMap(ele => ele).some(helper);
 }
 
 const question94Answear = (data, helper) => {
-  return data.flat().map(helper);
+  return data.flatMap(ele => ele).map(helper);
 }
 
 const question95Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
+  return data.flatMap(ele => ele).reduce(helper, []);
 }
 
 const question96Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
+  return data.flatMap(ele => ele).reduce(helper, []);
 }
 
 const question97Answear = (data, helper) => {
-  return data.flat().reduce((acc, ele) => helper(acc, ele), 0);
-}
-
-const question98Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
+  return data.flatMap(ele => ele).reduce((acc, ele) => helper(acc, ele), 0);
 }
 
 const question99Answear = (data, helper) => {
   return data.some(helper);
 }
 
-const question100Answear = (data, helper) => {
-  return data.flat().reduce(helper, []);
+const answearForCount = (data, helper, initialValue, toCount) => {
+  return data.flatMap(x => x).reduce((count, element) => helper(count, element, toCount), initialValue);
 }
 
-const showReuslt = (question, functionToUse, helper) => {
+const answearForReduce = (data, helper, initialValue) => {
+  return data.flatMap(ele => ele).reduce(helper, initialValue);
+}
+
+const answearForHasmatch = (data, helper, initialValue, toMatch) => {
+  return data.flatMap(ele => ele).some(ele => helper(ele, toMatch));
+}
+
+const answearForIsDistinct = (data, helper) => {
+  return data.flatMap(ele => ele).filter(helper);
+}
+
+const showReuslt = (question, functionToUse, helper, initilaValue, arg) => {
   const data = question[2];
   console.log(question[0]);
   console.log(question[1]);
   console.log(data);
   console.log(question[3]);
-  const result = functionToUse(data, helper)
+  const result = functionToUse(data, helper, initilaValue, arg);
   console.log("result", result);
 }
 
 const QUESTIONWITHSOLUTION = [
-  [QUESTION1, question1Answear, count],
+  [QUESTION1, answearForCount, count, 0, "blue"],
   [QUESTION2, question2Answear, 1],
-  [QUESTION3, question3Answear, removeDuplicate],
-  [QUESTION4, question4Answear, removeDuplicate],
-  [QUESTION5, question5Answear, sum],
-  [QUESTION6, question6Answear, hasMatch],
+  [QUESTION3, answearForReduce, removeDuplicate, []],
+  [QUESTION4, answearForReduce, removeDuplicate, []],
+  [QUESTION5, answearForReduce, sum, 0],
+  [QUESTION6, answearForHasmatch, hasMatch, 0, "do"],
   [QUESTION7, question7Answear, isTemperatureUnder32],
-  [QUESTION8, question8Answear, sum],
-  [QUESTION9, question9Answear, removeDuplicate],
-  [QUESTION10, question10Answear, count],
-  [QUESTION11, question11Answear, removeDuplicate],
-  [QUESTION12, question12Answear, hasMatch],
-  [QUESTION13, question13Answear, sum],
-  [QUESTION14, question14Answear, removeDuplicate],
-  [QUESTION15, question15Answear, count],
-  [QUESTION16, question16Answear, removeDuplicate],
-  [QUESTION17, question17Answear, hasMatch],
-  [QUESTION18, question18Answear, sum],
-  [QUESTION19, question19Answear, sum],
-  [QUESTION20, question20Answear, removeDuplicate],
-  [QUESTION21, question21Answear, sum],
-  [QUESTION22, question22Answear, removeDuplicate],
-  [QUESTION23, question23Answear, removeDuplicate],
-  [QUESTION24, question24Answear, count],
-  [QUESTION25, question25Answear, removeDuplicate],
-  [QUESTION26, question26Answear, sum],
-  [QUESTION27, question27Answear, isDistinct],
-  [QUESTION28, question28Answear, sum],
+  [QUESTION8, answearForReduce, sum, 0],
+  [QUESTION9, answearForReduce, removeDuplicate, []],
+  [QUESTION10, answearForCount, count, 0, "Dune"],
+  [QUESTION11, answearForReduce, removeDuplicate, []],
+  [QUESTION12, answearForHasmatch, hasMatch, 0, "so"],
+  [QUESTION13, answearForReduce, sum, 0],
+  [QUESTION14, answearForReduce, removeDuplicate, []],
+  [QUESTION15, answearForCount, count, 0, "deer"],
+  [QUESTION16, answearForReduce, removeDuplicate, []],
+  [QUESTION17, answearForHasmatch, hasMatch, 0, "turn"],
+  [QUESTION18, answearForReduce, sum, 0],
+  [QUESTION19, answearForReduce, sum, 0],
+  [QUESTION20, answearForReduce, removeDuplicate, []],
+  [QUESTION21, answearForReduce, sum, 0],
+  [QUESTION22, answearForReduce, removeDuplicate, []],
+  [QUESTION23, answearForReduce, removeDuplicate, []],
+  [QUESTION24, answearForCount, count, 0, "chocolate"],
+  [QUESTION25, answearForReduce, removeDuplicate, []],
+  [QUESTION26, answearForReduce, sum, 0],
+  [QUESTION27, answearForIsDistinct, isDistinct],
+  [QUESTION28, answearForReduce, sum, 0],
   [QUESTION29, question29Answear, isPositive],
-  [QUESTION30, question30Answear, sum],
-  [QUESTION31, question31Answear, isDistinct],
-  [QUESTION32, question32Answear, isDistinct],
+  [QUESTION30, answearForReduce, sum, 0],
+  [QUESTION31, answearForIsDistinct, isDistinct],
+  [QUESTION32, answearForIsDistinct, isDistinct],
   [QUESTION33, question33Answear, isBelow120],
-  [QUESTION34, question34Answear, sum],
-  [QUESTION35, question35Answear, count],
-  [QUESTION36, question36Answear, isDistinct],
-  [QUESTION37, question37Answear, isDistinct],
-  [QUESTION38, question38Answear, isDistinct],
-  [QUESTION39, question39Answear, sum],
+  [QUESTION34, answearForReduce, sum, 0],
+  [QUESTION35, answearForCount, count, 0, "track1"],
+  [QUESTION36, answearForIsDistinct, isDistinct],
+  [QUESTION37, answearForIsDistinct, isDistinct],
+  [QUESTION38, answearForIsDistinct, isDistinct],
+  [QUESTION39, answearForReduce, sum, 0],
   [QUESTION40, question40Answear, isABove7],
-  [QUESTION41, question41Answear, sum],
-  [QUESTION42, question42Answear, isDistinct],
-  [QUESTION43, question43Answear, isDistinct],
-  [QUESTION44, question44Answear, sum],
-  [QUESTION45, question45Answear, sum],
-  [QUESTION46, question46Answear, isDistinct],
+  [QUESTION41, answearForReduce, sum, 0],
+  [QUESTION42, answearForIsDistinct, isDistinct],
+  [QUESTION43, answearForIsDistinct, isDistinct],
+  [QUESTION44, answearForReduce, sum, 0],
+  [QUESTION45, answearForReduce, sum, 0],
+  [QUESTION46, answearForIsDistinct, isDistinct],
   [QUESTION47, question47Answear, isEquals4],
-  [QUESTION48, question48Answear, isDistinct],
-  [QUESTION49, question49Answear, sum],
-  [QUESTION50, question50Answear, isDistinct],
-  [QUESTION51, question51Answear, count],
-  [QUESTION52, question52Answear, removeDuplicate],
+  [QUESTION48, answearForIsDistinct, isDistinct],
+  [QUESTION49, answearForReduce, sum, 0],
+  [QUESTION50, answearForIsDistinct, isDistinct],
+  [QUESTION51, answearForCount, count, 0, "banana"],
+  [QUESTION52, answearForReduce, removeDuplicate, []],
   [QUESTION53, question53Answear, isExcellent],
   [QUESTION54, question54Answear, isUnder50],
-  [QUESTION55, question55Answear, removeDuplicate],
-  [QUESTION56, question56Answear, sum],
-  [QUESTION57, question57Answear, removeDuplicate],
-  [QUESTION58, question58Answear, count],
-  [QUESTION59, question59Answear, sum],
-  [QUESTION60, question60Answear, isDistinct],
+  [QUESTION55, answearForReduce, removeDuplicate, []],
+  [QUESTION56, answearForReduce, sum, 0],
+  [QUESTION57, answearForReduce, removeDuplicate, []],
+  [QUESTION58, answearForCount, count, 0, "red"],
+  [QUESTION59, answearForReduce, sum, 0],
+  [QUESTION60, answearForIsDistinct, isDistinct],
   [QUESTION61, question61Answear, isGreater90],
   [QUESTION62, question62Answear, isGreater18],
-  [QUESTION63, question63Answear, removeDuplicate],
+  [QUESTION63, answearForReduce, removeDuplicate, []],
   [QUESTION64, question64Answear, reverse],
   [QUESTION65, question65Answear, frequency],
-  [QUESTION66, question66Answear, hasMatch],
-  [QUESTION67, question67Answear, sum],
-  [QUESTION68, question68Answear, removeDuplicate],
-  [QUESTION69, question69Answear, count],
-  [QUESTION70, question70Answear, removeDuplicate],
+  [QUESTION66, answearForHasmatch, hasMatch, 0, "fa"],
+  [QUESTION67, answearForReduce, sum, 0],
+  [QUESTION68, answearForReduce, removeDuplicate, []],
+  [QUESTION69, answearForCount, count, 0, "ch1"],
+  [QUESTION70, answearForReduce, removeDuplicate, []],
   [QUESTION71, question71Answear, isAbove100],
   [QUESTION72, question72Answear, isAbove1],
-  [QUESTION73, question73Answear, removeDuplicate],
-  [QUESTION74, question74Answear, sum],
-  [QUESTION75, question75Answear, removeDuplicate],
-  [QUESTION76, question76Answear, count],
-  [QUESTION77, question77Answear, removeDuplicate],
+  [QUESTION73, answearForReduce, removeDuplicate, []],
+  [QUESTION74, answearForReduce, sum, 0],
+  [QUESTION75, answearForReduce, removeDuplicate, []],
+  [QUESTION76, answearForCount, count, 0, "p"],
+  [QUESTION77, answearForReduce, removeDuplicate, []],
   [QUESTION78, question78Answear, isZero],
   [QUESTION79, question79Answear, isLessThan10],
   [QUESTION80, question80Answear, frequency],
   [QUESTION81, question81Answear, reverse],
   [QUESTION82, question82Answear, rainInJournal],
   [QUESTION83, question83Answear, 1],
-  [QUESTION84, question84Answear, isDistinct],
-  [QUESTION85, question85Answear, sum],
+  [QUESTION84, answearForIsDistinct, isDistinct],
+  [QUESTION85, answearForReduce, sum, 0],
   [QUESTION86, question86Answear, isTotal50],
   [QUESTION87, question87Answear, isLessThan8],
-  [QUESTION88, question88Answear, removeDuplicate],
-  [QUESTION89, question89Answear, sum],
-  [QUESTION90, question90Answear, isDistinct],
-  [QUESTION91, question91Answear, count],
+  [QUESTION88, answearForReduce, removeDuplicate, []],
+  [QUESTION89, answearForReduce, sum, 0],
+  [QUESTION90, answearForIsDistinct, isDistinct],
+  [QUESTION91, answearForCount, count, 0, "white"],
   [QUESTION92, question92Answear, 1],
   [QUESTION93, question93Answear, isMarkedFragile],
   [QUESTION94, question94Answear, toLowerCase],
   [QUESTION95, question95Answear, reverse],
   [QUESTION96, question96Answear, frequency],
   [QUESTION97, question97Answear, isErrorInLog],
-  [QUESTION98, question98Answear, removeDuplicate],
+  [QUESTION98, answearForReduce, removeDuplicate, []],
   [QUESTION99, question99Answear, isSkippedAll],
-  [QUESTION100, question100Answear, removeDuplicate],
+  [QUESTION100, answearForReduce, removeDuplicate, []]
 ];
 
 const solution = () => {
   QUESTIONWITHSOLUTION.map(element => {
-    showReuslt(element[0], element[1], element[2]);
+    showReuslt(element[0], element[1], element[2], element[3], element[4]);
     console.log();
   })
 }
