@@ -662,6 +662,233 @@ const QUESTION75 = [
   'All distinct plant types.'
 ];
 
+const QUESTION76 = [
+  "### **76. Count occurrences of a specific sound in a phonetics study**",
+  "Recorded sounds:",
+  ["p", "t", "k", "p", "s", "p"],
+  "Target sound:",
+  "p",
+  'Number of times "p" appears.'
+];
+
+const QUESTION77 = [
+  "### **77. Combine all syllables used in language drills**",
+  "Drill sets (syllables):",
+  [
+    ["ba", "bi", "bu"],
+    ["ma", "mi", "ba"],
+    ["bu", "na", "mi"]
+  ],
+  'All unique syllables combined.'
+];
+
+const QUESTION78 = [
+  "### **78. Check if any measurement is exactly zero**",
+  "Measurements:",
+  [12.5, 0, 8.3, 15.7, 9.1],
+  'Is any measurement exactly 0?'
+];
+
+const QUESTION79 = [
+  "### **79. Verify that all listed items weigh less than 10 grams**",
+  "Item weights (grams):",
+  [4.2, 7.8, 9.5, 3.1, 6.9],
+  'Do all items weigh less than 10 grams?'
+];
+
+const QUESTION80 = [
+  "### **80. Summarize how many times each color appears in a creative art project**",
+  "Color usage across sections:",
+  [
+    ["red", "blue", "red"],
+    ["yellow", "blue", "red"],
+    ["yellow", "green"]
+  ],
+  'Object with color counts.'
+];
+
+const QUESTION81 = [
+  "### **81. Reverse the order of instructions written for a scavenger hunt**",
+  "Scavenger hunt instructions:",
+  [
+    "Find the old oak tree.",
+    "Look under the red bench.",
+    "Check behind the library sign.",
+    "Search inside the hollow log."
+  ],
+  'Reversed list of instructions.'
+];
+
+const QUESTION82 = [
+  "### **82. Count how many entries in a journal mention “rain”**",
+  "Journal entries:",
+  [
+    "Today was sunny and warm.",
+    "It started to rain in the afternoon.",
+    "Rain all day — stayed inside.",
+    "Clear skies, no rain.",
+    "Heavy rain delayed the hike."
+  ],
+  'Number of entries containing the word “rain” (case-insensitive).'
+];
+
+const QUESTION83 = [
+  "### **83. Merge all small poetry fragments into one list of lines**",
+  "Poetry fragments:",
+  [
+    ["Roses are red,", "Violets are blue,"],
+    ["The sky is vast,", "And so are you."],
+    ["Whispers in wind,", "Secrets untold."]
+  ],
+  'Single flat list of all lines.'
+];
+
+const QUESTION84 = [
+  "### **84. List unique cartoon characters favored by children**",
+  "Children’s favorite lists:",
+  [
+    ["SpongeBob", "Pikachu", "Mickey Mouse"],
+    ["Dora", "SpongeBob", "Bluey"],
+    ["Pikachu", "Bluey", "Peppa Pig"]
+  ],
+  'Sorted list of unique characters.'
+];
+
+const QUESTION85 = [
+  "### **85. Add up all points scored by a team across multiple games**",
+  "Points per game:",
+  [
+    [12, 15, 8],
+    [20, 18],
+    [14, 22, 16]
+  ],
+  'Total points across all games.'
+];
+
+const QUESTION86 = [
+  "### **86. Check whether any team scored exactly 50 points**",
+  "Points per game:",
+  [
+    [12, 15, 8],
+    [20, 18],
+    [14, 22, 16],
+    [10, 10, 10, 10, 10]
+  ],
+  'Check if any team has a total of exactly 50 points.'
+];
+
+const QUESTION87 = [
+  "### **87. Ensure all pH values recorded are below 8**",
+  "Recorded pH values:",
+  [7.1, 7.5, 7.9, 8.0, 7.4],
+  'Ensure all pH values are below 8.'
+];
+
+const QUESTION88 = [
+  "### **88. Count unique flavors tasted in a chocolate workshop**",
+  "Chocolate flavors tasted:",
+  ['Dark', 'Milk', 'White', 'Dark', 'Milk', 'Hazelnut'],
+  'Count the unique chocolate flavors tasted.'
+];
+
+const QUESTION89 = [
+  "### **89. Sum all minutes of meditation logged across sessions**",
+  "Meditation session times (minutes):",
+  [20, 45, 30, 15, 25],
+  'Sum all minutes spent meditating.'
+];
+
+const QUESTION90 = [
+  "### **90. Identify every unique tool used in a repair workshop**",
+  "Tools used in the workshop:",
+  ['Hammer', 'Screwdriver', 'Wrench', 'Hammer', 'Pliers'],
+  'Identify the unique tools used.'
+];
+
+const QUESTION91 = [
+  "### **91. Count how many shirts in a laundry batch were listed as “white”**",
+  "Laundry batch (shirt colors):",
+  ['white', 'blue', 'white', 'green', 'white', 'black'],
+  'Count how many shirts are listed as “white”.'
+];
+
+const QUESTION92 = [
+  "### **92. Combine all notes written during a meeting into one list**",
+  "Notes from each participant:",
+  [
+    ['Discuss budget', 'Review project timeline'],
+    ['Assign new tasks', 'Confirm next meeting date'],
+    ['Plan presentation', 'Send summary email']
+  ],
+  'Combine all notes into one single list.'
+];
+
+const QUESTION93 = [
+  "### **93. Check if any item in a shipment is marked “fragile”**",
+  "Shipment items:",
+  ['books', 'glass vase', 'clothes', 'fragile - lamp', 'toys'],
+  'Check whether any item is marked as “fragile”.'
+];
+
+const QUESTION94 = [
+  "### **94. Verify that all letters written by participants are lowercase**",
+  "Letters written:",
+  ['hello', 'thank you', 'see you soon', 'goodbye'],
+  'Ensure all letters are completely lowercase.'
+];
+
+const QUESTION95 = [
+  "### **95. Reverse a list of moves recorded during a chess game**",
+  "Moves recorded:",
+  ['e4', 'e5', 'Nf3', 'Nc6', 'Bb5'],
+  'Reverse the order of the recorded chess moves.'
+];
+
+const QUESTION96 = [
+  "### **96. Build a frequency list for musical notes practiced in a session**",
+  "Musical notes practiced:",
+  ['C', 'D', 'E', 'C', 'G', 'C', 'D', 'F', 'E'],
+  'Build a frequency list showing how many times each note was practiced.'
+];
+
+const QUESTION97 = [
+  "### **97. Count the number of times “error” appears in a log of messages**",
+  "System log messages:",
+  ['startup complete', 'error: file not found', 'loading modules', 'error: access denied', 'shutdown sequence', 'error: timeout'],
+  'Count how many times the word “error” appears in the log.'
+];
+
+const QUESTION98 = [
+  "### **98. Gather all ingredients used in three versions of the same dish**",
+  "Ingredients per version:",
+  [
+    ['tomato', 'onion', 'garlic'],
+    ['onion', 'pepper', 'basil'],
+    ['tomato', 'garlic', 'olive oil']
+  ],
+  'Gather all unique ingredients used across the three versions.'
+];
+
+const QUESTION99 = [
+  "### **99. Check if any student skipped all activity sessions**",
+  "Activity participation (1 = attended, 0 = skipped):",
+  [
+    [1, 1, 0],
+    [0, 0, 0],
+    [1, 0, 1],
+    [1, 1, 1]
+  ],
+  'Check if any student has skipped all activity sessions.'
+];
+
+const QUESTION100 = [
+  "### **100. Create a list of distinct songs hummed by children on a bus ride**",
+  "Songs hummed by children:",
+  ['Twinkle Twinkle', 'Happy Birthday', 'Twinkle Twinkle', 'Baby Shark', 'Old MacDonald', 'Baby Shark'],
+  'List all distinct songs hummed during the ride.'
+];
+
+
 const count = (result, element, toCount) => {
   return result += element === toCount ? 1 : 0;
 }
@@ -734,6 +961,30 @@ const reverse = (reverse, element) => {
   return reverse;
 }
 
+const isZero = (ele) => {
+  return ele === 0;
+}
+
+const isLessThan10 = (ele) => {
+  return ele < 10;
+}
+
+const isLessThan8 = (ele) => {
+  return ele < 8;
+}
+
+const rainInJournal = (acc, ele) => {
+  const splitedString = ele.split(" ");
+  const lowerSplitedCaseString = splitedString.map(ele => ele.toLowerCase());
+  return acc + lowerSplitedCaseString.reduce((acc, ele) => ele.includes("rain") ? acc + 1 : acc, 0);
+}
+
+const isErrorInLog = (acc, ele) => {
+  const splitedString = ele.split(" ");
+  const lowerSplitedCaseString = splitedString.map(ele => ele.toLowerCase());
+  return acc + lowerSplitedCaseString.reduce((acc, ele) => ele.includes("error") ? acc + 1 : acc, 0);
+}
+
 const frequency = (frequency, element) => {
   if (!frequency.some(ele => element === ele[0])) {
     frequency.push([element, 1]);
@@ -746,6 +997,22 @@ const frequency = (frequency, element) => {
 
   frequency[index][1] += 1;
   return frequency;
+}
+
+const isTotal50 = (ele) => {
+  return ele.reduce(sum, 0) === 50;
+}
+
+const isMarkedFragile = (ele) => {
+  return ele.includes("fragile");
+}
+
+const toLowerCase = (ele) => {
+  return ele.toLowerCase();
+}
+
+const isSkippedAll = (ele) => {
+  return ele.every(ele => ele === 0);
 }
 
 const question1Answear = (data, helper) => {
@@ -1048,6 +1315,106 @@ const question75Answear = (data, helper) => {
   return data.flat().reduce(helper, []);
 }
 
+const question76Answear = (data, helper) => {
+  return data.flat().reduce((acc, ele) => helper(acc, ele, "p"), 0);
+}
+
+const question77Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question78Answear = (data, helper) => {
+  return data.flat().some(helper);
+}
+
+const question79Answear = (data, helper) => {
+  return data.flat().every(helper);
+}
+
+const question80Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question81Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question82Answear = (data, helper) => {
+  return data.flat().reduce((acc, ele) => helper(acc, ele), 0);
+}
+
+const question83Answear = (data, helper) => {
+  return data.flat(helper);
+}
+
+const question84Answear = (data, helper) => {
+  return data.flat().filter(helper);
+}
+
+const question85Answear = (data, helper) => {
+  return data.flat().reduce(helper, 0);
+}
+
+const question86Answear = (data, helper) => {
+  return data.some(ele => helper(ele));
+}
+
+const question87Answear = (data, helper) => {
+  return data.every(helper);
+}
+
+const question88Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question89Answear = (data, helper) => {
+  return data.flat().reduce(helper, 0);
+}
+
+const question90Answear = (data, helper) => {
+  return data.flat().filter(helper);
+}
+
+const question91Answear = (data, helper) => {
+  return data.flat().reduce((acc, ele) => helper(acc, ele, "white"), 0);
+}
+
+const question92Answear = (data, helper) => {
+  return data.flat(helper);
+}
+
+const question93Answear = (data, helper) => {
+  return data.flat().some(helper);
+}
+
+const question94Answear = (data, helper) => {
+  return data.flat().map(helper);
+}
+
+const question95Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question96Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question97Answear = (data, helper) => {
+  return data.flat().reduce((acc, ele) => helper(acc, ele), 0);
+}
+
+const question98Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
+const question99Answear = (data, helper) => {
+  return data.some(helper);
+}
+
+const question100Answear = (data, helper) => {
+  return data.flat().reduce(helper, []);
+}
+
 const showReuslt = (question, functionToUse, helper) => {
   const data = question[2];
   console.log(question[0]);
@@ -1134,6 +1501,31 @@ const QUESTIONWITHSOLUTION = [
   [QUESTION73, question73Answear, removeDuplicate],
   [QUESTION74, question74Answear, sum],
   [QUESTION75, question75Answear, removeDuplicate],
+  [QUESTION76, question76Answear, count],
+  [QUESTION77, question77Answear, removeDuplicate],
+  [QUESTION78, question78Answear, isZero],
+  [QUESTION79, question79Answear, isLessThan10],
+  [QUESTION80, question80Answear, frequency],
+  [QUESTION81, question81Answear, reverse],
+  [QUESTION82, question82Answear, rainInJournal],
+  [QUESTION83, question83Answear, 1],
+  [QUESTION84, question84Answear, isDistinct],
+  [QUESTION85, question85Answear, sum],
+  [QUESTION86, question86Answear, isTotal50],
+  [QUESTION87, question87Answear, isLessThan8],
+  [QUESTION88, question88Answear, removeDuplicate],
+  [QUESTION89, question89Answear, sum],
+  [QUESTION90, question90Answear, isDistinct],
+  [QUESTION91, question91Answear, count],
+  [QUESTION92, question92Answear, 1],
+  [QUESTION93, question93Answear, isMarkedFragile],
+  [QUESTION94, question94Answear, toLowerCase],
+  [QUESTION95, question95Answear, reverse],
+  [QUESTION96, question96Answear, frequency],
+  [QUESTION97, question97Answear, isErrorInLog],
+  [QUESTION98, question98Answear, removeDuplicate],
+  [QUESTION99, question99Answear, isSkippedAll],
+  [QUESTION100, question100Answear, removeDuplicate],
 ];
 
 const solution = () => {
