@@ -911,10 +911,6 @@ const isBelow = (element, threshold) => {
   return element < threshold;
 }
 
-const isBelow120 = (element) => {
-  return element < 120;
-}
-
 const isDistinct = (element, index, array) => {
   return !array.some((ele, i) => ele === element && index !== i);
 }
@@ -923,36 +919,8 @@ const isAbove = (element, threshold) => {
   return element > threshold;
 }
 
-const isABove7 = (element) => {
-  return element > 7;
-}
-
 const isEquals = (element, threshold) => {
   return element === threshold;
-}
-
-const isExcellent = (element) => {
-  return element === "excellent";
-}
-
-const isUnder50 = (element) => {
-  return element < 50;
-}
-
-const isGreater90 = (element) => {
-  return element > 90;
-}
-
-const isAbove100 = (element) => {
-  return element >= 100;
-}
-
-const isAbove1 = (element) => {
-  return element >= 1;
-}
-
-const isGreater18 = (element) => {
-  return element >= 18;
 }
 
 const reverse = (reverse, element) => {
@@ -960,28 +928,9 @@ const reverse = (reverse, element) => {
   return reverse;
 }
 
-const isZero = (ele) => {
-  return ele === 0;
-}
-
-const isLessThan10 = (ele) => {
-  return ele < 10;
-}
-
-const isLessThan8 = (ele) => {
-  return ele < 8;
-}
-
-const rainInJournal = (acc, ele) => {
-  const splitedString = ele.split(" ");
-  const lowerSplitedCaseString = splitedString.map(ele => ele.toLowerCase());
-  return acc + lowerSplitedCaseString.reduce((acc, ele) => ele.includes("rain") ? acc + 1 : acc, 0);
-}
-
-const isErrorInLog = (acc, ele) => {
-  const splitedString = ele.split(" ");
-  const lowerSplitedCaseString = splitedString.map(ele => ele.toLowerCase());
-  return acc + lowerSplitedCaseString.reduce((acc, ele) => ele.includes("error") ? acc + 1 : acc, 0);
+const isSentainContains = (count, ele, word) => {
+  count += ele.toLowerCase().includes(word) ? 1 : 0;
+  return count;
 }
 
 const frequency = (frequency, element) => {
@@ -998,12 +947,8 @@ const frequency = (frequency, element) => {
   return frequency;
 }
 
-const isTotal50 = (ele) => {
-  return ele.reduce(sum, 0) === 50;
-}
-
-const isMarkedFragile = (ele) => {
-  return ele.includes("fragile");
+const isSumEquals = (ele, threshold) => {
+  return ele.reduce(sum, 0) === threshold;
 }
 
 const toLowerCase = (ele) => {
@@ -1014,121 +959,9 @@ const isSkippedAll = (ele) => {
   return ele.every(ele => ele === 0);
 }
 
-const question2Answear = (data, helper) => {
-  return data.flat(helper);
-}
-
-const question7Answear = (data, helper) => {
-  return data.flatMap(ele => ele).every(helper);
-}
-
-const question29Answear = (data, helper) => {
-  return data.flatMap(ele => ele).every(helper);
-}
-
-const question33Answear = (data, helper) => {
-  return data.flatMap(ele => ele).every(helper);
-}
-
-const question40Answear = (data, helper) => {
-  return data.flatMap(ele => ele).some(helper);
-}
-
-const question47Answear = (data, helper) => {
-  return data.flatMap(ele => ele).some(helper);
-}
-
-const question53Answear = (data, helper) => {
-  return data.flatMap(ele => ele).some(helper);
-}
-
-const question54Answear = (data, helper) => {
-  return data.flatMap(ele => ele).every(helper);
-}
-
-const question61Answear = (data, helper) => {
-  return data.flatMap(ele => ele).some(helper);
-}
-
-const question62Answear = (data, helper) => {
-  return data.flatMap(ele => ele).every(helper);
-}
-
-const question64Answear = (data, helper) => {
-  return data.flatMap(ele => ele).reduce(helper, []);
-}
-
-const question65Answear = (data, helper) => {
-  return data.flatMap(ele => ele).reduce(helper, []);
-}
-
-const question71Answear = (data, helper) => {
-  return data.flatMap(ele => ele).some(helper);
-}
-
-const question72Answear = (data, helper) => {
-  return data.flatMap(ele => ele).every(helper);
-}
-
-const question78Answear = (data, helper) => {
-  return data.flatMap(ele => ele).some(helper);
-}
-
-const question79Answear = (data, helper) => {
-  return data.flatMap(ele => ele).every(helper);
-}
-
-const question80Answear = (data, helper) => {
-  return data.flatMap(ele => ele).reduce(helper, []);
-}
-
-const question81Answear = (data, helper) => {
-  return data.flatMap(ele => ele).reduce(helper, []);
-}
-
-const question82Answear = (data, helper) => {
-  return data.flatMap(ele => ele).reduce((acc, ele) => helper(acc, ele), 0);
-}
-
-const question83Answear = (data, helper) => {
-  return data.flat(helper);
-}
-
-const question86Answear = (data, helper) => {
-  return data.some(ele => helper(ele));
-}
-
-const question87Answear = (data, helper) => {
-  return data.every(helper);
-}
-
-const question92Answear = (data, helper) => {
-  return data.flat(helper);
-}
-
-const question93Answear = (data, helper) => {
-  return data.flatMap(ele => ele).some(helper);
-}
-
-const question94Answear = (data, helper) => {
-  return data.flatMap(ele => ele).map(helper);
-}
-
-const question95Answear = (data, helper) => {
-  return data.flatMap(ele => ele).reduce(helper, []);
-}
-
-const question96Answear = (data, helper) => {
-  return data.flatMap(ele => ele).reduce(helper, []);
-}
-
-const question97Answear = (data, helper) => {
-  return data.flatMap(ele => ele).reduce((acc, ele) => helper(acc, ele), 0);
-}
-
-const question99Answear = (data, helper) => {
-  return data.some(helper);
-}
+// const question99Answear = (data, helper) => {
+//   return data.some(helper);
+// }
 
 const answearForCount = (data, helper, initialValue, toCount) => {
   return data.flatMap(x => x).reduce((count, element) => helper(count, element, toCount), initialValue);
@@ -1140,6 +973,10 @@ const answearForReduce = (data, helper, initialValue) => {
 
 const answearForAnyMatch = (data, helper, initialValue, threshold) => {
   return data.flatMap(ele => ele).some(ele => helper(ele, threshold));
+}
+
+const answearForAnyMatchInArray = (data, helper, initialValue, threshold) => {
+  return data.some(ele => helper(ele, threshold));
 }
 
 const answearForEveryMatch = (data, helper, initialValue, threshold) => {
@@ -1154,6 +991,10 @@ const answearForMap = (data, helper) => {
   return data.flatMap(ele => ele).map(helper);
 }
 
+const flatOnce = (data) => {
+  return data.flatMap(ele => ele);
+}
+
 const showReuslt = (question, functionToUse, helper, initilaValue, arg) => {
   const data = question[2];
   console.log(question[0]);
@@ -1166,7 +1007,7 @@ const showReuslt = (question, functionToUse, helper, initilaValue, arg) => {
 
 const QUESTIONWITHSOLUTION = [
   [QUESTION1, answearForCount, count, 0, "blue"],
-  [QUESTION2, question2Answear, 1],
+  [QUESTION2, flatOnce],
   [QUESTION3, answearForReduce, removeDuplicate, []],
   [QUESTION4, answearForReduce, removeDuplicate, []],
   [QUESTION5, answearForReduce, sum, 0],
@@ -1246,24 +1087,24 @@ const QUESTIONWITHSOLUTION = [
   [QUESTION79, answearForEveryMatch, isBelow, 0, 100],
   [QUESTION80, answearForReduce, frequency, []],
   [QUESTION81, answearForReduce, reverse, []],
-  [QUESTION82, question82Answear, rainInJournal],
-  [QUESTION83, question83Answear, 1],
+  [QUESTION82, answearForCount, isSentainContains, "rain", 0],
+  [QUESTION83, flatOnce],
   [QUESTION84, answearForIsDistinct, isDistinct],
   [QUESTION85, answearForReduce, sum, 0],
-  [QUESTION86, question86Answear, isTotal50],
+  [QUESTION86, answearForAnyMatchInArray, isSumEquals, 0, 50],
   [QUESTION87, answearForEveryMatch, isBelow, 0, 8],
   [QUESTION88, answearForReduce, removeDuplicate, []],
   [QUESTION89, answearForReduce, sum, 0],
   [QUESTION90, answearForIsDistinct, isDistinct],
   [QUESTION91, answearForCount, count, 0, "white"],
-  [QUESTION92, question92Answear, 1],
-  [QUESTION93, question93Answear, isMarkedFragile],
+  [QUESTION92, flatOnce],
+  [QUESTION93, answearForAnyMatch, ele => ele.includes("fragile")],
   [QUESTION94, answearForMap, toLowerCase],
   [QUESTION95, answearForReduce, reverse, []],
   [QUESTION96, answearForReduce, frequency, []],
-  [QUESTION97, question97Answear, isErrorInLog],
+  [QUESTION97, answearForCount, isSentainContains, "error", 0],
   [QUESTION98, answearForReduce, removeDuplicate, []],
-  [QUESTION99, question99Answear, isSkippedAll],
+  [QUESTION99, data => data.some(ele => ele.every(ele => ele === 0)),],
   [QUESTION100, answearForReduce, removeDuplicate, []]
 ];
 
