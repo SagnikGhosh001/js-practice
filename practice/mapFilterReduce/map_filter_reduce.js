@@ -329,7 +329,7 @@ const QUESTION40 = [
   "### **40. Fish Tank Measurements**",
   "Measurements:",
   [
-    [5, 61],
+    [5, 8],
     [7],
     [6]
   ],
@@ -888,7 +888,6 @@ const QUESTION100 = [
   'List all distinct songs hummed during the ride.'
 ];
 
-
 const count = (result, element, toCount) => {
   return result += element === toCount ? 1 : 0;
 }
@@ -908,8 +907,8 @@ const hasMatch = (element, matchingElement) => {
   return element === matchingElement;
 }
 
-const isTemperatureUnder32 = (element) => {
-  return element < 32;
+const isBelow = (element, threshold) => {
+  return element < threshold;
 }
 
 const isBelow120 = (element) => {
@@ -920,16 +919,16 @@ const isDistinct = (element, index, array) => {
   return !array.some((ele, i) => ele === element && index !== i);
 }
 
-const isPositive = (element) => {
-  return element > 0;
+const isAbove = (element, threshold) => {
+  return element > threshold;
 }
 
 const isABove7 = (element) => {
   return element > 7;
 }
 
-const isEquals4 = (element) => {
-  return element === 4;
+const isEquals = (element, threshold) => {
+  return element === threshold;
 }
 
 const isExcellent = (element) => {
@@ -1139,12 +1138,20 @@ const answearForReduce = (data, helper, initialValue) => {
   return data.flatMap(ele => ele).reduce(helper, initialValue);
 }
 
-const answearForHasmatch = (data, helper, initialValue, toMatch) => {
-  return data.flatMap(ele => ele).some(ele => helper(ele, toMatch));
+const answearForAnyMatch = (data, helper, initialValue, threshold) => {
+  return data.flatMap(ele => ele).some(ele => helper(ele, threshold));
+}
+
+const answearForEveryMatch = (data, helper, initialValue, threshold) => {
+  return data.flatMap(ele => ele).every(ele => helper(ele, threshold));
 }
 
 const answearForIsDistinct = (data, helper) => {
   return data.flatMap(ele => ele).filter(helper);
+}
+
+const answearForMap = (data, helper) => {
+  return data.flatMap(ele => ele).map(helper);
 }
 
 const showReuslt = (question, functionToUse, helper, initilaValue, arg) => {
@@ -1163,18 +1170,18 @@ const QUESTIONWITHSOLUTION = [
   [QUESTION3, answearForReduce, removeDuplicate, []],
   [QUESTION4, answearForReduce, removeDuplicate, []],
   [QUESTION5, answearForReduce, sum, 0],
-  [QUESTION6, answearForHasmatch, hasMatch, 0, "do"],
-  [QUESTION7, question7Answear, isTemperatureUnder32],
+  [QUESTION6, answearForAnyMatch, hasMatch, 0, "do"],
+  [QUESTION7, answearForEveryMatch, isBelow, 0, 32],
   [QUESTION8, answearForReduce, sum, 0],
   [QUESTION9, answearForReduce, removeDuplicate, []],
   [QUESTION10, answearForCount, count, 0, "Dune"],
   [QUESTION11, answearForReduce, removeDuplicate, []],
-  [QUESTION12, answearForHasmatch, hasMatch, 0, "so"],
+  [QUESTION12, answearForAnyMatch, hasMatch, 0, "so"],
   [QUESTION13, answearForReduce, sum, 0],
   [QUESTION14, answearForReduce, removeDuplicate, []],
   [QUESTION15, answearForCount, count, 0, "deer"],
   [QUESTION16, answearForReduce, removeDuplicate, []],
-  [QUESTION17, answearForHasmatch, hasMatch, 0, "turn"],
+  [QUESTION17, answearForAnyMatch, hasMatch, 0, "turn"],
   [QUESTION18, answearForReduce, sum, 0],
   [QUESTION19, answearForReduce, sum, 0],
   [QUESTION20, answearForReduce, removeDuplicate, []],
@@ -1186,74 +1193,74 @@ const QUESTIONWITHSOLUTION = [
   [QUESTION26, answearForReduce, sum, 0],
   [QUESTION27, answearForIsDistinct, isDistinct],
   [QUESTION28, answearForReduce, sum, 0],
-  [QUESTION29, question29Answear, isPositive],
+  [QUESTION29, answearForEveryMatch, isAbove, 0, 0],
   [QUESTION30, answearForReduce, sum, 0],
   [QUESTION31, answearForIsDistinct, isDistinct],
   [QUESTION32, answearForIsDistinct, isDistinct],
-  [QUESTION33, question33Answear, isBelow120],
+  [QUESTION33, answearForEveryMatch, isBelow, 0, 120],
   [QUESTION34, answearForReduce, sum, 0],
   [QUESTION35, answearForCount, count, 0, "track1"],
   [QUESTION36, answearForIsDistinct, isDistinct],
   [QUESTION37, answearForIsDistinct, isDistinct],
   [QUESTION38, answearForIsDistinct, isDistinct],
   [QUESTION39, answearForReduce, sum, 0],
-  [QUESTION40, question40Answear, isABove7],
+  [QUESTION40, answearForAnyMatch, isAbove, 0, 7],
   [QUESTION41, answearForReduce, sum, 0],
   [QUESTION42, answearForIsDistinct, isDistinct],
   [QUESTION43, answearForIsDistinct, isDistinct],
   [QUESTION44, answearForReduce, sum, 0],
   [QUESTION45, answearForReduce, sum, 0],
   [QUESTION46, answearForIsDistinct, isDistinct],
-  [QUESTION47, question47Answear, isEquals4],
+  [QUESTION47, answearForAnyMatch, isEquals, 0, 4],
   [QUESTION48, answearForIsDistinct, isDistinct],
   [QUESTION49, answearForReduce, sum, 0],
   [QUESTION50, answearForIsDistinct, isDistinct],
   [QUESTION51, answearForCount, count, 0, "banana"],
   [QUESTION52, answearForReduce, removeDuplicate, []],
-  [QUESTION53, question53Answear, isExcellent],
-  [QUESTION54, question54Answear, isUnder50],
+  [QUESTION53, answearForAnyMatch, isEquals, 0, "excellent"],
+  [QUESTION54, answearForEveryMatch, isBelow, 0, 50],
   [QUESTION55, answearForReduce, removeDuplicate, []],
   [QUESTION56, answearForReduce, sum, 0],
   [QUESTION57, answearForReduce, removeDuplicate, []],
   [QUESTION58, answearForCount, count, 0, "red"],
   [QUESTION59, answearForReduce, sum, 0],
   [QUESTION60, answearForIsDistinct, isDistinct],
-  [QUESTION61, question61Answear, isGreater90],
-  [QUESTION62, question62Answear, isGreater18],
+  [QUESTION61, answearForAnyMatch, isAbove, 0, 90],
+  [QUESTION62, answearForEveryMatch, isAbove, 0, 17],
   [QUESTION63, answearForReduce, removeDuplicate, []],
-  [QUESTION64, question64Answear, reverse],
-  [QUESTION65, question65Answear, frequency],
-  [QUESTION66, answearForHasmatch, hasMatch, 0, "fa"],
+  [QUESTION64, answearForReduce, reverse, []],
+  [QUESTION65, answearForReduce, frequency, []],
+  [QUESTION66, answearForAnyMatch, hasMatch, 0, "fa"],
   [QUESTION67, answearForReduce, sum, 0],
   [QUESTION68, answearForReduce, removeDuplicate, []],
   [QUESTION69, answearForCount, count, 0, "ch1"],
   [QUESTION70, answearForReduce, removeDuplicate, []],
-  [QUESTION71, question71Answear, isAbove100],
-  [QUESTION72, question72Answear, isAbove1],
+  [QUESTION71, answearForAnyMatch, isEquals, 0, 100],
+  [QUESTION72, answearForEveryMatch, isAbove, 0, 1],
   [QUESTION73, answearForReduce, removeDuplicate, []],
   [QUESTION74, answearForReduce, sum, 0],
   [QUESTION75, answearForReduce, removeDuplicate, []],
   [QUESTION76, answearForCount, count, 0, "p"],
   [QUESTION77, answearForReduce, removeDuplicate, []],
-  [QUESTION78, question78Answear, isZero],
-  [QUESTION79, question79Answear, isLessThan10],
-  [QUESTION80, question80Answear, frequency],
-  [QUESTION81, question81Answear, reverse],
+  [QUESTION78, answearForAnyMatch, isEquals, 0, 0],
+  [QUESTION79, answearForEveryMatch, isBelow, 0, 100],
+  [QUESTION80, answearForReduce, frequency, []],
+  [QUESTION81, answearForReduce, reverse, []],
   [QUESTION82, question82Answear, rainInJournal],
   [QUESTION83, question83Answear, 1],
   [QUESTION84, answearForIsDistinct, isDistinct],
   [QUESTION85, answearForReduce, sum, 0],
   [QUESTION86, question86Answear, isTotal50],
-  [QUESTION87, question87Answear, isLessThan8],
+  [QUESTION87, answearForEveryMatch, isBelow, 0, 8],
   [QUESTION88, answearForReduce, removeDuplicate, []],
   [QUESTION89, answearForReduce, sum, 0],
   [QUESTION90, answearForIsDistinct, isDistinct],
   [QUESTION91, answearForCount, count, 0, "white"],
   [QUESTION92, question92Answear, 1],
   [QUESTION93, question93Answear, isMarkedFragile],
-  [QUESTION94, question94Answear, toLowerCase],
-  [QUESTION95, question95Answear, reverse],
-  [QUESTION96, question96Answear, frequency],
+  [QUESTION94, answearForMap, toLowerCase],
+  [QUESTION95, answearForReduce, reverse, []],
+  [QUESTION96, answearForReduce, frequency, []],
   [QUESTION97, question97Answear, isErrorInLog],
   [QUESTION98, answearForReduce, removeDuplicate, []],
   [QUESTION99, question99Answear, isSkippedAll],
