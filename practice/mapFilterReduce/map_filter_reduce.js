@@ -1087,7 +1087,7 @@ const QUESTIONWITHSOLUTION = [
   [QUESTION79, answearForEveryMatch, isBelow, 0, 100],
   [QUESTION80, answearForReduce, frequency, []],
   [QUESTION81, answearForReduce, reverse, []],
-  [QUESTION82, answearForCount, isSentainContains, "rain", 0],
+  [QUESTION82, answearForCount, isSentainContains, 0, "rain"],
   [QUESTION83, flatOnce],
   [QUESTION84, answearForIsDistinct, isDistinct],
   [QUESTION85, answearForReduce, sum, 0],
@@ -1102,7 +1102,7 @@ const QUESTIONWITHSOLUTION = [
   [QUESTION94, answearForMap, toLowerCase],
   [QUESTION95, answearForReduce, reverse, []],
   [QUESTION96, answearForReduce, frequency, []],
-  [QUESTION97, answearForCount, isSentainContains, "error", 0],
+  [QUESTION97, answearForCount, isSentainContains, 0, "error"],
   [QUESTION98, answearForReduce, removeDuplicate, []],
   [QUESTION99, data => data.some(ele => ele.every(ele => ele === 0)),],
   [QUESTION100, answearForReduce, removeDuplicate, []]
