@@ -925,7 +925,7 @@ const isSentenceContains = (count, ele, word) => {
 }
 
 const occurence = (frequency, element) => {
-  if (!frequency.some(ele => element === ele[0])) {
+  if (frequency.every(ele => element !== ele[0])) {
     frequency.push([element, 1]);
     return frequency;
   }
