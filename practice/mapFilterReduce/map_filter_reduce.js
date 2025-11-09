@@ -888,23 +888,24 @@ const QUESTION100 = [
   'List all distinct songs hummed during the ride.'
 ];
 
-const count = (result, element, toCount) => {
-  return result += element === toCount ? 1 : 0;
+const count = (countValue, currentElement, elementToCount) => {
+  return countValue += currentElement === elementToCount ? 1 : 0;
 }
 
-const removeDuplicate = (result, element) => {
-  if (!result.includes(element)) {
-    result.push(element)
+const removeDuplicate = (uniqueElements, element) => {
+  if (!uniqueElements.includes(element)) {
+    uniqueElements.push(element)
   }
-  return result;
+
+  return uniqueElements;
 }
 
-const sum = (result, element) => {
-  return result + element;
+const add = (sum, element) => {
+  return sum + element;
 }
 
-const hasMatch = (element, matchingElement) => {
-  return element === matchingElement;
+const hasMatch = (element, elementToMatch) => {
+  return element === elementToMatch;
 }
 
 const isBelow = (element, threshold) => {
@@ -923,24 +924,24 @@ const isEquals = (element, threshold) => {
   return element === threshold;
 }
 
-const reverse = (reverse, element) => {
-  reverse.unshift(element);
-  return reverse;
+const reverse = (reversedElements, element) => {
+  reversedElements.unshift(element);
+  return reversedElements;
 }
 
-const isSentainContains = (count, ele, word) => {
+const isSentenceContains = (count, ele, word) => {
   count += ele.toLowerCase().includes(word) ? 1 : 0;
   return count;
 }
 
-const frequency = (frequency, element) => {
+const occurence = (frequency, element) => {
   if (!frequency.some(ele => element === ele[0])) {
     frequency.push([element, 1]);
     return frequency;
   }
 
-  const index = frequency.reduce((acc, ele, index) => {
-    return ele[0] === element ? index : acc
+  const index = frequency.reduce((acc, ele, i) => {
+    return ele[0] === element ? i : acc
   }, 0)
 
   frequency[index][1] += 1;
@@ -948,7 +949,7 @@ const frequency = (frequency, element) => {
 }
 
 const isSumEquals = (ele, threshold) => {
-  return ele.reduce(sum, 0) === threshold;
+  return ele.reduce(add, 0) === threshold;
 }
 
 const toLowerCase = (ele) => {
@@ -959,32 +960,32 @@ const isSkippedAll = (ele) => {
   return ele.every(ele => ele === 0);
 }
 
-const solutionForCount = (data, helper, initialValue, toCount) => {
-  return data.flatMap(x => x).reduce((count, element) => helper(count, element, toCount), initialValue);
+const solutionForCount = (array, reducer, initialValue, elemetnToCount) => {
+  return array.flatMap(x => x).reduce((count, element) => reducer(count, element, elemetnToCount), initialValue);
 }
 
-const solutionForReduce = (data, helper, initialValue) => {
-  return data.flatMap(ele => ele).reduce(helper, initialValue);
+const solutionForReduce = (data, reducer, initialValue) => {
+  return data.flatMap(ele => ele).reduce(reducer, initialValue);
 }
 
-const solutionForAny = (data, helper, initialValue, threshold) => {
-  return data.flatMap(ele => ele).some(ele => helper(ele, threshold));
+const solutionForAny = (data, predicate, initialValue, threshold) => {
+  return data.flatMap(ele => ele).some(ele => predicate(ele, threshold));
 }
 
-const solutionForAnyInArray = (data, helper, initialValue, threshold) => {
-  return data.some(ele => helper(ele, threshold));
+const solutionForAnyInArray = (data, predicate, initialValue, threshold) => {
+  return data.some(ele => predicate(ele, threshold));
 }
 
-const solutionForEvery = (data, helper, initialValue, threshold) => {
-  return data.flatMap(ele => ele).every(ele => helper(ele, threshold));
+const solutionForEvery = (data, predicate, initialValue, threshold) => {
+  return data.flatMap(ele => ele).every(ele => predicate(ele, threshold));
 }
 
-const solutionForIsDistinct = (data, helper) => {
-  return data.flatMap(ele => ele).filter(helper);
+const solutionForIsDistinct = (data, predicate) => {
+  return data.flatMap(ele => ele).filter(predicate);
 }
 
-const solutionForMap = (data, helper) => {
-  return data.map(helper);
+const solutionForMap = (data, mapper) => {
+  return data.map(mapper);
 }
 
 const flatOnce = (data) => {
@@ -1006,99 +1007,99 @@ const QUESTIONWITHSOLUTION = [
   [QUESTION2, flatOnce],
   [QUESTION3, solutionForReduce, removeDuplicate, []],
   [QUESTION4, solutionForReduce, removeDuplicate, []],
-  [QUESTION5, solutionForReduce, sum, 0],
+  [QUESTION5, solutionForReduce, add, 0],
   [QUESTION6, solutionForAny, hasMatch, 0, "do"],
   [QUESTION7, solutionForEvery, isBelow, 0, 32],
-  [QUESTION8, solutionForReduce, sum, 0],
+  [QUESTION8, solutionForReduce, add, 0],
   [QUESTION9, solutionForReduce, removeDuplicate, []],
   [QUESTION10, solutionForCount, count, 0, "Dune"],
   [QUESTION11, solutionForReduce, removeDuplicate, []],
   [QUESTION12, solutionForAny, hasMatch, 0, "so"],
-  [QUESTION13, solutionForReduce, sum, 0],
+  [QUESTION13, solutionForReduce, add, 0],
   [QUESTION14, solutionForReduce, removeDuplicate, []],
   [QUESTION15, solutionForCount, count, 0, "deer"],
   [QUESTION16, solutionForReduce, removeDuplicate, []],
   [QUESTION17, solutionForAny, hasMatch, 0, "turn"],
-  [QUESTION18, solutionForReduce, sum, 0],
-  [QUESTION19, solutionForReduce, sum, 0],
+  [QUESTION18, solutionForReduce, add, 0],
+  [QUESTION19, solutionForReduce, add, 0],
   [QUESTION20, solutionForReduce, removeDuplicate, []],
-  [QUESTION21, solutionForReduce, sum, 0],
+  [QUESTION21, solutionForReduce, add, 0],
   [QUESTION22, solutionForReduce, removeDuplicate, []],
   [QUESTION23, solutionForReduce, removeDuplicate, []],
   [QUESTION24, solutionForCount, count, 0, "chocolate"],
   [QUESTION25, solutionForReduce, removeDuplicate, []],
-  [QUESTION26, solutionForReduce, sum, 0],
+  [QUESTION26, solutionForReduce, add, 0],
   [QUESTION27, solutionForIsDistinct, isDistinct],
-  [QUESTION28, solutionForReduce, sum, 0],
+  [QUESTION28, solutionForReduce, add, 0],
   [QUESTION29, solutionForEvery, isAbove, 0, 0],
-  [QUESTION30, solutionForReduce, sum, 0],
+  [QUESTION30, solutionForReduce, add, 0],
   [QUESTION31, solutionForIsDistinct, isDistinct],
   [QUESTION32, solutionForIsDistinct, isDistinct],
   [QUESTION33, solutionForEvery, isBelow, 0, 120],
-  [QUESTION34, solutionForReduce, sum, 0],
+  [QUESTION34, solutionForReduce, add, 0],
   [QUESTION35, solutionForCount, count, 0, "track1"],
   [QUESTION36, solutionForIsDistinct, isDistinct],
   [QUESTION37, solutionForIsDistinct, isDistinct],
   [QUESTION38, solutionForIsDistinct, isDistinct],
-  [QUESTION39, solutionForReduce, sum, 0],
+  [QUESTION39, solutionForReduce, add, 0],
   [QUESTION40, solutionForAny, isAbove, 0, 7],
-  [QUESTION41, solutionForReduce, sum, 0],
+  [QUESTION41, solutionForReduce, add, 0],
   [QUESTION42, solutionForIsDistinct, isDistinct],
   [QUESTION43, solutionForIsDistinct, isDistinct],
-  [QUESTION44, solutionForReduce, sum, 0],
-  [QUESTION45, solutionForReduce, sum, 0],
+  [QUESTION44, solutionForReduce, add, 0],
+  [QUESTION45, solutionForReduce, add, 0],
   [QUESTION46, solutionForIsDistinct, isDistinct],
   [QUESTION47, solutionForAny, isEquals, 0, 4],
   [QUESTION48, solutionForIsDistinct, isDistinct],
-  [QUESTION49, solutionForReduce, sum, 0],
+  [QUESTION49, solutionForReduce, add, 0],
   [QUESTION50, solutionForIsDistinct, isDistinct],
   [QUESTION51, solutionForCount, count, 0, "banana"],
   [QUESTION52, solutionForReduce, removeDuplicate, []],
   [QUESTION53, solutionForAny, isEquals, 0, "excellent"],
   [QUESTION54, solutionForEvery, isBelow, 0, 50],
   [QUESTION55, solutionForReduce, removeDuplicate, []],
-  [QUESTION56, solutionForReduce, sum, 0],
+  [QUESTION56, solutionForReduce, add, 0],
   [QUESTION57, solutionForReduce, removeDuplicate, []],
   [QUESTION58, solutionForCount, count, 0, "red"],
-  [QUESTION59, solutionForReduce, sum, 0],
+  [QUESTION59, solutionForReduce, add, 0],
   [QUESTION60, solutionForIsDistinct, isDistinct],
   [QUESTION61, solutionForAny, isAbove, 0, 90],
   [QUESTION62, solutionForEvery, isAbove, 0, 17],
   [QUESTION63, solutionForReduce, removeDuplicate, []],
   [QUESTION64, solutionForReduce, reverse, []],
-  [QUESTION65, solutionForReduce, frequency, []],
+  [QUESTION65, solutionForReduce, occurence, []],
   [QUESTION66, solutionForAny, hasMatch, 0, "fa"],
-  [QUESTION67, solutionForReduce, sum, 0],
+  [QUESTION67, solutionForReduce, add, 0],
   [QUESTION68, solutionForReduce, removeDuplicate, []],
   [QUESTION69, solutionForCount, count, 0, "ch1"],
   [QUESTION70, solutionForReduce, removeDuplicate, []],
   [QUESTION71, solutionForAny, isEquals, 0, 100],
   [QUESTION72, solutionForEvery, isAbove, 0, 1],
   [QUESTION73, solutionForReduce, removeDuplicate, []],
-  [QUESTION74, solutionForReduce, sum, 0],
+  [QUESTION74, solutionForReduce, add, 0],
   [QUESTION75, solutionForReduce, removeDuplicate, []],
   [QUESTION76, solutionForCount, count, 0, "p"],
   [QUESTION77, solutionForReduce, removeDuplicate, []],
   [QUESTION78, solutionForAny, isEquals, 0, 0],
   [QUESTION79, solutionForEvery, isBelow, 0, 100],
-  [QUESTION80, solutionForReduce, frequency, []],
+  [QUESTION80, solutionForReduce, occurence, []],
   [QUESTION81, solutionForReduce, reverse, []],
-  [QUESTION82, solutionForCount, isSentainContains, 0, "rain"],
+  [QUESTION82, solutionForCount, isSentenceContains, 0, "rain"],
   [QUESTION83, flatOnce],
   [QUESTION84, solutionForIsDistinct, isDistinct],
-  [QUESTION85, solutionForReduce, sum, 0],
+  [QUESTION85, solutionForReduce, add, 0],
   [QUESTION86, solutionForAnyInArray, isSumEquals, 0, 50],
   [QUESTION87, solutionForEvery, isBelow, 0, 8],
   [QUESTION88, solutionForReduce, removeDuplicate, []],
-  [QUESTION89, solutionForReduce, sum, 0],
+  [QUESTION89, solutionForReduce, add, 0],
   [QUESTION90, solutionForIsDistinct, isDistinct],
   [QUESTION91, solutionForCount, count, 0, "white"],
   [QUESTION92, flatOnce],
   [QUESTION93, solutionForAny, ele => ele.includes("fragile")],
   [QUESTION94, solutionForMap, toLowerCase],
   [QUESTION95, solutionForReduce, reverse, []],
-  [QUESTION96, solutionForReduce, frequency, []],
-  [QUESTION97, solutionForCount, isSentainContains, 0, "error"],
+  [QUESTION96, solutionForReduce, occurence, []],
+  [QUESTION97, solutionForCount, isSentenceContains, 0, "error"],
   [QUESTION98, solutionForReduce, removeDuplicate, []],
   [QUESTION99, data => data.some(ele => ele.every(ele => ele === 0))],
   [QUESTION100, solutionForReduce, removeDuplicate, []]
