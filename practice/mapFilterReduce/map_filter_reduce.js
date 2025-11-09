@@ -833,7 +833,7 @@ const QUESTION93 = [
 const QUESTION94 = [
   "### **94. Verify that all letters written by participants are lowercase**",
   "Letters written:",
-  ['hello', 'thank you', 'see you soon', 'goodbye'],
+  ['helLo', 'thank you', 'see you soon', 'goodbye'],
   'Ensure all letters are completely lowercase.'
 ];
 
@@ -984,7 +984,7 @@ const solutionForIsDistinct = (data, helper) => {
 }
 
 const solutionForMap = (data, helper) => {
-  return data.flatMap(ele => ele).map(helper);
+  return data.map(helper);
 }
 
 const flatOnce = (data) => {
@@ -1100,7 +1100,7 @@ const QUESTIONWITHSOLUTION = [
   [QUESTION96, solutionForReduce, frequency, []],
   [QUESTION97, solutionForCount, isSentainContains, 0, "error"],
   [QUESTION98, solutionForReduce, removeDuplicate, []],
-  [QUESTION99, data => data.some(ele => ele.every(ele => ele === 0)),],
+  [QUESTION99, data => data.some(ele => ele.every(ele => ele === 0))],
   [QUESTION100, solutionForReduce, removeDuplicate, []]
 ];
 
