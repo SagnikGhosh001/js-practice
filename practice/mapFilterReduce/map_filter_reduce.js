@@ -747,10 +747,10 @@ const QUESTIONWITHSOLUTION = [
 ];
 
 const solution = () => {
-  for (const element of QUESTIONWITHSOLUTION) {
+  QUESTIONWITHSOLUTION.map(element => {
     showReuslt(element[0], element[1], element[2]);
     console.log();
-  }
+  })
 }
 
 const main = () => {
