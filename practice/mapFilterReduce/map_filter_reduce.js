@@ -900,29 +900,23 @@ const removeDuplicate = (uniqueElements, element) => {
   return uniqueElements;
 }
 
-const add = (sum, element) => {
-  return sum + element;
-}
+const add = (sum, element) => sum + element;
 
-const hasMatch = (element, elementToMatch) => {
-  return element === elementToMatch;
-}
 
-const isBelow = (element, threshold) => {
-  return element < threshold;
-}
+const hasMatch = (element, elementToMatch) => element === elementToMatch;
+
+
+const isBelow = (element, threshold) => element < threshold;
 
 const isDistinct = (element, index, array) => {
   return !array.some((ele, i) => ele === element && index !== i);
 }
 
-const isAbove = (element, threshold) => {
-  return element > threshold;
-}
+const isAbove = (element, threshold) => element > threshold;
 
-const isEquals = (element, threshold) => {
-  return element === threshold;
-}
+
+const isEquals = (element, threshold) => element === threshold;
+
 
 const reverse = (reversedElements, element) => {
   reversedElements.unshift(element);
@@ -948,17 +942,13 @@ const occurence = (frequency, element) => {
   return frequency;
 }
 
-const isSumEquals = (ele, threshold) => {
-  return ele.reduce(add, 0) === threshold;
-}
+const isSumEquals = (ele, threshold) => ele.reduce(add, 0) === threshold;
 
-const toLowerCase = (ele) => {
-  return ele.toLowerCase();
-}
+const toLowerCase = (ele) => ele.toLowerCase();
 
-const isSkippedAll = (ele) => {
-  return ele.every(ele => ele === 0);
-}
+
+const isSkippedAll = (ele) => ele.every(ele => ele === 0);
+
 
 const solutionForCount = (array, reducer, initialValue, elemetnToCount) => {
   return array.flatMap(x => x).reduce((count, element) => reducer(count, element, elemetnToCount), initialValue);
