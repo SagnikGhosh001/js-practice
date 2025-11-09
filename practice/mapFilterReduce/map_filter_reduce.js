@@ -968,13 +968,9 @@ const solutionForIsDistinct = (data, predicate) => {
   return data.flatMap(ele => ele).filter(predicate);
 }
 
-const solutionForMap = (data, mapper) => {
-  return data.map(mapper);
-}
+const solutionForMap = (data, mapper) => data.map(mapper);
 
-const flatOnce = (data) => {
-  return data.flatMap(ele => ele);
-}
+const flatOnce = (data) => data.flatMap(ele => ele);
 
 const showReuslt = (question, functionToUse, helper, initilaValue, arg) => {
   const data = question[2];
