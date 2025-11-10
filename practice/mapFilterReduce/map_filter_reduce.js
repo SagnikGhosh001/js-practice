@@ -1,22 +1,71 @@
-const QUESTION1 = ["### **1. Festival Ribbon Count**", "A craft booth cuts ribbons of different colors throughout the day:", ["red", "blue", "red", "green", "red", "blue"], "They want to know how many **blue** ribbons were cut."];
+const QUESTION1 = [
+  "### **1. Festival Ribbon Count**",
+  "A craft booth cuts ribbons of different colors throughout the day:",
+  ["red", "blue", "red", "green", "red", "blue"],
+  "They want to know how many **blue** ribbons were cut.",
+];
 
-const QUESTION2 = ["### **2. Stargazing Log**", "A stargazing club logs visible constellations from each night:", [["Orion", "Leo"], ["Taurus"], ["Orion", "Gemini"]], "Combine everyone’s observations into one list of all constellations spotted."];
+const QUESTION2 = [
+  "### **2. Stargazing Log**",
+  "A stargazing club logs visible constellations from each night:",
+  [["Orion", "Leo"], ["Taurus"], ["Orion", "Gemini"]],
+  "Combine everyone’s observations into one list of all constellations spotted.",
+];
 
-const QUESTION3 = ["### **3. Birdwatching Duplicate Removal**", "A birdwatcher notes species seen during a morning walk:", ["sparrow", "crow", "sparrow", "eagle", "crow", "crow", "sparrow"], "Create a list of the species without repeats, preserving the order first seen."];
+const QUESTION3 = [
+  "### **3. Birdwatching Duplicate Removal**",
+  "A birdwatcher notes species seen during a morning walk:",
+  ["sparrow", "crow", "sparrow", "eagle", "crow", "crow", "sparrow"],
+  "Create a list of the species without repeats, preserving the order first seen.",
+];
 
-const QUESTION4 = ["### **4. Classroom Attendance Check**", "A class records names of students present for each period:", [["Asha", "Ravi", "Neel"], ["Ravi", "Neel"], ["Asha", "Meera"]], "Determine which distinct students attended at least once."];
+const QUESTION4 = [
+  "### **4. Classroom Attendance Check**",
+  "A class records names of students present for each period:",
+  [["Asha", "Ravi", "Neel"], ["Ravi", "Neel"], ["Asha", "Meera"]],
+  "Determine which distinct students attended at least once.",
+];
 
-const QUESTION5 = ["### **5. Candy Jar Stocking**", "A store logs candy refills like this:", [[5, 3], [2], [4, 1]], "Find the total number of candies added."];
+const QUESTION5 = [
+  "### **5. Candy Jar Stocking**",
+  "A store logs candy refills like this:",
+  [[5, 3], [2], [4, 1]],
+  "Find the total number of candies added.",
+];
 
-const QUESTION6 = ["### **6. Music Rehearsal Notes**", "Choir groups practice with sequences:", [["mi", "fa", "so"], ["do", "mi"], ["fa"]], 'Check whether **any** group sang `"do "`.'];
+const QUESTION6 = [
+  "### **6. Music Rehearsal Notes**",
+  "Choir groups practice with sequences:",
+  [["mi", "fa", "so"], ["do", "mi"], ["fa"]],
+  'Check whether **any** group sang `"do "`.',
+];
 
-const QUESTION7 = ["### **7. Weather Sensor Validation**", "Several temperature sheets:", [[22, 23], [25, 24, 22], [29]], 'Check if **every** recorded temperature is below 32.'];
+const QUESTION7 = [
+  "### **7. Weather Sensor Validation**",
+  "Several temperature sheets:",
+  [[22, 23], [25, 24, 22], [29]],
+  "Check if **every** recorded temperature is below 32.",
+];
 
-const QUESTION8 = ["### **8. Fitness Tracker Miles**", "Runner logs:", [[2, 3, 2], [4], [1, 1]], 'Find the total miles run.'];
+const QUESTION8 = ["### **8. Fitness Tracker Miles**", "Runner logs:", [
+  [2, 3, 2],
+  [4],
+  [1, 1],
+], "Find the total miles run."];
 
-const QUESTION9 = ["### **9. Art Workshop Color Variety**", "Paint colors used in sessions:", [["blue", "yellow"], ["yellow", "green"], ["blue"]], "Find unique colors used."];
+const QUESTION9 = [
+  "### **9. Art Workshop Color Variety**",
+  "Paint colors used in sessions:",
+  [["blue", "yellow"], ["yellow", "green"], ["blue"]],
+  "Find unique colors used.",
+];
 
-const QUESTION10 = ["### **10. Library Return Counter**", "Books returned:", ["Dune", "Dune", "Foundation", "Dune"], "Count how many times “Dune” was returned."];
+const QUESTION10 = ["### **10. Library Return Counter**", "Books returned:", [
+  "Dune",
+  "Dune",
+  "Foundation",
+  "Dune",
+], "Count how many times “Dune” was returned."];
 
 const QUESTION11 = [
   "### **11. Lunchbox Ingredient Inventory**",
@@ -24,9 +73,9 @@ const QUESTION11 = [
   [
     ["rice", "lentils"],
     ["rice"],
-    ["curd", "lentils"]
+    ["curd", "lentils"],
   ],
-  "Produce a list of distinct ingredients."
+  "Produce a list of distinct ingredients.",
 ];
 
 const QUESTION12 = [
@@ -35,9 +84,9 @@ const QUESTION12 = [
   [
     ["la", "la"],
     ["mi"],
-    ["so", "la"]
+    ["so", "la"],
   ],
-  'Check whether any group sang "so".'
+  'Check whether any group sang "so".',
 ];
 
 const QUESTION13 = [
@@ -46,27 +95,27 @@ const QUESTION13 = [
   [
     [4, 6],
     [2, 3, 1],
-    [5]
+    [5],
   ],
-  "Find the sum of all weights."
+  "Find the sum of all weights.",
 ];
 
 const QUESTION14 = [
   "### **14. Post Office Parcel Record**",
   "Parcel sizes logged:",
   [
-    ["small", "large", "medium", "small"]
+    ["small", "large", "medium", "small"],
   ],
-  "Find unique parcel sizes."
+  "Find unique parcel sizes.",
 ];
 
 const QUESTION15 = [
   "### **15. Wildlife Sighting Count**",
   "Animal sightings:",
   [
-    ["deer", "deer", "rabbit", "deer"]
+    ["deer", "deer", "rabbit", "deer"],
   ],
-  'Count how many times "deer" was seen.'
+  'Count how many times "deer" was seen.',
 ];
 
 const QUESTION16 = [
@@ -75,9 +124,9 @@ const QUESTION16 = [
   [
     [1, 2],
     [3],
-    [2, 4, 1]
+    [2, 4, 1],
   ],
-  'Find all chapters completed by any group.'
+  "Find all chapters completed by any group.",
 ];
 
 const QUESTION17 = [
@@ -85,9 +134,9 @@ const QUESTION17 = [
   "Step sequences:",
   [
     ["step", "tap"],
-    ["turn", "step"]
+    ["turn", "step"],
   ],
-  'Check if "turn" appears in any sequence.'
+  'Check if "turn" appears in any sequence.',
 ];
 
 const QUESTION18 = [
@@ -96,9 +145,9 @@ const QUESTION18 = [
   [
     [1, 2, 1],
     [3],
-    [2]
+    [2],
   ],
-  'Total amount of water used.'
+  "Total amount of water used.",
 ];
 
 const QUESTION19 = [
@@ -107,9 +156,9 @@ const QUESTION19 = [
   [
     [3, 2],
     [1],
-    [4]
+    [4],
   ],
-  'Compute the total cranes.'
+  "Compute the total cranes.",
 ];
 
 const QUESTION20 = [
@@ -118,9 +167,9 @@ const QUESTION20 = [
   [
     ["apple", "banana"],
     ["apple"],
-    ["apple", "orange"]
+    ["apple", "orange"],
   ],
-  'List unique fruits used.'
+  "List unique fruits used.",
 ];
 
 const QUESTION21 = [
@@ -129,9 +178,9 @@ const QUESTION21 = [
   [
     [2, 3],
     [1],
-    [3, 2]
+    [3, 2],
   ],
-  'Total pens handed out.'
+  "Total pens handed out.",
 ];
 
 const QUESTION22 = [
@@ -140,18 +189,18 @@ const QUESTION22 = [
   [
     ["Inception", "Dunkirk"],
     ["Interstellar"],
-    ["Inception"]
+    ["Inception"],
   ],
-  'List unique titles watched.'
+  "List unique titles watched.",
 ];
 
 const QUESTION23 = [
   "### **23. Name Badge Sorting**",
   "Students sign in repeatedly:",
   [
-    ["A", "B", "A", "C", "B"]
+    ["A", "B", "A", "C", "B"],
   ],
-  'Create a unique list of attendees.'
+  "Create a unique list of attendees.",
 ];
 
 const QUESTION24 = [
@@ -160,9 +209,9 @@ const QUESTION24 = [
   [
     ["vanilla", "chocolate"],
     ["strawberry"],
-    ["chocolate"]
+    ["chocolate"],
   ],
-  'Find how many orders were "chocolate".'
+  'Find how many orders were "chocolate".',
 ];
 
 const QUESTION25 = [
@@ -170,9 +219,9 @@ const QUESTION25 = [
   "Bouquets contain:",
   [
     ["rose", "lily"],
-    ["lily", "tulip"]
+    ["lily", "tulip"],
   ],
-  'List all unique flowers used.'
+  "List all unique flowers used.",
 ];
 
 const QUESTION26 = [
@@ -181,9 +230,9 @@ const QUESTION26 = [
   [
     [10, 20],
     [5],
-    [15, 10]
+    [15, 10],
   ],
-  'Total repetitions done.'
+  "Total repetitions done.",
 ];
 
 const QUESTION27 = [
@@ -192,9 +241,9 @@ const QUESTION27 = [
   [
     ["A", "B"],
     ["B", "C"],
-    ["A"]
+    ["A"],
   ],
-  'Find the station names without repeats.'
+  "Find the station names without repeats.",
 ];
 
 const QUESTION28 = [
@@ -203,9 +252,9 @@ const QUESTION28 = [
   [
     [12, 10],
     [5],
-    [8, 7]
+    [8, 7],
   ],
-  'Find total pages read.'
+  "Find total pages read.",
 ];
 
 const QUESTION29 = [
@@ -214,9 +263,9 @@ const QUESTION29 = [
   [
     [3, 4],
     [5, 2],
-    [1]
+    [1],
   ],
-  'Check if all values are positive.'
+  "Check if all values are positive.",
 ];
 
 const QUESTION30 = [
@@ -225,9 +274,9 @@ const QUESTION30 = [
   [
     [4, 3],
     [2],
-    [3, 1]
+    [3, 1],
   ],
-  'Compute total weight.'
+  "Compute total weight.",
 ];
 
 const QUESTION31 = [
@@ -235,9 +284,9 @@ const QUESTION31 = [
   "Snacks:",
   [
     ["idli", "vada"],
-    ["vada", "upma"]
+    ["vada", "upma"],
   ],
-  'Unique snacks served.'
+  "Unique snacks served.",
 ];
 
 const QUESTION32 = [
@@ -246,9 +295,9 @@ const QUESTION32 = [
   [
     ["sunset", "bird"],
     ["river"],
-    ["sunset"]
+    ["sunset"],
   ],
-  'List unique themes.'
+  "List unique themes.",
 ];
 
 const QUESTION33 = [
@@ -257,9 +306,9 @@ const QUESTION33 = [
   [
     [110, 115],
     [118],
-    [109]
+    [109],
   ],
-  'Check if all readings are below 120.'
+  "Check if all readings are below 120.",
 ];
 
 const QUESTION34 = [
@@ -268,18 +317,18 @@ const QUESTION34 = [
   [
     [2, 3, 2],
     [1],
-    [4]
+    [4],
   ],
-  'Compute total laps.'
+  "Compute total laps.",
 ];
 
 const QUESTION35 = [
   "### **35. Music Playlist Repeats**",
   "Songs played:",
   [
-    ["track1", "track2", "track1"]
+    ["track1", "track2", "track1"],
   ],
-  'Count occurrences of "track1".'
+  'Count occurrences of "track1".',
 ];
 
 const QUESTION36 = [
@@ -288,9 +337,9 @@ const QUESTION36 = [
   [
     ["cheese", "bread"],
     ["tomato"],
-    ["bread"]
+    ["bread"],
   ],
-  'Unique ingredients needed.'
+  "Unique ingredients needed.",
 ];
 
 const QUESTION37 = [
@@ -299,9 +348,9 @@ const QUESTION37 = [
   [
     ["sky", "blue"],
     ["night"],
-    ["sky", "dark"]
+    ["sky", "dark"],
   ],
-  'List all unique words.'
+  "List all unique words.",
 ];
 
 const QUESTION38 = [
@@ -309,9 +358,9 @@ const QUESTION38 = [
   "Items:",
   [
     ["toy", "sticker"],
-    ["candy", "sticker"]
+    ["candy", "sticker"],
   ],
-  'List unique items used.'
+  "List unique items used.",
 ];
 
 const QUESTION39 = [
@@ -319,11 +368,10 @@ const QUESTION39 = [
   "Routine counts:",
   [
     [6, 4],
-    [3, 2]
+    [3, 2],
   ],
-  'Total counts.'
+  "Total counts.",
 ];
-
 
 const QUESTION40 = [
   "### **40. Fish Tank Measurements**",
@@ -331,9 +379,9 @@ const QUESTION40 = [
   [
     [5, 8],
     [7],
-    [6]
+    [6],
   ],
-  'Check if any measurement is above 7.'
+  "Check if any measurement is above 7.",
 ];
 
 const QUESTION41 = [
@@ -341,9 +389,9 @@ const QUESTION41 = [
   "Candy numbers:",
   [
     [1, 2, 3],
-    [2]
+    [2],
   ],
-  'Sum all candies.'
+  "Sum all candies.",
 ];
 
 const QUESTION42 = [
@@ -351,9 +399,9 @@ const QUESTION42 = [
   "Participants:",
   [
     ["Tom", "Jerry"],
-    ["Jerry", "Spike"]
+    ["Jerry", "Spike"],
   ],
-  'List unique participants.'
+  "List unique participants.",
 ];
 
 const QUESTION43 = [
@@ -361,9 +409,9 @@ const QUESTION43 = [
   "Stars named:",
   [
     ["Vega", "Sirius"],
-    ["Vega", "Rigel"]
+    ["Vega", "Rigel"],
   ],
-  'Unique star names.'
+  "Unique star names.",
 ];
 
 const QUESTION44 = [
@@ -371,9 +419,9 @@ const QUESTION44 = [
   "Counts:",
   [
     [10, 12],
-    [15]
+    [15],
   ],
-  'Total passengers.'
+  "Total passengers.",
 ];
 
 const QUESTION45 = [
@@ -381,9 +429,9 @@ const QUESTION45 = [
   "Quantities:",
   [
     [3, 5],
-    [2, 1]
+    [2, 1],
   ],
-  'Find the total.'
+  "Find the total.",
 ];
 
 const QUESTION46 = [
@@ -392,9 +440,9 @@ const QUESTION46 = [
   [
     ["mint", "ginger"],
     ["lemon"],
-    ["mint"]
+    ["mint"],
   ],
-  'Unique flavors.'
+  "Unique flavors.",
 ];
 
 const QUESTION47 = [
@@ -403,9 +451,9 @@ const QUESTION47 = [
   [
     [2, 3],
     [1],
-    [4, 2]
+    [4, 2],
   ],
-  'Check if any value equals 4.'
+  "Check if any value equals 4.",
 ];
 
 const QUESTION48 = [
@@ -414,9 +462,9 @@ const QUESTION48 = [
   [
     ["pencil", "charcoal"],
     ["ink"],
-    ["pencil"]
+    ["pencil"],
   ],
-  'Unique tools used.'
+  "Unique tools used.",
 ];
 
 const QUESTION49 = [
@@ -424,9 +472,9 @@ const QUESTION49 = [
   "Coins collected:",
   [
     [1, 1, 2],
-    [2, 1]
+    [2, 1],
   ],
-  'Total coins.'
+  "Total coins.",
 ];
 
 const QUESTION50 = [
@@ -435,19 +483,24 @@ const QUESTION50 = [
   [
     ["salt", "pepper"],
     ["turmeric"],
-    ["salt"]
+    ["salt"],
   ],
-  'Unique spices.'
+  "Unique spices.",
 ];
 
 const QUESTION51 = [
   "### **51. Count how many times “banana” appears in a fruit log**",
   "Fruit log:",
   [
-    "apple", "banana", "orange", "banana",
-    "grape", "banana", "kiwi"
+    "apple",
+    "banana",
+    "orange",
+    "banana",
+    "grape",
+    "banana",
+    "kiwi",
   ],
-  'Count of "banana".'
+  'Count of "banana".',
 ];
 
 const QUESTION52 = [
@@ -456,9 +509,9 @@ const QUESTION52 = [
   [
     ["hello", "world", "cat"],
     ["dog", "hello", "sun"],
-    ["moon", "cat", "jump"]
+    ["moon", "cat", "jump"],
   ],
-  'All words combined.'
+  "All words combined.",
 ];
 
 const QUESTION53 = [
@@ -467,16 +520,16 @@ const QUESTION53 = [
   [
     ["good", "great", "awesome"],
     ["excellent", "okay"],
-    ["fine", "nice"]
+    ["fine", "nice"],
   ],
-  'True if any student wrote "excellent".'
+  'True if any student wrote "excellent".',
 ];
 
 const QUESTION54 = [
   "### **54. Check whether all recorded rainfall values are under 50**",
   "Rainfall (mm):",
   [12, 45, 23, 38, 49, 15, 42],
-  'True if all values < 50.'
+  "True if all values < 50.",
 ];
 
 const QUESTION55 = [
@@ -485,16 +538,16 @@ const QUESTION55 = [
   [
     ["drama", "comedy"],
     ["action", "comedy", "thriller"],
-    ["drama", "sci-fi"]
+    ["drama", "sci-fi"],
   ],
-  'Unique genres.'
+  "Unique genres.",
 ];
 
 const QUESTION56 = [
   "### **56. Compute the total number of pushups done in all sessions**",
   "Pushup sessions:",
   [25, 30, 20, 35, 40],
-  'Total pushups.'
+  "Total pushups.",
 ];
 
 const QUESTION57 = [
@@ -503,23 +556,23 @@ const QUESTION57 = [
   [
     ["sparrow", "eagle", "sparrow"],
     ["owl", "hawk"],
-    ["eagle", "sparrow", "kiwi"]
+    ["eagle", "sparrow", "kiwi"],
   ],
-  'Unique bird species.'
+  "Unique bird species.",
 ];
 
 const QUESTION58 = [
   "### **58. Count how many tiles in a mosaic were listed as “red”**",
   "Tile colors:",
   ["blue", "red", "green", "red", "yellow", "red", "blue"],
-  'Count of "red" tiles.'
+  'Count of "red" tiles.',
 ];
 
 const QUESTION59 = [
   "### **59. Sum all distances covered during cycling practice**",
   "Distances (km):",
   [12.5, 18, 15.3, 22, 19.7],
-  'Total distance.'
+  "Total distance.",
 ];
 
 const QUESTION60 = [
@@ -528,23 +581,23 @@ const QUESTION60 = [
   [
     ["vanilla", "chocolate", "strawberry"],
     ["mint", "chocolate", "vanilla"],
-    ["cookie dough", "mango"]
+    ["cookie dough", "mango"],
   ],
-  'Unique ice-cream flavors.'
+  "Unique ice-cream flavors.",
 ];
 
 const QUESTION61 = [
   "### **61. Check if any participant scored above 90 in tests**",
   "Test scores:",
   [78, 92, 85, 88, 95, 76],
-  'True if any score > 90.'
+  "True if any score > 90.",
 ];
 
 const QUESTION62 = [
   "### **62. Verify if all ages listed for an event are 18 or above**",
   "Ages of attendees:",
   [19, 21, 18, 25, 17, 20, 22],
-  'True if all ages >= 18.'
+  "True if all ages >= 18.",
 ];
 
 const QUESTION63 = [
@@ -553,23 +606,23 @@ const QUESTION63 = [
   [
     ["flour", "sugar", "eggs"],
     ["butter", "flour", "milk"],
-    ["sugar", "eggs", "vanilla"]
+    ["sugar", "eggs", "vanilla"],
   ],
-  'All ingredients combined.'
+  "All ingredients combined.",
 ];
 
 const QUESTION64 = [
   "### **64. Reverse the order of dance steps recorded by a choreographer**",
   "Dance steps:",
   ["step", "turn", "jump", "spin", "slide", "kick"],
-  'Steps in reverse order.'
+  "Steps in reverse order.",
 ];
 
 const QUESTION65 = [
   "### **65. Build a frequency summary of words used in a poem draft**",
   "Poem draft words:",
   ["moon", "star", "night", "moon", "light", "star", "dream", "night"],
-  'Object with word frequencies.'
+  "Object with word frequencies.",
 ];
 
 const QUESTION66 = [
@@ -578,16 +631,16 @@ const QUESTION66 = [
   [
     ["do", "re", "mi", "fa"],
     ["sol", "la", "ti"],
-    ["re", "mi", "fa", "sol"]
+    ["re", "mi", "fa", "sol"],
   ],
-  'True if "fa" appears in any sheet.'
+  'True if "fa" appears in any sheet.',
 ];
 
 const QUESTION67 = [
   "### **67. Sum all weights of parcels recorded in a courier office**",
   "Parcel weights (kg):",
   [2.5, 1.8, 3.2, 0.9, 4.1, 2.7],
-  'Total weight.'
+  "Total weight.",
 ];
 
 const QUESTION68 = [
@@ -596,16 +649,16 @@ const QUESTION68 = [
   [
     ["pepperoni", "mushrooms"],
     ["olives", "pepperoni", "cheese"],
-    ["mushrooms", "onions", "olives"]
+    ["mushrooms", "onions", "olives"],
   ],
-  'Unique toppings.'
+  "Unique toppings.",
 ];
 
 const QUESTION69 = [
   "### **69. Count how many times a student reread a particular chapter**",
   "Reading log (chapter names):",
   ["ch1", "ch2", "ch1", "ch3", "ch1", "ch2", "ch1"],
-  'Count of "ch1".'
+  'Count of "ch1".',
 ];
 
 const QUESTION70 = [
@@ -614,23 +667,23 @@ const QUESTION70 = [
   [
     ["orange-red", "lime green", "bright blue"],
     ["golden yellow", "orange-red", "crimson red"],
-    ["lime green", "deep red"]
+    ["lime green", "deep red"],
   ],
-  'All colors combined.'
+  "All colors combined.",
 ];
 
 const QUESTION71 = [
   "### **71. Check if any experiment reading reached the maximum threshold of 100**",
   "Experiment readings:",
   [85, 92, 100, 78, 95],
-  'Did any reading hit 100?'
+  "Did any reading hit 100?",
 ];
 
 const QUESTION72 = [
   "### **72. Confirm that every participant completed at least one task**",
   "Tasks completed per participant:",
   [3, 1, 4, 2, 1],
-  'Did every participant complete at least one task?'
+  "Did every participant complete at least one task?",
 ];
 
 const QUESTION73 = [
@@ -639,16 +692,16 @@ const QUESTION73 = [
   [
     ["Paris", "Tokyo", "New York"],
     ["Tokyo", "Bali", "Paris"],
-    ["Cape Town", "Bali"]
+    ["Cape Town", "Bali"],
   ],
-  'All unique destinations.'
+  "All unique destinations.",
 ];
 
 const QUESTION74 = [
   "### **74. Calculate the total hours spent practicing an instrument**",
   "Practice sessions (hours):",
   [2.5, 3, 1.5, 4, 2],
-  'Total practice hours.'
+  "Total practice hours.",
 ];
 
 const QUESTION75 = [
@@ -657,9 +710,9 @@ const QUESTION75 = [
   [
     ["Fern", "Orchid", "Cactus"],
     ["Orchid", "Rose", "Fern"],
-    ["Bamboo", "Cactus"]
+    ["Bamboo", "Cactus"],
   ],
-  'All distinct plant types.'
+  "All distinct plant types.",
 ];
 
 const QUESTION76 = [
@@ -668,7 +721,7 @@ const QUESTION76 = [
   ["p", "t", "k", "p", "s", "p"],
   "Target sound:",
   "p",
-  'Number of times "p" appears.'
+  'Number of times "p" appears.',
 ];
 
 const QUESTION77 = [
@@ -677,23 +730,23 @@ const QUESTION77 = [
   [
     ["ba", "bi", "bu"],
     ["ma", "mi", "ba"],
-    ["bu", "na", "mi"]
+    ["bu", "na", "mi"],
   ],
-  'All unique syllables combined.'
+  "All unique syllables combined.",
 ];
 
 const QUESTION78 = [
   "### **78. Check if any measurement is exactly zero**",
   "Measurements:",
   [12.5, 0, 8.3, 15.7, 9.1],
-  'Is any measurement exactly 0?'
+  "Is any measurement exactly 0?",
 ];
 
 const QUESTION79 = [
   "### **79. Verify that all listed items weigh less than 10 grams**",
   "Item weights (grams):",
   [4.2, 7.8, 9.5, 3.1, 6.9],
-  'Do all items weigh less than 10 grams?'
+  "Do all items weigh less than 10 grams?",
 ];
 
 const QUESTION80 = [
@@ -702,9 +755,9 @@ const QUESTION80 = [
   [
     ["red", "blue", "red"],
     ["yellow", "blue", "red"],
-    ["yellow", "green"]
+    ["yellow", "green"],
   ],
-  'Object with color counts.'
+  "Object with color counts.",
 ];
 
 const QUESTION81 = [
@@ -714,9 +767,9 @@ const QUESTION81 = [
     "Find the old oak tree.",
     "Look under the red bench.",
     "Check behind the library sign.",
-    "Search inside the hollow log."
+    "Search inside the hollow log.",
   ],
-  'Reversed list of instructions.'
+  "Reversed list of instructions.",
 ];
 
 const QUESTION82 = [
@@ -727,9 +780,9 @@ const QUESTION82 = [
     "It started to rain in the afternoon.",
     "Rain all day — stayed inside.",
     "Clear skies, no rain.",
-    "Heavy rain delayed the hike."
+    "Heavy rain delayed the hike.",
   ],
-  'Number of entries containing the word “rain” (case-insensitive).'
+  "Number of entries containing the word “rain” (case-insensitive).",
 ];
 
 const QUESTION83 = [
@@ -738,9 +791,9 @@ const QUESTION83 = [
   [
     ["Roses are red,", "Violets are blue,"],
     ["The sky is vast,", "And so are you."],
-    ["Whispers in wind,", "Secrets untold."]
+    ["Whispers in wind,", "Secrets untold."],
   ],
-  'Single flat list of all lines.'
+  "Single flat list of all lines.",
 ];
 
 const QUESTION84 = [
@@ -749,9 +802,9 @@ const QUESTION84 = [
   [
     ["SpongeBob", "Pikachu", "Mickey Mouse"],
     ["Dora", "SpongeBob", "Bluey"],
-    ["Pikachu", "Bluey", "Peppa Pig"]
+    ["Pikachu", "Bluey", "Peppa Pig"],
   ],
-  'Sorted list of unique characters.'
+  "Sorted list of unique characters.",
 ];
 
 const QUESTION85 = [
@@ -760,9 +813,9 @@ const QUESTION85 = [
   [
     [12, 15, 8],
     [20, 18],
-    [14, 22, 16]
+    [14, 22, 16],
   ],
-  'Total points across all games.'
+  "Total points across all games.",
 ];
 
 const QUESTION86 = [
@@ -772,101 +825,108 @@ const QUESTION86 = [
     [12, 15, 8],
     [20, 18],
     [14, 22, 16],
-    [10, 10, 10, 10, 10]
+    [10, 10, 10, 10, 10],
   ],
-  'Check if any team has a total of exactly 50 points.'
+  "Check if any team has a total of exactly 50 points.",
 ];
 
 const QUESTION87 = [
   "### **87. Ensure all pH values recorded are below 8**",
   "Recorded pH values:",
   [7.1, 7.5, 7.9, 8.0, 7.4],
-  'Ensure all pH values are below 8.'
+  "Ensure all pH values are below 8.",
 ];
 
 const QUESTION88 = [
   "### **88. Count unique flavors tasted in a chocolate workshop**",
   "Chocolate flavors tasted:",
-  ['Dark', 'Milk', 'White', 'Dark', 'Milk', 'Hazelnut'],
-  'Count the unique chocolate flavors tasted.'
+  ["Dark", "Milk", "White", "Dark", "Milk", "Hazelnut"],
+  "Count the unique chocolate flavors tasted.",
 ];
 
 const QUESTION89 = [
   "### **89. Sum all minutes of meditation logged across sessions**",
   "Meditation session times (minutes):",
   [20, 45, 30, 15, 25],
-  'Sum all minutes spent meditating.'
+  "Sum all minutes spent meditating.",
 ];
 
 const QUESTION90 = [
   "### **90. Identify every unique tool used in a repair workshop**",
   "Tools used in the workshop:",
-  ['Hammer', 'Screwdriver', 'Wrench', 'Hammer', 'Pliers'],
-  'Identify the unique tools used.'
+  ["Hammer", "Screwdriver", "Wrench", "Hammer", "Pliers"],
+  "Identify the unique tools used.",
 ];
 
 const QUESTION91 = [
   "### **91. Count how many shirts in a laundry batch were listed as “white”**",
   "Laundry batch (shirt colors):",
-  ['white', 'blue', 'white', 'green', 'white', 'black'],
-  'Count how many shirts are listed as “white”.'
+  ["white", "blue", "white", "green", "white", "black"],
+  "Count how many shirts are listed as “white”.",
 ];
 
 const QUESTION92 = [
   "### **92. Combine all notes written during a meeting into one list**",
   "Notes from each participant:",
   [
-    ['Discuss budget', 'Review project timeline'],
-    ['Assign new tasks', 'Confirm next meeting date'],
-    ['Plan presentation', 'Send summary email']
+    ["Discuss budget", "Review project timeline"],
+    ["Assign new tasks", "Confirm next meeting date"],
+    ["Plan presentation", "Send summary email"],
   ],
-  'Combine all notes into one single list.'
+  "Combine all notes into one single list.",
 ];
 
 const QUESTION93 = [
   "### **93. Check if any item in a shipment is marked “fragile”**",
   "Shipment items:",
-  ['books', 'glass vase', 'clothes', 'fragile - lamp', 'toys'],
-  'Check whether any item is marked as “fragile”.'
+  ["books", "glass vase", "clothes", "fragile - lamp", "toys"],
+  "Check whether any item is marked as “fragile”.",
 ];
 
 const QUESTION94 = [
   "### **94. Verify that all letters written by participants are lowercase**",
   "Letters written:",
-  ['helLo', 'thank you', 'see you soon', 'goodbye'],
-  'Ensure all letters are completely lowercase.'
+  ["helLo", "thank you", "see you soon", "goodbye"],
+  "Ensure all letters are completely lowercase.",
 ];
 
 const QUESTION95 = [
   "### **95. Reverse a list of moves recorded during a chess game**",
   "Moves recorded:",
-  ['e4', 'e5', 'Nf3', 'Nc6', 'Bb5'],
-  'Reverse the order of the recorded chess moves.'
+  ["e4", "e5", "Nf3", "Nc6", "Bb5"],
+  "Reverse the order of the recorded chess moves.",
 ];
 
 const QUESTION96 = [
   "### **96. Build a frequency list for musical notes practiced in a session**",
   "Musical notes practiced:",
-  ['C', 'D', 'E', 'C', 'G', 'C', 'D', 'F', 'E'],
-  'Build a frequency list showing how many times each note was practiced.'
+  ["C", "D", "E", "C", "G", "C", "D", "F", "E"],
+  "Build a frequency list showing how many times each note was practiced.",
 ];
 
 const QUESTION97 = [
   "### **97. Count the number of times “error” appears in a log of messages**",
   "System log messages:",
-  ['startup complete', 'error: file not found', 'loading modules', 'error: access denied', 'shutdown sequence', 'error: timeout'],
-  'Count how many times the word “error” appears in the log.'
+  [
+    "startup complete",
+    "error: file not found",
+    "loading modules",
+    "error: access denied",
+    "shutdown sequence",
+    "error: timeout",
+  ],
+  "Count how many times the word “error” appears in the log.",
 ];
 
 const QUESTION98 = [
   "### **98. Gather all ingredients used in three versions of the same dish**",
   "Ingredients per version:",
   [
-    ['tomato', 'onion', 'garlic'],
-    ['onion', 'pepper', 'basil'],
-    ['tomato', 'garlic', 'olive oil']
+    ["tomato", "onion", "garlic"],
+    ["onion", "pepper", "basil"],
+    ["tomato", "garlic", "olive oil"],
   ],
-  'Gather all unique ingredients used across the three versions.'
+  "Gather all unique ingredients used across the three versions.",
 ];
 
 const QUESTION99 = [
@@ -876,29 +936,36 @@ const QUESTION99 = [
     [1, 1, 0],
     [0, 0, 0],
     [1, 0, 1],
-    [1, 1, 1]
+    [1, 1, 1],
   ],
-  'Check if any student has skipped all activity sessions.'
+  "Check if any student has skipped all activity sessions.",
 ];
 
 const QUESTION100 = [
   "### **100. Create a list of distinct songs hummed by children on a bus ride**",
   "Songs hummed by children:",
-  ['Twinkle Twinkle', 'Happy Birthday', 'Twinkle Twinkle', 'Baby Shark', 'Old MacDonald', 'Baby Shark'],
-  'List all distinct songs hummed during the ride.'
+  [
+    "Twinkle Twinkle",
+    "Happy Birthday",
+    "Twinkle Twinkle",
+    "Baby Shark",
+    "Old MacDonald",
+    "Baby Shark",
+  ],
+  "List all distinct songs hummed during the ride.",
 ];
 
 const count = (countValue, currentElement, elementToCount) => {
   return countValue += currentElement === elementToCount ? 1 : 0;
-}
+};
 
 const removeDuplicate = (uniqueElements, element) => {
   if (!uniqueElements.includes(element)) {
-    uniqueElements.push(element)
+    uniqueElements.push(element);
   }
 
   return uniqueElements;
-}
+};
 
 const add = (sum, element) => sum + element;
 
@@ -908,7 +975,7 @@ const isBelow = (element, threshold) => element < threshold;
 
 const isDistinct = (element, index, array) => {
   return !array.some((ele, i) => ele === element && index !== i);
-}
+};
 
 const isAbove = (element, threshold) => element > threshold;
 
@@ -917,15 +984,15 @@ const isEquals = (element, threshold) => element === threshold;
 const reverse = (reversedElements, element) => {
   reversedElements.unshift(element);
   return reversedElements;
-}
+};
 
 const isSentenceContains = (count, ele, word) => {
   count += ele.toLowerCase().includes(word) ? 1 : 0;
   return count;
-}
+};
 
 const occurence = (frequencies, element) => {
-  const frequency = frequencies.find(ele => ele[0] === element);
+  const frequency = frequencies.find((ele) => ele[0] === element);
   if (!frequency) {
     frequencies.push([element, 1]);
     return frequencies;
@@ -933,41 +1000,44 @@ const occurence = (frequencies, element) => {
 
   frequency[1] += 1;
   return frequencies;
-}
+};
 
 const isSumEquals = (ele, threshold) => ele.reduce(add, 0) === threshold;
 
 const toLowerCase = (ele) => ele.toLowerCase();
 
-const isSkippedAll = (ele) => ele.every(ele => ele === 0);
+const isSkippedAll = (ele) => ele.every((ele) => ele === 0);
 
 const countElement = (array, reducer, initialValue, elemetnToCount) => {
-  return array.flatMap(x => x).reduce((count, element) => reducer(count, element, elemetnToCount), initialValue);
-}
+  return array.flatMap((x) => x).reduce(
+    (count, element) => reducer(count, element, elemetnToCount),
+    initialValue,
+  );
+};
 
 const reduce = (data, reducer, initialValue) => {
-  return data.flatMap(ele => ele).reduce(reducer, initialValue);
-}
+  return data.flatMap((ele) => ele).reduce(reducer, initialValue);
+};
 
 const some = (data, predicate, initialValue, threshold) => {
-  return data.flatMap(ele => ele).some(ele => predicate(ele, threshold));
-}
+  return data.flatMap((ele) => ele).some((ele) => predicate(ele, threshold));
+};
 
 const someForNested = (data, predicate, initialValue, threshold) => {
-  return data.some(ele => predicate(ele, threshold));
-}
+  return data.some((ele) => predicate(ele, threshold));
+};
 
 const every = (data, predicate, initialValue, threshold) => {
-  return data.flatMap(ele => ele).every(ele => predicate(ele, threshold));
-}
+  return data.flatMap((ele) => ele).every((ele) => predicate(ele, threshold));
+};
 
 const uniqueElemets = (data, predicate) => {
-  return data.flatMap(ele => ele).filter(predicate);
-}
+  return data.flatMap((ele) => ele).filter(predicate);
+};
 
 const map = (data, mapper) => data.map(mapper);
 
-const flatOnce = (data) => data.flatMap(ele => ele);
+const flatOnce = (data) => data.flatMap((ele) => ele);
 
 const showReuslt = (question, functionToUse, helper, initilaValue, arg) => {
   const data = question[2];
@@ -977,7 +1047,7 @@ const showReuslt = (question, functionToUse, helper, initilaValue, arg) => {
   console.log(question[3]);
   const result = functionToUse(data, helper, initilaValue, arg);
   console.log("result", result);
-}
+};
 
 const QUESTIONWITHSOLUTION = [
   [QUESTION1, countElement, count, 0, "blue"],
@@ -1072,25 +1142,25 @@ const QUESTIONWITHSOLUTION = [
   [QUESTION90, uniqueElemets, isDistinct],
   [QUESTION91, countElement, count, 0, "white"],
   [QUESTION92, flatOnce],
-  [QUESTION93, some, ele => ele.includes("fragile")],
+  [QUESTION93, some, (ele) => ele.includes("fragile")],
   [QUESTION94, map, toLowerCase],
   [QUESTION95, reduce, reverse, []],
   [QUESTION96, reduce, occurence, []],
   [QUESTION97, countElement, isSentenceContains, 0, "error"],
   [QUESTION98, reduce, removeDuplicate, []],
-  [QUESTION99, data => data.some(ele => ele.every(ele => ele === 0))],
-  [QUESTION100, reduce, removeDuplicate, []]
+  [QUESTION99, (data) => data.some((ele) => ele.every((ele) => ele === 0))],
+  [QUESTION100, reduce, removeDuplicate, []],
 ];
 
 const solution = () => {
-  QUESTIONWITHSOLUTION.map(element => {
+  QUESTIONWITHSOLUTION.forEach((element) => {
     showReuslt(element[0], element[1], element[2], element[3], element[4]);
     console.log();
-  })
-}
+  });
+};
 
 const main = () => {
   solution();
-}
+};
 
 main();
