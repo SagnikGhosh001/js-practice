@@ -66,10 +66,9 @@ const askUser = () => {
   const response = prompt(
     "\n1 for add\n2 for access\n3 for exit\nEnter Your choice:-",
   );
-  const userChoise = parseInt(response);
 
-  if (userChoise === 1 || userChoise === 2 || userChoise === 3) {
-    return userChoise;
+  if (response === "1" || response === "2" || response === "3") {
+    return response;
   }
 
   return askUser();
@@ -79,8 +78,8 @@ const main = () => {
   while (true) {
     const userChoice = askUser();
 
-    if (userChoice === 1) add();
-    else if (userChoice === 2) accessElement();
+    if (userChoice === "1") add();
+    else if (userChoice === "2") accessElement();
     else return;
   }
 };
