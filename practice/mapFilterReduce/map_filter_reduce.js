@@ -924,18 +924,15 @@ const isSentenceContains = (count, ele, word) => {
   return count;
 }
 
-const occurence = (frequency, element) => {
-  if (frequency.every(ele => element !== ele[0])) {
-    frequency.push([element, 1]);
-    return frequency;
+const occurence = (frequencies, element) => {
+  const frequency = frequencies.find(ele => ele[0] === element);
+  if (!frequency) {
+    frequencies.push([element, 1]);
+    return frequencies;
   }
 
-  const index = frequency.reduce((acc, ele, i) => {
-    return ele[0] === element ? i : acc
-  }, 0)
-
-  frequency[index][1] += 1;
-  return frequency;
+  frequency[1] += 1;
+  return frequencies;
 }
 
 const isSumEquals = (ele, threshold) => ele.reduce(add, 0) === threshold;
@@ -968,7 +965,7 @@ const uniqueElemets = (data, predicate) => {
   return data.flatMap(ele => ele).filter(predicate);
 }
 
-const solutionForMap = (data, mapper) => data.map(mapper);
+const map = (data, mapper) => data.map(mapper);
 
 const flatOnce = (data) => data.flatMap(ele => ele);
 
@@ -1076,7 +1073,7 @@ const QUESTIONWITHSOLUTION = [
   [QUESTION91, countElement, count, 0, "white"],
   [QUESTION92, flatOnce],
   [QUESTION93, some, ele => ele.includes("fragile")],
-  [QUESTION94, solutionForMap, toLowerCase],
+  [QUESTION94, map, toLowerCase],
   [QUESTION95, reduce, reverse, []],
   [QUESTION96, reduce, occurence, []],
   [QUESTION97, countElement, isSentenceContains, 0, "error"],
