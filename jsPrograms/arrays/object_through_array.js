@@ -1,4 +1,5 @@
 const OBJECT = [];
+const VALIDOPTION = ["1", "2", "3"];
 
 const findKey = (key) => OBJECT.findIndex((k) => k[0] === key);
 
@@ -67,7 +68,7 @@ const askUser = () => {
     "\n1 for add\n2 for access\n3 for exit\nEnter Your choice:-",
   );
 
-  if (response === "1" || response === "2" || response === "3") {
+  if (VALIDOPTION.includes(response)) {
     return response;
   }
 
