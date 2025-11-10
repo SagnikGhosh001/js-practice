@@ -1,9 +1,9 @@
-const MIN_VALUE = 5;
+const MIN_RUN_SIZE = 5;
 
 const mergeSort = (array1, array2) => {
   const sortedArray = [];
-  let j = 0;
   let i = 0;
+  let j = 0;
 
   while (i < array1.length && j < array2.length) {
     if (array1[i] < array2[j]) {
@@ -34,22 +34,34 @@ const insertionSort = (array) => {
   return sortedArray;
 };
 
-const timSort = (array) => {
-  if (array.length <= MIN_VALUE) return insertionSort(array);
+//With Recursion
+const timSort = (inputArray) => {
+  if (inputArray.length <= MIN_RUN_SIZE) return insertionSort(inputArray);
 
-  const runs = [];
-  for (let index = 0; index < array.length; index += MIN_VALUE) {
-    const run = array.slice(index, index + MIN_VALUE);
-    runs.push(insertionSort(run));
-  }
+  const leftRun = inputArray.slice(0, MIN_RUN_SIZE);
+  const remainingRun = inputArray.slice(MIN_RUN_SIZE);
 
-  let sortedArray = runs[0];
-  for (let index = 1; index < runs.length; index++) {
-    sortedArray = mergeSort(sortedArray, runs[index]);
-  }
+  const sortedLeftRun = insertionSort(leftRun);
+  const sortedRemainingRun = timSort(remainingRun);
 
-  return sortedArray;
+  return mergeSort(sortedLeftRun, sortedRemainingRun);
 };
+
+//with loop
+// const timSort = (array) => {
+//   const runs = [];
+//   for (let index = 0; index < array.length; index += MIN_RUN_SIZE) {
+//     const run = array.slice(index, index + MIN_RUN_SIZE);
+//     runs.push(insertionSort(run));
+//   }
+
+//   let sortedArray = runs[0];
+//   for (let index = 1; index < runs.length; index++) {
+//     sortedArray = mergeSort(sortedArray, runs[index]);
+//   }
+
+//   return sortedArray;
+// };
 
 console.log(timSort([1, 2, 4, 5]));
 console.log(timSort([1, 5, 4]));

@@ -15,3 +15,4 @@ const insertionSort = (array) => {
 };
 
 console.log(insertionSort([1, 3, 5, 1, 2]));
+console.log(insertionSort([15, 3, 5, 1, 2]));
