@@ -47,13 +47,13 @@ const generateStar = (array, [filled, hollow = filled]) => {
   });
 };
 
-export const printForFilledPattern = (funtionToUse, dimensions) => {
+export const printFilledPatterns = (funtionToUse, dimensions) => {
   const repeatedArray = funtionToUse(...dimensions);
   const starArray = generateStar(repeatedArray, [starLine]);
   return starArray.join("\n");
 };
 
-export const printForHollowPattern = (funtionToUse, dimensions) => {
+export const printHollowPattern = (funtionToUse, dimensions) => {
   const repeatedArray = hollow(funtionToUse, dimensions);
   const starArray = generateStar(repeatedArray, [starLine, hollowLine]);
   return starArray.join("\n");

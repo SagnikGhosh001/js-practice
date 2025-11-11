@@ -2,7 +2,7 @@ import * as allFns from "./functions.js";
 
 const testForFilledRectngle = {
   name: "Filled Rectangle",
-  ref: allFns.printForFilledPattern,
+  ref: allFns.printFilledPatterns,
   argsFunction: allFns.repeatMN,
   cases: [
     {
@@ -35,7 +35,7 @@ const testForFilledRectngle = {
 
 const testForHollowRectagle = {
   name: "Hollow Rectangle",
-  ref: allFns.printForHollowPattern,
+  ref: allFns.printHollowPattern,
   argsFunction: allFns.repeatMN,
   cases: [
     {
@@ -73,7 +73,7 @@ const testForHollowRectagle = {
 
 const testForTriangle = {
   name: "Triangle",
-  ref: allFns.printForFilledPattern,
+  ref: allFns.printFilledPatterns,
   argsFunction: allFns.triangle,
   cases: [
     {
@@ -101,7 +101,7 @@ const testForTriangle = {
 
 const testForHollowTriangle = {
   name: "Triangle",
-  ref: allFns.printForHollowPattern,
+  ref: allFns.printHollowPattern,
   argsFunction: allFns.triangle,
   cases: [
     {
@@ -129,7 +129,7 @@ const testForHollowTriangle = {
 
 const testForReversedTriangle = {
   name: "Reversed Triangle",
-  ref: allFns.printForFilledPattern,
+  ref: allFns.printFilledPatterns,
   argsFunction: allFns.reversedTriangle,
   cases: [
     {
@@ -157,7 +157,7 @@ const testForReversedTriangle = {
 
 const testForHollowReversedTriangle = {
   name: "Reversed Triangle",
-  ref: allFns.printForHollowPattern,
+  ref: allFns.printHollowPattern,
   argsFunction: allFns.reversedTriangle,
   cases: [
     {
