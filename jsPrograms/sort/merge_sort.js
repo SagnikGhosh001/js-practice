@@ -29,5 +29,5 @@ const mergeSort = (array) => {
 
   return sort(sortedLeft, sortedRight);
 };
-
-console.log(mergeSort([2, 5, 3, 1, 6, 5]));
+const mainArr = [2, 5, 3, 1, 6, 5];
+console.log(mergeSort(mainArr));
