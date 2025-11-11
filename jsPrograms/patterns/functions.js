@@ -3,8 +3,7 @@ const starLine = (length) => "*".repeat(length);
 const spaces = (length) => " ".repeat(length);
 
 const hollowLine = (length) => {
-  if (length === 1) return "*";
-  if (length === 2) return "**";
+  if (length <= 1) return "*";
   return `*${spaces(length - 2)}*`;
 };
 
@@ -28,7 +27,7 @@ export const triangle = (m) => {
 
 export const hollow = (fun, dimensions) => {
   const repeatMNArray = fun(...dimensions);
-  if (repeatMNArray.length <= 2) return repeatMNArray.slice();
+  if (repeatMNArray.length <= 2) return [...repeatMNArray];
 
   return [repeatMNArray[0], repeatMNArray.slice(1, -1), repeatMNArray.at(-1)];
 };
@@ -42,9 +41,9 @@ export const reversedTriangle = (m) => {
   return repeatedArray;
 };
 
-const generateStar = (array, style) => {
+const generateStar = (array, [filled, hollow = filled]) => {
   return array.map((ele) => {
-    return Array.isArray(ele) ? ele.map(style[1]).join("\n") : style[0](ele);
+    return Array.isArray(ele) ? ele.map(hollow).join("\n") : filled(ele);
   });
 };
 
