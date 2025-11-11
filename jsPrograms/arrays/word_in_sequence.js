@@ -1,35 +1,36 @@
-const board = [
+const BOARD = [
   ["A", "B", "C", "E"],
   ["S", "F", "C", "S"],
   ["A", "D", "E", "E"],
 ];
 
-const word = "CCEDFBASA";
+const WORD = "ASASA";
+
+const DIRECTIONS = [[0, 1], [0, -1], [1, 0], [-1, 0]];
 
 const findIndex = (acc, ele, i, char) => {
   const index = ele.findIndex((ele) => ele === char);
   return acc.push([i, index]) && acc;
 };
 
-const findStart = (array, word) => {
+const findStarts = (array, word) => {
   return array.reduce((acc, ele, i) => findIndex(acc, ele, i, word[0]), []);
 };
 
 const isOutOfBoundary = (row, col) => {
-  return row < 0 || col < 0 || row >= board.length || col >= board[row].length;
+  return row < 0 || col < 0 || row >= BOARD.length || col >= BOARD[row].length;
 };
 
-const isTraversePossible = (row, col, indexOfWord) => {
-  const directions = [[0, 1], [0, -1], [1, 0], [-1, 0]];
-  if (indexOfWord === word.length) return true;
+const isTraversePossible = (row, col, indexOfWord = 1) => {
+  if (indexOfWord === WORD.length) return true;
 
-  for (const element of directions) {
+  for (const element of DIRECTIONS) {
     const newRow = row + element[0];
     const newCol = col + element[1];
 
     if (
       !isOutOfBoundary(newRow, newCol) &&
-      board[newRow][newCol] === word[indexOfWord] &&
+      BOARD[newRow][newCol] === WORD[indexOfWord] &&
       isTraversePossible(newRow, newCol, indexOfWord + 1)
     ) {
       return true;
@@ -40,10 +41,10 @@ const isTraversePossible = (row, col, indexOfWord) => {
 };
 
 const isSequenceFound = (board, word) => {
-  const startingIndexs = findStart(board, word);
+  const startingIndexs = findStarts(board, word);
 
   for (const element of startingIndexs) {
-    if (isTraversePossible(element[0], element[1], 1)) {
+    if (isTraversePossible(element[0], element[1])) {
       return true;
     }
   }
@@ -51,4 +52,4 @@ const isSequenceFound = (board, word) => {
   return false;
 };
 
-console.log(isSequenceFound(board, word));
+console.log(isSequenceFound(BOARD, WORD));
