@@ -15,8 +15,8 @@ const findStart = (array, word) => {
   return array.reduce((acc, ele, i) => findIndex(acc, ele, i, word[0]), []);
 };
 
-const isBoundary = (i, j) => {
-  return i < 0 || j < 0 || i >= board.length || j >= board[i].length;
+const isOutOfBoundary = (row, col) => {
+  return row < 0 || col < 0 || row >= board.length || col >= board[row].length;
 };
 
 const isTraversePossible = (row, col, indexOfWord, index) => {
@@ -29,7 +29,7 @@ const isTraversePossible = (row, col, indexOfWord, index) => {
     const newCol = col + element[1];
 
     if (
-      !isBoundary(newRow, newCol) &&
+      !isOutOfBoundary(newRow, newCol) &&
       board[newRow][newCol] === word[indexOfWord]
     ) {
       return isTraversePossible(newRow, newCol, indexOfWord + 1, index + 1);
