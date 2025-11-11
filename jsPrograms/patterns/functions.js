@@ -1,5 +1,7 @@
 const starLine = (length) => "*".repeat(length);
+
 const spaces = (length) => " ".repeat(length);
+
 const hollowLine = (length) => {
   if (length === 1) return "*";
   if (length === 2) return "**";
@@ -27,9 +29,8 @@ export const triangle = (m) => {
 export const hollow = (fun, dimensions) => {
   const repeatMNArray = fun(...dimensions);
   if (repeatMNArray.length <= 2) return repeatMNArray.slice();
-  if (repeatMNArray.length > 2) {
-    return [repeatMNArray[0], repeatMNArray.slice(1, -1), repeatMNArray.at(-1)];
-  }
+
+  return [repeatMNArray[0], repeatMNArray.slice(1, -1), repeatMNArray.at(-1)];
 };
 
 export const reversedTriangle = (m) => {
