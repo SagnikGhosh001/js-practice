@@ -25,7 +25,7 @@ export const triangle = (m) => {
   return repeatedArray;
 };
 
-export const hollow = (fun, dimensions) => {
+export const generateHollowPattern = (fun, dimensions) => {
   const repeatMNArray = fun(...dimensions);
   if (repeatMNArray.length <= 2) return [...repeatMNArray];
 
@@ -54,7 +54,7 @@ export const printFilledPatterns = (funtionToUse, dimensions) => {
 };
 
 export const printHollowPattern = (funtionToUse, dimensions) => {
-  const repeatedArray = hollow(funtionToUse, dimensions);
+  const repeatedArray = generateHollowPattern(funtionToUse, dimensions);
   const starArray = generateStar(repeatedArray, [starLine, hollowLine]);
   return starArray.join("\n");
 };
