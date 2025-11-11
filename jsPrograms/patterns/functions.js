@@ -20,8 +20,8 @@ export const triangle = (m) => {
   return repeatedArray;
 };
 
-export const hollow = (fun, m, n) => {
-  const repeatMNArray = fun(m, n);
+export const hollow = (fun, dimensions) => {
+  const repeatMNArray = fun(...dimensions);
   if (repeatMNArray.length <= 2) return repeatMNArray.slice();
   if (repeatMNArray.length > 2) {
     return [repeatMNArray[0], repeatMNArray.slice(1, -1), repeatMNArray.at(-1)];
@@ -43,14 +43,14 @@ const generateStar = (array, style) => {
   });
 };
 
-export const printForFilledPattern = (funtionToUse, m, n) => {
-  const repeatedArray = funtionToUse(m, n);
+export const printForFilledPattern = (funtionToUse, dimensions) => {
+  const repeatedArray = funtionToUse(...dimensions);
   const starArray = generateStar(repeatedArray, [starLine]);
   return starArray.join("\n");
 };
 
-export const printForHollowPattern = (funtionToUse, m, n) => {
-  const repeatedArray = hollow(funtionToUse, m, n);
+export const printForHollowPattern = (funtionToUse, dimensions) => {
+  const repeatedArray = hollow(funtionToUse, dimensions);
   const starArray = generateStar(repeatedArray, [starLine, hollowLine]);
   return starArray.join("\n");
 };

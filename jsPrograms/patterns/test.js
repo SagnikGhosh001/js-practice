@@ -193,7 +193,7 @@ const formatHeading = (text) => {
 const isEquals = (result, expectedOutput) => result === expectedOutput;
 
 const functionToTest = (func, argsFunction, element) => {
-  const result = func(argsFunction, ...element.input);
+  const result = func(argsFunction, element.input);
   const symbol = isEquals(result, element.expectedOutput) ? "✅" : "❌";
   console.log(`${symbol} ${element.desc}`);
 
