@@ -24,10 +24,7 @@ const mergeSort = (array) => {
   const leftHalf = array.slice(0, middleIndex);
   const rightHalf = array.slice(middleIndex);
 
-  const sortedLeft = mergeSort(leftHalf);
-  const sortedRight = mergeSort(rightHalf);
-
-  return sort(sortedLeft, sortedRight);
+  return sort(mergeSort(leftHalf), mergeSort(rightHalf));
 };
-const mainArr = [2, 5, 3, 1, 6, 5];
+const mainArr = [2, 5, 3, 1, 11, 6, 5];
 console.log(mergeSort(mainArr));
