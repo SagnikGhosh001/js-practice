@@ -1,5 +1,5 @@
 const countOfOccurence = (frequency, element) => {
-  if (!frequency[element]) {
+  if (!(element in frequency)) {
     frequency[element] = 0;
   }
 
