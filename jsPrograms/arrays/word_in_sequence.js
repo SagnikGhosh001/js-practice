@@ -4,7 +4,7 @@ const BOARD = [
   ["A", "D", "E", "E"],
 ];
 
-const WORD = "ASADECSEED";
+const WORD = "ASASA";
 
 const DIRECTIONS = [[0, 1], [0, -1], [1, 0], [-1, 0]];
 
