@@ -1,6 +1,6 @@
 import * as allFns from "./functions.js";
 
-export const testForFn1 = [
+const testForFn1 = [
   ["test fn1", allFns.fnOne],
   [
     {
@@ -16,7 +16,7 @@ export const testForFn1 = [
   ],
 ];
 
-export const testForFn2 = [
+const testForFn2 = [
   ["test fn2", allFns.fnTwo],
   [
     {
@@ -32,7 +32,7 @@ export const testForFn2 = [
   ],
 ];
 
-export const testForFn3 = [
+const testForFn3 = [
   ["test fn3", allFns.fnThree],
   [
     {
@@ -76,10 +76,7 @@ const functionToTest = (func, element) => {
 };
 
 const sendDataToTest = (testData) => {
-  const [metaData, testCases] = [
-    testData[0],
-    ...testData.slice(1),
-  ];
+  const [metaData, testCases] = testData;
 
   formatHeading(metaData[0]);
   for (const element of testCases) {
