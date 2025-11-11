@@ -16,6 +16,11 @@ const testForFilledRectngle = {
       expectedOutput: "**",
     },
     {
+      desc: "for 2 X 1",
+      input: [2, 1],
+      expectedOutput: "*\n*",
+    },
+    {
       desc: "for 2 X 2",
       input: [2, 2],
       expectedOutput: "**\n**",
@@ -37,6 +42,16 @@ const testForHollowRectagle = {
       desc: "for 1 x 2",
       input: [1, 2],
       expectedOutput: "**",
+    },
+    {
+      desc: "for 2 x 1",
+      input: [2, 1],
+      expectedOutput: "*\n*",
+    },
+    {
+      desc: "for 3 x 1",
+      input: [3, 1],
+      expectedOutput: "*\n*\n*",
     },
     {
       desc: "for 2 x 2",

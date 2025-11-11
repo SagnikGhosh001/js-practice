@@ -1,6 +1,10 @@
 const starLine = (length) => "*".repeat(length);
 const spaces = (length) => " ".repeat(length);
-const hollowLine = (length) => `*${spaces(length - 2)}*`;
+const hollowLine = (length) => {
+  if (length === 1) return "*";
+  if (length === 2) return "**";
+  return `*${spaces(length - 2)}*`;
+};
 
 export const repeatMN = (m, n) => {
   const repeatedArray = [];
