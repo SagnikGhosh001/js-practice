@@ -1,10 +1,10 @@
 const BOARD = [
-  ["A", "B", "C", "E"],
-  ["S", "F", "C", "S"],
-  ["A", "D", "E", "E"],
+  ["C", "A", "A"],
+  ["A", "A", "A"],
+  ["B", "C", "D"],
 ];
 
-const WORD = "ASASA";
+const WORD = "CAAAC";
 
 const DIRECTIONS = [[0, 1], [0, -1], [1, 0], [-1, 0]];
 

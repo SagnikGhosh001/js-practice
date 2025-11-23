@@ -2,9 +2,8 @@ const WL = "🟫";
 const PL = "🐍";
 const PLBODY = "🟠";
 const ES = "  ";
-const TR = "🕷️"
-let head = [9, 8];
-const body = [head];
+const TR = "🦋";
+const body = [[9, 8]];
 let lastUsedMove = "";
 const TARGET = [];
 
@@ -26,7 +25,7 @@ const boardArrays = [
   [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL],
   [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL],
   [WL, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, ES, WL],
-  [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL]
+  [WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL, WL],
 ];
 
 const MOVES = ["w", "a", "d", "s"];
@@ -45,7 +44,7 @@ function getDirection(response) {
 }
 
 function randomNumberBetween(start, end) {
-  const randomNumber = ((Math.random() * (end - start)) + start);
+  const randomNumber = (Math.random() * (end - start)) + start;
   return Math.round(randomNumber);
 }
 
@@ -79,8 +78,11 @@ function showBoard() {
 }
 
 function takingInput() {
-  const response = prompt("w for up, a for left, s for down and d for right").toLowerCase().trim();
-  if (MOVES.length - MOVES.indexOf(response) === MOVES.indexOf(lastUsedMove) + 1) return takingInput();
+  const response = prompt("w for up, a for left, s for down and d for right")
+    .toLowerCase().trim();
+  if (
+    MOVES.length - MOVES.indexOf(response) === MOVES.indexOf(lastUsedMove) + 1
+  ) return takingInput();
 
   if (MOVES.includes(response)) {
     lastUsedMove = response;
@@ -97,7 +99,13 @@ function checkIfWall(pos) {
 function changePos(response, point) {
   const direcion = getDirection(response);
   const headPos = getHeadPosition();
-  moveAccordingResponse(headPos[0], headPos[1], direcion[0], direcion[1], point);
+  moveAccordingResponse(
+    headPos[0],
+    headPos[1],
+    direcion[0],
+    direcion[1],
+    point,
+  );
 }
 
 function addBody() {
@@ -120,7 +128,6 @@ function addBodyPosition(x, y) {
 
 function movePlayerBody() {
   for (let index = 0; index < body.length - 1; index++) {
-
     const currentBody = body[index];
     const frontBody = body[index + 1];
 
