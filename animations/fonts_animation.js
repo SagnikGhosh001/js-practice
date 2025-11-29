@@ -111,7 +111,7 @@ const getBlockFont = () => {
     M: [
       "##   ##",
       "### ###",
-      "######",
+      "#######",
       "## # ##",
       "##   ##",
       "##   ##",
@@ -203,7 +203,7 @@ const getBlockFont = () => {
       "##   ##",
       "##   ##",
       "## # ##",
-      "######",
+      "#######",
       "### ###",
       "##   ##",
     ],
@@ -463,7 +463,7 @@ const textToAsciiArt = (text, font) => {
   const charLines = characters[char];
 
   for (let line = 0; line < height; line++) {
-    result[line] += charLines[line] + "    ";
+    result[line] += charLines[line].padStart(10);
   }
 
   return result;
@@ -471,7 +471,7 @@ const textToAsciiArt = (text, font) => {
 
 const printOnScreen = (chars) => {
   const colorFns = [black, red, green, yellow, blue, magenta, cyan, white];
-  const linesPerChar = chars[3].length;
+  const linesPerChar = chars[0].length;
   let result = "";
   let line = 0;
 
