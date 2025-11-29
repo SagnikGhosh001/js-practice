@@ -450,6 +450,10 @@ function white(text) {
   return "\x1B[37m" + text + "\x1B[0m";
 }
 
+function bold(text) {
+  return "\x1B[1m" + text + "\x1B[0m";
+}
+
 const textToAsciiArt = (text, font) => {
   const characters = font;
   const height = characters[0].length;
@@ -487,7 +491,7 @@ const printOnScreen = (chars) => {
 
     let combinedLine = "";
     for (let index = 0; index < chars.length; index++) {
-      combinedLine += colorFns[randomColorIndex](chars[index][line][0]);
+      combinedLine += bold(colorFns[randomColorIndex](chars[index][line][0]));
     }
 
     result += combinedLine + "\n";
