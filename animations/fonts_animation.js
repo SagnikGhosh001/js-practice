@@ -460,7 +460,7 @@ const textToAsciiArt = (text, font) => {
   }
 
   const char = text.toUpperCase();
-  const charLines = characters[char];
+  const charLines = char in characters ? characters[char] : characters["?"];
 
   for (let line = 0; line < height; line++) {
     result[line] += charLines[line].padStart(10);
