@@ -1,0 +1,50 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@g43/core@^0.0.2": "0.0.2",
+    "jsr:@g43/drawing@*": "0.0.2",
+    "jsr:@g43/drawing@^0.0.2": "0.0.2",
+    "jsr:@g43/enums@^0.0.7": "0.0.7",
+    "jsr:@g43/math@^0.0.5": "0.0.5",
+    "jsr:@g43/tools@^0.0.8": "0.0.8",
+    "jsr:@g43/utils@^0.0.12": "0.0.12"
+  },
+  "jsr": {
+    "@g43/core@0.0.2": {
+      "integrity": "686814fb05fe82647e27caccddef5685975e3056abd3e8376668e09bd736dc31"
+    },
+    "@g43/drawing@0.0.2": {
+      "integrity": "f5bb8c3ab936d9d4907640bb93a6aeb69987e03b95ee38eed958543ec1c0476c",
+      "dependencies": [
+        "jsr:@g43/math",
+        "jsr:@g43/tools"
+      ]
+    },
+    "@g43/enums@0.0.7": {
+      "integrity": "1ff46dfc01f59b25ca9b71bb504cca8916a5ca16687edcef64ba2329189ba67e"
+    },
+    "@g43/math@0.0.5": {
+      "integrity": "18b578a6ddaa4f8eb6ec4be97af834f046aca65e25b355b9d574c8728f043725"
+    },
+    "@g43/tools@0.0.8": {
+      "integrity": "4550da573f2e218bbe97509dd9a9f4140d3f0a925252a5e5fdc84e18ad2b4bcb",
+      "dependencies": [
+        "jsr:@g43/core",
+        "jsr:@g43/math",
+        "jsr:@g43/utils"
+      ]
+    },
+    "@g43/utils@0.0.12": {
+      "integrity": "788e0a4c1dcaa3a2a2d4d63fed4ae026a1d1cf6608d4b6028d4df31a9789665a",
+      "dependencies": [
+        "jsr:@g43/enums",
+        "jsr:@g43/math"
+      ]
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@g43/drawing@^0.0.2"
+    ]
+  }
+}

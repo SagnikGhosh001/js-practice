@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "@g43/drawing": "jsr:@g43/drawing@^0.0.2"
+  }
+}
