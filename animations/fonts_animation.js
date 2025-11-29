@@ -486,8 +486,8 @@ const printOnScreen = (chars) => {
     }
 
     let combinedLine = "";
-    for (let c = 0; c < chars.length; c++) {
-      combinedLine += colorFns[randomColorIndex](chars[c][line][0]);
+    for (let index = 0; index < chars.length; index++) {
+      combinedLine += colorFns[randomColorIndex](chars[index][line][0]);
     }
 
     result += combinedLine + "\n";
