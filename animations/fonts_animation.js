@@ -491,7 +491,7 @@ const printOnScreen = (chars) => {
 
     let combinedLine = "";
     for (let index = 0; index < chars.length; index++) {
-      combinedLine += bold(colorFns[randomColorIndex](chars[index][line][0]));
+      combinedLine += bold(colorFns[randomColorIndex](chars[index][line]));
     }
 
     result += combinedLine + "\n";
@@ -514,7 +514,7 @@ const main = (args) => {
     const line = [];
     const asciiArt = textToAsciiArt(char, selectedFont);
     for (let i = 0; i < asciiArt.length; i++) {
-      line.push([asciiArt[i]]);
+      line.push(asciiArt[i]);
     }
     str.push(line);
   }
