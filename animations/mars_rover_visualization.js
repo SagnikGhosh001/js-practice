@@ -1,35 +1,35 @@
 const plateauBoard = [];
-const rover = "🚗";
+const roverNorth = "^";
+const roverSouth = "v";
+const roverEast = ">";
+const roverWest = "<";
+const trail = ".";
 
-const showAnimation = ({ xCoord, yCoord }, { maxY }) => {
+const selectRoverEmoji = {
+  N: roverNorth,
+  S: roverSouth,
+  E: roverEast,
+  W: roverWest,
+};
+const showAnimation = ({ xCoord, yCoord, direction }, { maxY }) => {
+  const roverEmoji = selectRoverEmoji[direction];
   console.clear();
-  clearPlataue();
-  setRover(xCoord, yCoord, maxY);
+  setEmoji(xCoord, yCoord, maxY, roverEmoji);
   displayPlateau();
+  setEmoji(xCoord, yCoord, maxY, trail);
 };
 
 const setPlateau = (rowSize, colSize) => {
   for (let row = 0; row <= rowSize; row++) {
-    const colElements = [];
-    for (let col = 0; col <= colSize; col++) {
-      colElements.push("  ");
-    }
-    plateauBoard.push(colElements);
+    plateauBoard.push(" ".repeat(colSize + 1).split(""));
   }
 };
 
 const displayPlateau = () =>
   console.log(plateauBoard.map((row) => row.join("")).join("\n"));
 
-const setRover = (x, y, maxY) => plateauBoard[maxY - y][x] = rover;
-
-const clearPlataue = () => {
-  for (let row = 0; row < plateauBoard.length; row++) {
-    for (let col = 0; col < plateauBoard[row].length; col++) {
-      plateauBoard[row][col] = "  ";
-    }
-  }
-};
+const setEmoji = (x, y, maxY, roverEmoji) =>
+  plateauBoard[maxY - y][x] = roverEmoji;
 
 const isOutOfRange = (value, max, min) => value < min || value > max;
 
