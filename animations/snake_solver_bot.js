@@ -16,6 +16,7 @@ const createBoard = (rowSize, colSize) => {
 const set = (emoji) => {
   const row = Math.floor(Math.random() * board.length);
   const col = Math.floor(Math.random() * board[0].length);
+
   if (board[row][col] === "  ") {
     board[row][col] = emoji;
     return [row, col];
@@ -38,7 +39,6 @@ const movePreditor = (preditorHead, preyLoc) => {
   board[tail[0]][tail[1]] = "  ";
   const delRow = Math.sign(preyLoc[0] - preditorHead[0]);
   const delCol = delRow ? 0 : Math.sign(preyLoc[1] - preditorHead[1]);
-
   moveBody();
   preditorHead[0] += delRow;
   preditorHead[1] += delCol;
