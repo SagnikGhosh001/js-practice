@@ -11,6 +11,7 @@ const selectRoverEmoji = {
   E: roverEast,
   W: roverWest,
 };
+
 const showAnimation = ({ xCoord, yCoord, direction }, { maxY }) => {
   const roverEmoji = selectRoverEmoji[direction];
   console.clear();
@@ -58,7 +59,7 @@ const parseInputsPosition = (position) => {
 
 const parsePlateau = (plateau) => {
   const [maxX, maxY] = plateau.split(" ");
-  return { maxX: parseInt(maxX), maxY: parseInt(maxY) };
+  return { maxX: parseInt(maxX), maxY: parseInt(maxY), minX: 0, minY: 0 };
 };
 
 const turn = ({ direction, ...rest }, offset) => {
