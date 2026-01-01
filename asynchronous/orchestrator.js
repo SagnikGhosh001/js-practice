@@ -3,7 +3,7 @@ const createTask = (name, mode) => {
     const startTime = Date.now();
     setTimeout(() => {
       const endTime = Date.now();
-      res({ name, mode, startTime, endTime, diff: endTime - startTime });
+      res({ name, mode, startTime, endTime, duration: endTime - startTime });
     }, 100);
   });
 };
