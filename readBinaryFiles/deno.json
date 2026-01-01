@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "@std/fmt": "jsr:@std/fmt@^1.0.8",
+    "jpeg-js": "npm:jpeg-js@^0.4.4"
+  }
+}

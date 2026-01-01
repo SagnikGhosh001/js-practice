@@ -1,0 +1,25 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@std/fmt@*": "1.0.8",
+    "jsr:@std/fmt@^1.0.8": "1.0.8",
+    "npm:jpeg-js@*": "0.4.4",
+    "npm:jpeg-js@~0.4.4": "0.4.4"
+  },
+  "jsr": {
+    "@std/fmt@1.0.8": {
+      "integrity": "71e1fc498787e4434d213647a6e43e794af4fd393ef8f52062246e06f7e372b7"
+    }
+  },
+  "npm": {
+    "jpeg-js@0.4.4": {
+      "integrity": "sha512-WZzeDOEtTOBK4Mdsar0IqEU5sMr3vSV2RqkAIzUEV2BHnUfKGyswWFPFwK5EeDo93K3FohSHbLAjj0s1Wzd+dg=="
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@std/fmt@^1.0.8",
+      "npm:jpeg-js@~0.4.4"
+    ]
+  }
+}
