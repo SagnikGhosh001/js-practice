@@ -1,0 +1,12 @@
+{
+  "tasks": {
+    "start": {
+      "command":"deno run -A main.js",
+      "dependencies": ["setup"]
+    },
+    "setup" : "deno run -A setup.js"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  }
+}

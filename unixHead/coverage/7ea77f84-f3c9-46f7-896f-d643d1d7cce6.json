@@ -1,0 +1,64 @@
+{
+  "scriptId": "334",
+  "url": "file:///Users/sagnikghosh/workspace/js-practice/unixHead/src/parser.js",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 1206, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "<instance_members_initializer>",
+      "ranges": [{ "startOffset": 18, "endOffset": 25, "count": 14 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "Scanner",
+      "ranges": [{ "startOffset": 30, "endOffset": 80, "count": 14 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "peek",
+      "ranges": [{ "startOffset": 84, "endOffset": 124, "count": 26 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "consume",
+      "ranges": [{ "startOffset": 128, "endOffset": 176, "count": 29 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "getTokens",
+      "ranges": [{ "startOffset": 180, "endOffset": 222, "count": 37 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "handleNandCMode",
+      "ranges": [
+        { "startOffset": 250, "endOffset": 579, "count": 13 },
+        { "startOffset": 398, "endOffset": 406, "count": 8 },
+        { "startOffset": 407, "endOffset": 415, "count": 5 },
+        { "startOffset": 449, "endOffset": 461, "count": 11 },
+        { "startOffset": 463, "endOffset": 530, "count": 3 },
+        { "startOffset": 530, "endOffset": 578, "count": 10 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "handleQuiteMode",
+      "ranges": [{ "startOffset": 606, "endOffset": 676, "count": 3 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "parseArgs",
+      "ranges": [
+        { "startOffset": 809, "endOffset": 1204, "count": 14 },
+        { "startOffset": 976, "endOffset": 1184, "count": 26 },
+        { "startOffset": 1060, "endOffset": 1129, "count": 10 },
+        { "startOffset": 1129, "endOffset": 1184, "count": 16 },
+        { "startOffset": 1184, "endOffset": 1203, "count": 11 }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

@@ -20,18 +20,17 @@ const serialTaskScheduler = (task) => {
   const scheduledTime = getScheduledTime(task);
 
   return createTask(task, scheduledTime, "serial").then((data) => {
-    // console.log(data);
+    console.log(data);
     orchestratorLogs["serial"].push(data);
   });
 };
 
 const parallelTaskScheduler = (tasks, delimeter) => {
-  const eachTasks = tasks.split(delimeter).map((t) =>
-    createTask(t, getScheduledTime(t), "parallel")
-  );
+  const eachTasks = tasks.split(delimeter)
+    .map((t) => createTask(t, getScheduledTime(t), "parallel"));
 
   return Promise.all(eachTasks).then((data) => {
-    // console.log(data);
+    console.log(data);
     orchestratorLogs["parallel"].push(data);
   });
 };
@@ -50,8 +49,8 @@ const main = async () => {
   const tasks = await Deno.readTextFile("./recipe.txt");
   const delimeter = ",";
   await scheduleTask(tasks, delimeter);
-  console.log("Final Logs :- \n");
-  console.log(orchestratorLogs);
+  // console.log("Final Logs :- \n");
+  // console.log(orchestratorLogs);
 };
 
 main();

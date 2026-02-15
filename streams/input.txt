@@ -1,0 +1,3 @@
+error: disk full
+warn: low memory
+info: server started
